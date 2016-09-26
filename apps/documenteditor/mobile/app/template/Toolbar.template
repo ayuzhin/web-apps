@@ -1,0 +1,23 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link">
+                <i class="icon icon-back"></i>
+                <% if (backTitle) { %>
+                <span class="subtitle"><%= backTitle %></span>
+                <% } %>
+            </a>
+            <% if (!android) { %>
+            <a href="#" class="link">Undo</a>
+            <% } %>
+        </div>
+        <div class="center">Document Editor</div>
+        <div class="right">
+            <% if (android) { %>
+            <a href="#" class="link">Undo</a>
+            <% } %>
+            <a href="#" class="toolbar-search link">Search</a>
+            <a href="#" class="link">Push</a>
+        </div>
+    </div>
+</div>

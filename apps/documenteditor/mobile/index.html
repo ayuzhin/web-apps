@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="mobile-web-app-capable" content="yes">
+
         <title>ONLYOFFICE Documents</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
+
+        <!--<link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">-->
+        <!-- App styles -->
+        <link rel="stylesheet/less" type="text/css" href="resources/less/app.less" />
 
         <!-- splash -->
 
@@ -174,63 +181,10 @@
                 100%    { top:100px; background: #55bce6; }
             }
         </style>
-
-        <!-- debug -->
-        <!--<script src="http://192.168.3.97:3030/target/target-script-min.js#anonymous"></script>-->
-
-        <!-- vendor -->
-        <script type="text/javascript" src="../../../vendor/touch/sencha-touch-debug.js"></script>
-        <script type="text/javascript" src="../../../vendor/jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="../../../vendor/sockjs/sockjs.min.js"></script>
-        <script type="text/javascript" src="../../../vendor/underscore/underscore-min.js"></script>
-        <script type="text/javascript" src="../../../vendor/megapixel/src/megapix-image.js"></script>
-        <script type="text/javascript" src="../../../vendor/xregexp/xregexp-all-min.js"></script>
-        <script type="text/javascript" src="../../../vendor/jszip/jszip.min.js"></script>
-        <script type="text/javascript" src="../../../vendor/jszip-utils/jszip-utils.min.js"></script>
-        <script type="text/javascript" src="../../../vendor/jsrsasign/jsrsasign-latest-all-min.js"></script>
-
-        <!-- Application -->
-
-        <!--<link rel="stylesheet" href="resources/css/application-normal.css" type="text/css"/>-->
-        <script type="text/javascript">
-            var injectStyleElement = function(url) {
-                var style = document.createElement('link'),
-                        documentHead = typeof document != 'undefined' && (document.head || document.getElementsByTagName('head')[0]);
-
-                style.rel = 'stylesheet';
-                style.href = url;
-                style.type = 'text/css';
-
-                if (documentHead) {
-                    documentHead.appendChild(style);
-                    return true;
-                }
-
-                return false;
-            };
-
-            injectStyleElement((window.devicePixelRatio > 1)
-                ? 'resources/css/application-retina.css'
-                : 'resources/css/application-normal.css'
-            );
-        </script>
-
-        <script type="text/javascript" src="../../common/Analytics.js"></script>
-        <script type="text/javascript" src="../../common/Gateway.js"></script>
-        <script type="text/javascript" src="../../common/mobile/loader.js"></script>
-        <script type="text/javascript" src="app.js"></script>
-        <script type="text/javascript" src="../../common/locale.js"></script>
-
-        <script type="text/javascript" src="../sdk_dev_scripts.js"></script>
-        <script>
-            window.sdk_dev_scrpipts.forEach(function(item){
-                document.write('<script type="text/javascript" src="' + item + '"><\/script>');
-            });
-        </script>
     </head>
     <body>
         <script type="text/javascript">
-            if (!(Ext.browser.is.WebKit && (Ext.os.is.iOS || Ext.os.is.Android || Ext.os.is.Desktop))) {
+            if (false/*!(Ext.browser.is.WebKit && (Ext.os.is.iOS || Ext.os.is.Android || Ext.os.is.Desktop))*/) {
                 document.write(
                     '<div id="unsuported-view-id" class="unsuported-view"></div>'
                 );
@@ -289,5 +243,26 @@
                     '</div>');
             }
         </script>
+
+        <div id="viewport"></div>
+
+        <!-- debug begin -->
+        <script type="text/javascript">var less=less||{};less.env='development';</script>
+        <script type="text/javascript" src="../../../vendor/less/dist/less-2.7.1.min.js"></script>
+        <!-- debug end -->
+
+
+        <script type="text/javascript" src="../../../vendor/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="../../../vendor/xregexp/xregexp-all-min.js"></script>
+
+        <script type="text/javascript" src="../sdk_dev_scripts.js"></script>
+        <script>
+            window.sdk_dev_scrpipts.forEach(function(item){
+                document.write('<script type="text/javascript" src="' + item + '"><\/script>');
+            });
+        </script>
+        <!-- application -->
+        <script data-main="app" src="../../../vendor/requirejs/require.js"></script>
+
     </body>
 </html>
