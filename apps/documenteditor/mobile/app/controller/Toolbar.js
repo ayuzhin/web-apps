@@ -23,7 +23,8 @@ define([
         initialize: function() {
             this.addListeners({
                 'Toolbar': {
-                    'searchbar:show': this.onSearchbarShow
+                    'searchbar:show'    : this.onSearchbarShow,
+                    'searchbar:render'  : this.onSearchbarRender
                 }
             });
         },
@@ -34,10 +35,12 @@ define([
 
         onLaunch: function() {
             this.createView('Toolbar').render();
-            this.initUI();
         },
 
-        initUI: function() {
+
+        // Search
+
+        onSearchbarRender: function(bar) {
             var me = this;
             me.searchBar = uiApp.searchbar('.searchbar.document', {
                 customSearch: true,
@@ -54,11 +57,8 @@ define([
             me.searchNext.on('click', _.bind(me.onSearchNext, me));
         },
 
-        // Search
-        onSearchbarShow: function(bar, isShow) {
-            if (!isShow) {
-                this.searchBar.clear();
-            }
+        onSearchbarShow: function(bar) {
+            //
         },
 
         onSearchChange: function(search) {

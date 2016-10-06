@@ -1,0 +1,65 @@
+i.icon-search {
+  width: 21px;
+  height: 100%;
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 13' fill='#007aff'><g><path d='M5,1c2.2,0,4,1.8,4,4S7.2,9,5,9S1,7.2,1,5S2.8,1,5,1 M5,0C2.2,0,0,2.2,0,5s2.2,5,5,5s5-2.2,5-5S7.8,0,5,0 L5,0z'/></g><line stroke='#007aff' stroke-miterlimit='10' x1='12.6' y1='12.6' x2='8.2' y2='8.2'/></svg>");
+}
+.searchbar.document .buttons-row {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+.container-edit.popover .list-block {
+  margin: 35px 0;
+}
+.container-edit.popover .list-block > ul {
+  border-radius: 0;
+}
+.container-edit.popover .list-block ul {
+  background: #fff;
+}
+.container-edit.popover .list-block:first-child {
+  margin-top: 0;
+}
+.container-edit.popover .list-block:first-child li:first-child a {
+  border-radius: 0;
+}
+.container-edit.popover .popover-inner > .content-block {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #000;
+}
+.container-edit.popover .popover-view {
+  border-radius: 13px;
+}
+.container-edit.popover .popover-view > .pages {
+  border-radius: 13px;
+}
+.container-edit .categories {
+  width: 100%;
+}
+.container-edit .categories > .buttons-row {
+  width: 100%;
+}
+.container-edit .popover-inner {
+  height: 400px;
+}
+.item-content.buttons .item-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+  align-items: stretch;
+}
+.item-content.buttons .item-inner > .row {
+  width: 100%;
+  align-items: stretch;
+}
+.item-content.buttons .item-inner > .row .button {
+  flex: 1;
+  border: none;
+  height: inherit;
+  border-radius: 0;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

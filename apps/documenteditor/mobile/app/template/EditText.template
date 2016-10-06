@@ -1,0 +1,100 @@
+<!-- Root view -->
+<div id="edit-text-root">
+    <div class="list-block">
+        <ul>
+            <li><a id="font-fonts" class="item-link">
+                <div class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">Font Name</div>
+                        <div class="item-after" style="color: #000">10 pt</div>
+                    </div>
+                </div></a></li>
+            <li><div class="item-content buttons">
+                <div class="item-inner">
+                    <div class="row">
+                        <a id="font-bold" class="button"><b>B</b></a>
+                        <a id="font-italic" class="button"><i>I</i></a>
+                        <a id="font-underline" class="button" style="text-decoration: underline;">U</a>
+                        <a id="font-strikethrough" class="button" style="text-decoration: line-through">S</a>
+                    </div>
+                </div>
+            </div></li>
+            <li><a id="font-color" class="item-link">
+                <div class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">Font color</div>
+                    </div>
+                </div></a></li>
+            <li><a href="#font-background" class="item-link">
+                <div class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">Highlight color</div>
+                    </div>
+                </div></a></li>
+            <li><a href="#font-additional" class="item-link">
+                <div class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">Additional formatting</div>
+                    </div>
+                </div></a></li>
+        </ul>
+    </div>
+    <div class="list-block">
+        <ul>
+            <li><div class="item-content buttons">
+                <div class="item-inner">
+                    <div class="row">
+                        <a id="font-left" class="button">B</a>
+                        <a id="font-center" class="button">B</a>
+                        <a id="font-right" class="button">U</a>
+                    </div>
+                </div>
+            </div></li>
+            <li><div class="item-content buttons">
+                <div class="item-inner">
+                    <div class="row">
+                        <a id="font-moveleft" class="button">&lt;</a>
+                        <a id="font-moveright" class="button">&gt;</a>
+                    </div>
+                </div>
+            </div></li>
+            <li><a href="#font-markers" class="item-link">
+                <div class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">Bullets</div>
+                    </div>
+                </div></a></li>
+            <li><a href="#font-numbers" class="item-link">
+                <div class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">Numbers</div>
+                    </div>
+                </div></a></li>
+            <li><a href="#font-line-spacing" class="item-link">
+                <div class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">Line Spacing</div>
+                    </div>
+                </div></a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- Fonts view -->
+<div id="edit-text-fonts">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="center sliding">Fonts</div>
+            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+        </div>
+    </div>
+    <div class="page" data-page="edit-text-font-page">
+        <div class="page-content">
+            <div class="content-block">
+                <p>FONTS</p>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -94,8 +94,10 @@ define([
                     Common.Gateway.on('opendocument',   _.bind(this.loadDocument, this));
                     Common.Gateway.ready();
 
-                    this.getApplication().getController('Editor').setApi(this.api);
-                    this.getApplication().getController('Toolbar').setApi(this.api);
+                    var application = this.getApplication();
+                    application.getController('Editor').setApi(this.api);
+                    application.getController('Toolbar').setApi(this.api);
+                    application.getController('EditText').setApi(this.api);
                 }
             },
 

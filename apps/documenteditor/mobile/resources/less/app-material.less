@@ -1,0 +1,92 @@
+// Icons
+i.icon-search {
+  width: 21px;
+  height: 100%;
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 13' fill='#fff'><g><path d='M5,1c2.2,0,4,1.8,4,4S7.2,9,5,9S1,7.2,1,5S2.8,1,5,1 M5,0C2.2,0,0,2.2,0,5s2.2,5,5,5s5-2.2,5-5S7.8,0,5,0 L5,0z'/></g><line stroke='#fff' stroke-miterlimit='10' x1='12.6' y1='12.6' x2='8.2' y2='8.2'/></svg>");
+}
+
+// Edit container
+.container-edit {
+  &.popover {
+    .list-block {
+      margin: 35px 0;
+
+      > ul {
+        border-radius: 0;
+      }
+
+      ul {
+        background: #fff;
+      }
+
+      &:first-child {
+        margin-top: 0;
+
+        li:first-child a {
+          border-radius: 0;
+        }
+      }
+    }
+
+    .popover-inner {
+      > .content-block {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    .popover-view {
+      border-radius: 3px;
+
+      > .pages {
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .categories {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    > .toolbar {
+      top: 0;
+      height: 100%;
+    }
+  }
+  .popover-inner {
+    height: 400px;
+  }
+}
+
+// Controls
+.item-content{
+  &.buttons {
+    .item-inner {
+      padding-top: 0;
+      padding-bottom: 0;
+
+      > .row {
+        width: 100%;
+
+        .button {
+          flex: 1;
+          font-size: 17px;
+          margin-left: 5px;
+
+          &:first-child {
+            margin-left: 0;
+          }
+
+          &.active {
+            color: #fff;
+            background-color: #2196f3;
+          }
+        }
+      }
+    }
+  }
+}

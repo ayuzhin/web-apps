@@ -23,7 +23,8 @@ define([
 
         // Delegated events for creating new items, and clearing completed ones.
         events: {
-            "click .toolbar-search": "searchToggle"
+            "click .toolbar-search" : "searchToggle",
+            "click .toolbar-edit"   : "showEdition"
         },
 
         // Set innerHTML and get the references to the DOM elements
@@ -40,28 +41,72 @@ define([
                 backTitle: Framework7.prototype.device.android ? '' : 'Documents'
             }));
 
-            // Search
-            $el.find('.pages .page').prepend(_.template(
-                '<form class="searchbar document navbar navbar-hidden">' +
-                    '<div class="searchbar-input">' +
-                        '<input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>' +
-                    '</div>' +
-                    '<p class="buttons-row">' +
-                        '<a href="#" class="button prev button-round disabled">&lt;</a>' +
-                        '<a href="#" class="button next button-round disabled">&gt;</a>' +
-                    '</p>' +
-                '</form>', {}
-            ));
-
             return this;
         },
 
         // Search
         searchToggle: function() {
-            var isSearchShow = $('.searchbar.document').hasClass('navbar-hidden');
-            uiApp[isSearchShow ? 'showNavbar' : 'hideNavbar'].call(this, $('.searchbar.document'));
+            if ($$('.searchbar.document').length > 0) {
+                this.hideSearch();
+            } else {
+                this.showSearch();
+            }
+        },
 
-            this.fireEvent('searchbar:show', [this, !isSearchShow]);
+        showSearch: function () {
+            var me = this,
+                searchBar = $$('.searchbar.document');
+
+            if (searchBar.length < 1) {
+                $(me.el).find('.pages .page').first().prepend(_.template(
+                    '<form class="searchbar document navbar navbar-hidden">' +
+                        '<div class="searchbar-input">' +
+                            '<input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>' +
+                        '</div>' +
+                        '<p class="buttons-row">' +
+                            '<a href="#" class="button prev button-round disabled">&lt;</a>' +
+                            '<a href="#" class="button next button-round disabled">&gt;</a>' +
+                        '</p>' +
+                    '</form>', {}
+                ));
+                me.fireEvent('searchbar:render', me);
+                searchBar = $$('.searchbar.document');
+
+                setTimeout(function() {
+                    uiApp.showNavbar(searchBar);
+
+                    searchBar.transitionEnd(function () {
+                        if (!searchBar.hasClass('navbar-hidden'))
+                            me.fireEvent('searchbar:show', me);
+                    });
+                }, 10);
+            }
+        },
+
+        hideSearch: function () {
+            var me = this,
+                searchBar = $$('.searchbar.document');
+
+            if (searchBar.length > 0) {
+                // Animating
+                if (searchBar.hasClass('.navbar-hidding')) {
+                    return;
+                }
+
+                setTimeout(function() {
+                    searchBar.transitionEnd(function () {
+                        me.fireEvent('searchbar:hide', me);
+                        searchBar.remove();
+                    });
+
+                    uiApp.hideNavbar(searchBar);
+                }, 10);
+            }
+        },
+
+        // Editor
+        showEdition: function () {
+            DE.getController('EditContainer').showModal();
         }
     });
 });

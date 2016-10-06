@@ -94,14 +94,16 @@ require([
         controllers : [
             'Editor',
             'Toolbar',
-            'Main'
+            'Main',
+            'EditContainer',
+            'EditText'
         ]
     });
 
     Common.Locale.apply();
 
     var device = Framework7.prototype.device;
-    var loadPlatformCss = function (filename){
+    var loadPlatformCss = function (filename, opt){
         var fileref = document.createElement('link');
         fileref.setAttribute('rel', 'stylesheet');
         fileref.setAttribute('type', 'text/css');
@@ -137,12 +139,21 @@ require([
     //Load Framework7 platform styles
     loadPlatformCss('../../../vendor/framework7/css/framework7.' + (device.android ? 'material' : 'ios') + '.min.css');
     loadPlatformCss('../../../vendor/framework7/css/framework7.' + (device.android ? 'material' : 'ios') + '.colors.min.css');
+    loadPlatformCss('resources/css/app-' + (device.android ? 'material' : 'ios') + '.css');
+
+    jQuery.fn.extend( {
+        single: function(types, selector, data, fn) {
+            return this.off(types, fn).on(types, selector, data, fn);
+        }
+    } );
 
     require([
         'common/main/lib/util/LocalStorage',
         'documenteditor/mobile/app/controller/Editor',
         'documenteditor/mobile/app/controller/Toolbar',
-        'documenteditor/mobile/app/controller/Main'
+        'documenteditor/mobile/app/controller/Main',
+        'documenteditor/mobile/app/controller/EditContainer',
+        'documenteditor/mobile/app/controller/EditText'
 
     ], function() {
         app.start();

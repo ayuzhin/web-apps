@@ -16,8 +16,10 @@
             <% if (android) { %>
             <a href="#" class="link">Undo</a>
             <% } %>
-            <a href="#" class="toolbar-search link">Search</a>
-            <a href="#" class="link">Push</a>
+            <a href="#" class="toolbar-search link icon-only">
+                <i class="icon icon-search"></i>
+            </a>
+            <a href="#" class="link toolbar-edit">Edit</a>
         </div>
     </div>
 </div>
