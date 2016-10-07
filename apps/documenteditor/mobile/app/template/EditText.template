@@ -91,8 +91,24 @@
     </div>
     <div class="page" data-page="edit-text-font-page">
         <div class="page-content">
-            <div class="content-block">
-                <p>FONTS</p>
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content rightcontrol">
+                            <div class="item-inner">
+                                <div class="item-title">Font size</div>
+                                <div class="item-after">
+                                    <a id="font-decrement" class="button">-</a>
+                                    <span id="font-size-value" class="text-value">10</span>
+                                    <a id="font-increment" class="button">+</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block virtual-list">
+                <!-- Fonts List -->
             </div>
         </div>
     </div>

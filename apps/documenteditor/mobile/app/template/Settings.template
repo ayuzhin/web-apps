@@ -1,0 +1,205 @@
+<!-- Root view -->
+<div id="settings-root-view">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="center sliding">Settings</div>
+            <div class="right"><% if (phone) { %><a href="#" class="link close-popup">Done</a><% } %></div>
+        </div>
+    </div>
+    <div class="pages">
+        <div class="page" data-page="settings-root-view">
+            <div class="page-content">
+                <div class="list-block">
+                    <ul>
+                        <% if (phone && edit) { %>
+                        <li>
+                            <a id="settings-search" class="item-link no-indicator">
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon icon-search"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Search</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <% } %>
+                        <% if (!edit) { %>
+                        <li>
+                            <a id="settings-edit-document" class="item-link no-indicator">
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon icon-search"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Edit Document</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <% } %>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media">
+                                    <i class="icon icon-search"></i>
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title">Reader Mode</div>
+                                    <div class="item-after">
+                                        <label id="settings-readermode" class="label-switch">
+                                            <input type="checkbox">
+                                            <div class="checkbox"></div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a id="settings-download" class="item-link no-indicator">
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon icon-search"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Download</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="settings-document-info" class="item-link">
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon icon-search"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Document Info</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="settings-history" class="item-link">
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon icon-search"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Document History</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="settings-help" class="item-link">
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon icon-search"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Help</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="settings-about" class="item-link">
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon icon-search"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">About</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Document Info view -->
+<div id="settings-info-view">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left sliding">
+                <a href="#" class="back link">
+                    <i class="icon icon-back"></i>
+                    <% if (!android) { %>
+                        <span>Back</span>
+                    <% } %>
+                </a>
+            </div>
+            <div class="center sliding">Document Info</div>
+        </div>
+    </div>
+    <div class="pages">
+        <div class="page" data-page="settings-info-view">
+            <div class="page-content">
+                <div class="content-block-title">Document title</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div id="settings-document-title" class="item-title">Document Name.docx</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-block-title">Author</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div id="settings-document-autor" class="item-title">User name</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-block-title">Create date</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div id="settings-document-date" class="item-title">Fri Oct 07 2016</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-block-title">Statistic</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Pages</div>
+                                <div class="item-after" id="statistic-pages">2</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Paragraphs</div>
+                                <div class="item-after" id="statistic-paragraphs">13</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Words</div>
+                                <div class="item-after" id="statistic-words">267</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Symbols</div>
+                                <div class="item-after" id="statistic-symbols">1634</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

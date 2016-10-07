@@ -1,5 +1,6 @@
 /**
  *  EditContainer.js
+ *  Document Editor
  *
  *  Created by Alexander Yuzhin on 9/27/16
  *  Copyright (c) 2016 Ascensio System SIA. All rights reserved.
@@ -38,9 +39,7 @@ define([
                 return;
             }
 
-            var isPhone = false;
-
-            me._showByStack(isPhone);
+            me._showByStack(Common.SharedSettings.get('phone'));
 
             DE.getController('Toolbar').getView('Toolbar').hideSearch();
         },
@@ -218,7 +217,7 @@ define([
                             '</div>' +
                         '</div>' +
                     '</div>',
-                    $$('.toolbar-edit')
+                    $$('#toolbar-edit')
                 );
             }
 

@@ -14,28 +14,28 @@ i.icon-search {
 }
 
 // Edit container
-.container-edit {
+.container-edit,
+.container-settings {
+  &.popup,
   &.popover {
     .list-block {
-      margin: 35px 0;
-
-      > ul {
-        border-radius: 0;
-      }
 
       ul {
+        border-radius: 0 !important;
         background: #fff;
       }
 
       &:first-child {
         margin-top: 0;
 
-        li:first-child a {
-          border-radius: 0;
+        li:first-child a,
+        li:last-child a {
+          border-radius: 0 !important;
         }
       }
     }
 
+    &,
     .popover-inner {
       > .content-block {
         width: 100%;
@@ -67,7 +67,7 @@ i.icon-search {
   }
 }
 
-// Controls
+// List extend
 .item-content {
   &.buttons {
     .item-inner {
@@ -90,6 +90,25 @@ i.icon-search {
           justify-content: center;
         }
       }
+    }
+  }
+
+  /*
+   * Begin DEBUG
+   */
+  .icon-search {
+    width: 22px;
+    height: 22px;
+  }
+  /*
+   * End DEBUG
+   */
+}
+
+.item-link {
+  &.no-indicator {
+    .item-inner {
+      background-image: none;
     }
   }
 }

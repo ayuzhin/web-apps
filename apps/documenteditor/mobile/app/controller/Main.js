@@ -1,6 +1,6 @@
 /**
  *  Main.js
- *  Main controller
+ *  Document Editor
  *
  *  Created by Alexander Yuzhin on 9/22/16
  *  Copyright (c) 2016 Ascensio System SIA. All rights reserved.
@@ -22,8 +22,21 @@ define([
         Common.localStorage.setKeysFilter('de-,asc.text');
         Common.localStorage.sync();
 
-        return {
+        var fillUserInfo = function(info, lang, defname) {
+            var user = info || {};
+            !user.id && (user.id = ('uid-' + Date.now()));
+            _.isEmpty(user.firstname) && _.isEmpty(user.lastname) && (user.firstname = defname);
+            if (_.isEmpty(user.firstname))
+                user.fullname = user.lastname;
+            else if (_.isEmpty(user.lastname))
+                user.fullname = user.firstname;
+            else
+                user.fullname = /^ru/.test(lang) ? user.lastname + ' ' + user.firstname :  user.firstname + ' ' + user.lastname;
 
+            return user;
+        };
+
+        return {
             models: [],
             collections: [],
             views: [],
@@ -35,7 +48,7 @@ define([
             onLaunch: function() {
                 var me = this;
 
-                this.stackLongActions = new Common.IrregularStack({
+                me.stackLongActions = new Common.IrregularStack({
                     strongCompare   : function(obj1, obj2){return obj1.id === obj2.id && obj1.type === obj2.type;},
                     weakCompare     : function(obj1, obj2){return obj1.type === obj2.type;}
                 });
@@ -63,59 +76,49 @@ define([
 
                 // Initialize api
 
-                this.api = new Asc.asc_docs_api({
+                me.api = new Asc.asc_docs_api({
                     'id-view'  : 'editor_sdk',
                     'mobile'   : true
                 });
 
-                if (this.api){
+                if (me.api){
                     switch (value) {
-                        case '0': this.api.SetFontRenderingMode(3); break;
-                        case '1': this.api.SetFontRenderingMode(1); break;
-                        case '2': this.api.SetFontRenderingMode(2); break;
+                        case '0': me.api.SetFontRenderingMode(3); break;
+                        case '1': me.api.SetFontRenderingMode(1); break;
+                        case '2': me.api.SetFontRenderingMode(2); break;
                     }
 
-                    this.api.asc_registerCallback('asc_onError',                    _.bind(this.onError, this));
-                    this.api.asc_registerCallback('asc_onDocumentContentReady',     _.bind(this.onDocumentContentReady, this));
-                    this.api.asc_registerCallback('asc_onOpenDocumentProgress',     _.bind(this.onOpenDocument, this));
-                    this.api.asc_registerCallback('asc_onDocumentUpdateVersion',    _.bind(this.onUpdateVersion, this));
-                    this.api.asc_registerCallback('asc_onAdvancedOptions',          _.bind(this.onAdvancedOptions, this));
-                    this.api.asc_registerCallback('asc_onDocumentName',             _.bind(this.onDocumentName, this));
-                    this.api.asc_registerCallback('asc_onPrintUrl',                 _.bind(this.onPrintUrl, this));
-                    Common.NotificationCenter.on('api:disconnect',                  _.bind(this.onCoAuthoringDisconnect, this));
-                    Common.NotificationCenter.on('goback',                          _.bind(this.goBack, this));
+                    me.api.asc_registerCallback('asc_onError',                      _.bind(me.onError, me));
+                    me.api.asc_registerCallback('asc_onDocumentContentReady',       _.bind(me.onDocumentContentReady, me));
+                    me.api.asc_registerCallback('asc_onOpenDocumentProgress',       _.bind(me.onOpenDocument, me));
+                    me.api.asc_registerCallback('asc_onDocumentUpdateVersion',      _.bind(me.onUpdateVersion, me));
+                    me.api.asc_registerCallback('asc_onAdvancedOptions',            _.bind(me.onAdvancedOptions, me));
+                    me.api.asc_registerCallback('asc_onDocumentName',               _.bind(me.onDocumentName, me));
+                    me.api.asc_registerCallback('asc_onPrintUrl',                   _.bind(me.onPrintUrl, me));
+
+                    Common.NotificationCenter.on('api:disconnect',                  _.bind(me.onCoAuthoringDisconnect, me));
+                    Common.NotificationCenter.on('goback',                          _.bind(me.goBack, me));
+
+                    // Initialize descendants
+                    _.each(me.getApplication().controllers, function(controller) {
+                        if (controller && _.isFunction(controller.setApi)) {
+                            controller.setApi(me.api);
+                        }
+                    });
 
                     // Initialize api gateway
-                    this.editorConfig = {};
-                    this.appOptions = {};
-                    this.plugins = undefined;
-                    Common.Gateway.on('init',           _.bind(this.loadConfig, this));
-                    Common.Gateway.on('showmessage',    _.bind(this.onExternalMessage, this));
-                    Common.Gateway.on('opendocument',   _.bind(this.loadDocument, this));
-                    Common.Gateway.ready();
+                    me.editorConfig = {};
+                    me.appOptions   = {};
+                    me.plugins      = undefined;
 
-                    var application = this.getApplication();
-                    application.getController('Editor').setApi(this.api);
-                    application.getController('Toolbar').setApi(this.api);
-                    application.getController('EditText').setApi(this.api);
+                    Common.Gateway.on('init',           _.bind(me.loadConfig, me));
+                    Common.Gateway.on('showmessage',    _.bind(me.onExternalMessage, me));
+                    Common.Gateway.on('opendocument',   _.bind(me.loadDocument, me));
+                    Common.Gateway.ready();
                 }
             },
 
             loadConfig: function(data) {
-                var fillUserInfo = function(info, lang, defname) {
-                    var _user = info || {};
-                    !_user.id && (_user.id = ('uid-' + Date.now()));
-                    _.isEmpty(_user.firstname) && _.isEmpty(_user.lastname) && (_user.firstname = defname);
-                    if (_.isEmpty(_user.firstname))
-                        _user.fullname = _user.lastname;
-                    else if (_.isEmpty(_user.lastname))
-                        _user.fullname = _user.firstname;
-                    else
-                        _user.fullname = /^ru/.test(lang) ? _user.lastname + ' ' + _user.firstname :  _user.firstname + ' ' + _user.lastname;
-
-                    return _user;
-                };
-
                 this.editorConfig = $.extend(this.editorConfig, data.config);
 
                 this.editorConfig.user          =
@@ -183,6 +186,15 @@ define([
 //                        .getView('Common.Views.Header')
 //                        .setDocumentCaption(data.doc.title);
 //                }
+            },
+
+            setMode: function(mode){
+                var me = this;
+
+                if (me.api ) {
+                    me.api.asc_enableKeyEvents(mode == 'edit');
+                    me.api.asc_setViewMode(mode != 'edit');
+                }
             },
 
             onProcessSaveResult: function(data) {
@@ -355,7 +367,7 @@ define([
 
 
             disableEditing: function(disable) {
-//                var app = this.getApplication();
+               var app = this.getApplication();
 //                if (this.appOptions.canEdit && this.editorConfig.mode !== 'view') {
 //                    app.getController('RightMenu').getView('RightMenu').clearSelection();
 //                    app.getController('Toolbar').DisableToolbar(disable, disable);
@@ -773,78 +785,84 @@ define([
 
             onOpenDocument: function(progress) {
                 if (this.loadMask) {
-                    var $title = $$(this.loadMask).find('.modal-title');
-                    var proc = (progress.asc_getCurrentFont() + progress.asc_getCurrentImage())/(progress.asc_getFontsCount() + progress.asc_getImagesCount());
-                    $title.text(this.textLoadingDocument + ': ' + Math.min(Math.round(proc*100), 100) + '%');
+                    var $title = $$(this.loadMask).find('.modal-title'),
+                        proc = (progress.asc_getCurrentFont() + progress.asc_getCurrentImage())/(progress.asc_getFontsCount() + progress.asc_getImagesCount());
+
+                    $title.text(this.textLoadingDocument + ': ' + Math.min(Math.round(proc * 100), 100) + '%');
                 }
             },
 
             onEditorPermissions: function(params) {
-                var licType = params.asc_getLicenseType();
-                if (Asc.c_oLicenseResult.Expired === licType || Asc.c_oLicenseResult.Error === licType || Asc.c_oLicenseResult.ExpiredTrial === licType) {
-                    Common.UI.warning({
-                        title: this.titleLicenseExp,
-                        msg: this.warnLicenseExp,
-                        buttons: [],
-                        closable: false
+                var me = this,
+                    licType = params.asc_getLicenseType();
+
+                if (Asc.c_oLicenseResult.Expired === licType ||
+                    Asc.c_oLicenseResult.Error === licType ||
+                    Asc.c_oLicenseResult.ExpiredTrial === licType) {
+                    uiApp.modal({
+                        title   : me.titleLicenseExp,
+                        text    : me.warnLicenseExp
                     });
                     return;
                 }
 
-                this.permissions.review = (this.permissions.review === undefined) ? (this.permissions.edit !== false) : this.permissions.review;
-                this.appOptions.canAnalytics   = params.asc_getIsAnalyticsEnable();
-                this.appOptions.canLicense     = (licType === Asc.c_oLicenseResult.Success);
-                this.appOptions.isLightVersion = params.asc_getIsLight();
+                me.permissions.review         = (me.permissions.review === undefined) ? (me.permissions.edit !== false) : me.permissions.review;
+                me.appOptions.canAnalytics    = params.asc_getIsAnalyticsEnable();
+                me.appOptions.canLicense      = (licType === Asc.c_oLicenseResult.Success);
+                me.appOptions.isLightVersion  = params.asc_getIsLight();
                 /** coauthoring begin **/
-                this.appOptions.canCoAuthoring = !this.appOptions.isLightVersion;
+                me.appOptions.canCoAuthoring  = !me.appOptions.isLightVersion;
                 /** coauthoring end **/
-                this.appOptions.isOffline      = this.api.asc_isOffline();
-                this.appOptions.isReviewOnly   = (this.permissions.review === true) && (this.permissions.edit === false);
-                this.appOptions.canRequestEditRights = this.editorConfig.canRequestEditRights;
-                this.appOptions.canEdit        = (this.permissions.edit !== false || this.permissions.review === true) && // can edit or review
-                    (this.editorConfig.canRequestEditRights || this.editorConfig.mode !== 'view') && // if mode=="view" -> canRequestEditRights must be defined
-                    (!this.appOptions.isReviewOnly || this.appOptions.canLicense); // if isReviewOnly==true -> canLicense must be true
-                this.appOptions.isEdit         = this.appOptions.canLicense && this.appOptions.canEdit && this.editorConfig.mode !== 'view';
-                this.appOptions.canReview      = this.appOptions.canLicense && this.appOptions.isEdit && (this.permissions.review===true);
-                this.appOptions.canUseHistory  = this.appOptions.canLicense && !this.appOptions.isLightVersion && this.editorConfig.canUseHistory && this.appOptions.canCoAuthoring && !this.appOptions.isDesktopApp;
-                this.appOptions.canHistoryClose  = this.editorConfig.canHistoryClose;
-                this.appOptions.canHistoryRestore= this.editorConfig.canHistoryRestore && !!this.permissions.changeHistory;
-                this.appOptions.canUseMailMerge= this.appOptions.canLicense && this.appOptions.canEdit && !this.appOptions.isDesktopApp;
-                this.appOptions.canSendEmailAddresses  = this.appOptions.canLicense && this.editorConfig.canSendEmailAddresses && this.appOptions.canEdit && this.appOptions.canCoAuthoring;
-                this.appOptions.canComments    = this.appOptions.canLicense && !((typeof (this.editorConfig.customization) == 'object') && this.editorConfig.customization.comments===false);
-                this.appOptions.canChat        = this.appOptions.canLicense && !this.appOptions.isOffline && !((typeof (this.editorConfig.customization) == 'object') && this.editorConfig.customization.chat===false);
-                this.appOptions.canEditStyles  = this.appOptions.canLicense && this.appOptions.canEdit;
-                this.appOptions.canPrint       = (this.permissions.print !== false);
+                me.appOptions.isOffline       = me.api.asc_isOffline();
+                me.appOptions.isReviewOnly    = (me.permissions.review === true) && (me.permissions.edit === false);
+                me.appOptions.canRequestEditRights = me.editorConfig.canRequestEditRights;
+                me.appOptions.canEdit         = (me.permissions.edit !== false || me.permissions.review === true) && // can edit or review
+                    (me.editorConfig.canRequestEditRights || me.editorConfig.mode !== 'view') && // if mode=="view" -> canRequestEditRights must be defined
+                    (!me.appOptions.isReviewOnly || me.appOptions.canLicense); // if isReviewOnly==true -> canLicense must be true
+                me.appOptions.isEdit          = me.appOptions.canLicense && me.appOptions.canEdit && me.editorConfig.mode !== 'view';
+                me.appOptions.canReview       = me.appOptions.canLicense && me.appOptions.isEdit && (me.permissions.review===true);
+                me.appOptions.canUseHistory   = me.appOptions.canLicense && !me.appOptions.isLightVersion && me.editorConfig.canUseHistory && me.appOptions.canCoAuthoring && !me.appOptions.isDesktopApp;
+                me.appOptions.canHistoryClose  = me.editorConfig.canHistoryClose;
+                me.appOptions.canHistoryRestore= me.editorConfig.canHistoryRestore && !!me.permissions.changeHistory;
+                me.appOptions.canUseMailMerge= me.appOptions.canLicense && me.appOptions.canEdit && !me.appOptions.isDesktopApp;
+                me.appOptions.canSendEmailAddresses  = me.appOptions.canLicense && me.editorConfig.canSendEmailAddresses && me.appOptions.canEdit && me.appOptions.canCoAuthoring;
+                me.appOptions.canComments     = me.appOptions.canLicense && !((typeof (me.editorConfig.customization) == 'object') && me.editorConfig.customization.comments===false);
+                me.appOptions.canChat         = me.appOptions.canLicense && !me.appOptions.isOffline && !((typeof (me.editorConfig.customization) == 'object') && me.editorConfig.customization.chat===false);
+                me.appOptions.canEditStyles   = me.appOptions.canLicense && me.appOptions.canEdit;
+                me.appOptions.canPrint        = (me.permissions.print !== false);
 
-                var type = /^(?:(pdf|djvu|xps))$/.exec(this.document.fileType);
-                this.appOptions.canDownloadOrigin = !this.appOptions.nativeApp && this.permissions.download !== false && (type && typeof type[1] === 'string');
-                this.appOptions.canDownload       = !this.appOptions.nativeApp && this.permissions.download !== false && (!type || typeof type[1] !== 'string');
+                var type = /^(?:(pdf|djvu|xps))$/.exec(me.document.fileType);
+                me.appOptions.canDownloadOrigin = !me.appOptions.nativeApp && me.permissions.download !== false && (type && typeof type[1] === 'string');
+                me.appOptions.canDownload       = !me.appOptions.nativeApp && me.permissions.download !== false && (!type || typeof type[1] !== 'string');
 
-                this._state.licenseWarning = (licType===Asc.c_oLicenseResult.Connections) && this.appOptions.canEdit && this.editorConfig.mode !== 'view';
+                me._state.licenseWarning = (licType===Asc.c_oLicenseResult.Connections) && me.appOptions.canEdit && me.editorConfig.mode !== 'view';
 
-                this.appOptions.canBranding  = params.asc_getCanBranding() && (typeof this.editorConfig.customization == 'object');
-//                if (this.appOptions.canBranding)
-//                    this.getApplication().getController('Viewport').getView('Common.Views.Header').setBranding(this.editorConfig.customization);
-//
-//                params.asc_getTrial() && this.getApplication().getController('Viewport').getView('Common.Views.Header').setDeveloperMode(true);
+                me.appOptions.canBranding  = params.asc_getCanBranding() && (typeof me.editorConfig.customization == 'object');
 
-                this.applyModeCommonElements();
-                this.applyModeEditorElements();
+                me.applyModeCommonElements();
+                me.applyModeEditorElements();
 
-                this.api.asc_setViewMode(!this.appOptions.isEdit);
-                this.api.asc_LoadDocument();
+                me.api.asc_setViewMode(!me.appOptions.isEdit);
+                me.api.asc_LoadDocument();
+                me.api.Resize();
 
-                if (!this.appOptions.isEdit) {
-                    this.hidePreloader();
-                    this.onLongActionBegin(Asc.c_oAscAsyncActionType['BlockInteraction'], LoadingDocument);
+                if (!me.appOptions.isEdit) {
+                    me.hidePreloader();
+                    me.onLongActionBegin(Asc.c_oAscAsyncActionType['BlockInteraction'], LoadingDocument);
                 }
             },
 
             applyModeCommonElements: function() {
+                var me = this;
+
                 window.editor_elements_prepared = true;
 
-                var value = Common.localStorage.getItem("de-hidden-title");
-                value = this.appOptions.isEdit && (value!==null && parseInt(value) == 1);
+                _.each(me.getApplication().controllers, function(controller) {
+                    if (controller && _.isFunction(controller.setMode)) {
+                        controller.setMode(me.editorConfig.mode);
+                    }
+                });
+
 
 //                var app             = this.getApplication(),
 //                    viewport        = app.getController('Viewport').getView('Viewport'),
@@ -866,20 +884,20 @@ define([
 //
 //                documentHolder.setMode(this.appOptions);
 //
-//                this.api.asc_registerCallback('asc_onSendThemeColors', _.bind(this.onSendThemeColors, this));
-//
-//                if (this.api) {
-//                    var translateChart = new Asc.asc_CChartTranslate();
-//                    translateChart.asc_setTitle(this.txtDiagramTitle);
-//                    translateChart.asc_setXAxis(this.txtXAxis);
-//                    translateChart.asc_setYAxis(this.txtYAxis);
-//                    translateChart.asc_setSeries(this.txtSeries);
-//                    this.api.asc_setChartTranslate(translateChart);
-//
-//                    var translateArt = new Asc.asc_TextArtTranslate();
-//                    translateArt.asc_setDefaultText(this.txtArt);
-//                    this.api.asc_setTextArtTranslate(translateArt);
-//                }
+                if (me.api) {
+                    me.api.asc_registerCallback('asc_onSendThemeColors', _.bind(this.onSendThemeColors, this));
+
+                    var translateChart = new Asc.asc_CChartTranslate();
+                    translateChart.asc_setTitle(me.txtDiagramTitle);
+                    translateChart.asc_setXAxis(me.txtXAxis);
+                    translateChart.asc_setYAxis(me.txtYAxis);
+                    translateChart.asc_setSeries(me.txtSeries);
+                    me.api.asc_setChartTranslate(translateChart);
+
+                    var translateArt = new Asc.asc_TextArtTranslate();
+                    translateArt.asc_setDefaultText(me.txtArt);
+                    me.api.asc_setTextArtTranslate(translateArt);
+                }
             },
 
             applyModeEditorElements: function() {

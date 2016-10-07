@@ -1,6 +1,6 @@
 /**
  *  Toolbar.js
- *  Toolbar controller
+ *  Document Editor
  *
  *  Created by Alexander Yuzhin on 9/23/16
  *  Copyright (c) 2016 Ascensio System SIA. All rights reserved.

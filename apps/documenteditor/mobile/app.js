@@ -27,7 +27,8 @@ require.config({
         analytics       : 'common/Analytics',
         gateway         : 'common/Gateway',
         locale          : 'common/locale',
-        irregularstack  : 'common/IrregularStack'
+        irregularstack  : 'common/IrregularStack',
+        sharedsettings  : 'common/mobile/utils/SharedSettings'
     },
 
     shim: {
@@ -53,7 +54,8 @@ require.config({
             deps: [
                 'backbone',
                 'notification',
-                'irregularstack'
+                'irregularstack',
+                'sharedsettings'
             ]
         },
         gateway: {
@@ -95,6 +97,7 @@ require([
             'Editor',
             'Toolbar',
             'Main',
+            'Settings',
             'EditContainer',
             'EditText'
         ]
@@ -152,6 +155,7 @@ require([
         'documenteditor/mobile/app/controller/Editor',
         'documenteditor/mobile/app/controller/Toolbar',
         'documenteditor/mobile/app/controller/Main',
+        'documenteditor/mobile/app/controller/Settings',
         'documenteditor/mobile/app/controller/EditContainer',
         'documenteditor/mobile/app/controller/EditText'
 

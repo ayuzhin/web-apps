@@ -1,6 +1,6 @@
 /**
  *  Toolbar.js
- *  Toolbar view
+ *  Document Editor
  *
  *  Created by Alexander Yuzhin on 9/23/16
  *  Copyright (c) 2016 Ascensio System SIA. All rights reserved.
@@ -23,8 +23,9 @@ define([
 
         // Delegated events for creating new items, and clearing completed ones.
         events: {
-            "click .toolbar-search" : "searchToggle",
-            "click .toolbar-edit"   : "showEdition"
+            "click #toolbar-search"     : "searchToggle",
+            "click #toolbar-edit"       : "showEdition",
+            "click #toolbar-settings"   : "showSettings"
         },
 
         // Set innerHTML and get the references to the DOM elements
@@ -38,7 +39,7 @@ define([
 
             $el.prepend(this.template({
                 android: Framework7.prototype.device.android,
-                backTitle: Framework7.prototype.device.android ? '' : 'Documents'
+                backTitle: Framework7.prototype.device.android ? '' : 'Back'
             }));
 
             return this;
@@ -107,6 +108,11 @@ define([
         // Editor
         showEdition: function () {
             DE.getController('EditContainer').showModal();
+        },
+
+        // Settings
+        showSettings: function () {
+            DE.getController('Settings').showModal();
         }
     });
 });
