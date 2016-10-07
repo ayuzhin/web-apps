@@ -38,8 +38,9 @@ define([
             var $el = $(this.el);
 
             $el.prepend(this.template({
-                android: Framework7.prototype.device.android,
-                backTitle: Framework7.prototype.device.android ? '' : 'Back'
+                android     : Common.SharedSettings.get('android'),
+                backTitle   : Common.SharedSettings.get('android') ? '' : 'Back',
+                phone       : Common.SharedSettings.get('phone')
             }));
 
             return this;

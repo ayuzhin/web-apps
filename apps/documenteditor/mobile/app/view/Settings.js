@@ -41,23 +41,28 @@ define([
             // Render layout
             render: function() {
                 this.layout = $('<div/>').append(this.template({
-                    android: Common.SharedSettings.get('android'),
-                    phone: Common.SharedSettings.get('phone'),
-                    edit: isEdit
+                    android : Common.SharedSettings.get('android'),
+                    phone   : Common.SharedSettings.get('phone')
                 }));
 
                 return this;
             },
 
             setMode: function (mode) {
-                isEdit = (mode == 'edit')
+                isEdit = (mode === 'edit')
             },
 
             rootLayout: function () {
                 if (this.layout) {
-                    return this.layout
-                        .find('#settings-root-view')
-                        .html();
+                    var $layour = this.layout
+                        .find('#settings-root-view');
+
+                    // Hide edit document item
+                    if (isEdit) {
+                        $layour.find('#settings-edit-document').hide();
+                    }
+
+                    return $layour.html();
                 }
 
                 return '';
@@ -85,8 +90,22 @@ define([
             },
 
             showDocumentInfo: function() {
-                this.showPage('#settings-info-view')
-            }
+                this.showPage('#settings-info-view');
+
+                var api = DE.getController('Settings').api;
+                if (api) {
+                    api.startGetDocInfo();
+
+                    var document = Common.SharedSettings.get('document') || {},
+                        info = document.info || {};
+
+                    $('#settings-document-title').html(document.title ? document.title : this.unknownText);
+                    $('#settings-document-autor').html(info.author ? info.author : this.unknownText);
+                    $('#settings-document-date').html(info.created ? info.created : this.unknownText);
+                }
+            },
+
+            unknownText: 'Unknown'
         }
     })());
 });

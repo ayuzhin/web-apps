@@ -16,7 +16,9 @@ define([
 
     DE.Controllers.Settings = Backbone.Controller.extend((function() {
         // private
-        var rootView;
+        var rootView,
+            inProgress,
+            infoObj;
 
         return {
             models: [],
@@ -32,6 +34,12 @@ define([
             setApi: function (api) {
                 var me = this;
                 me.api = api;
+
+                me.api.asc_registerCallback('asc_onGetDocInfoStart',    _.bind(me._onApiGetDocInfoStart, me));
+                me.api.asc_registerCallback('asc_onGetDocInfoStop',     _.bind(me._onApiGetDocInfoEnd, me));
+                me.api.asc_registerCallback('asc_onDocInfo',            _.bind(me._onApiDocInfo, me));
+                me.api.asc_registerCallback('asc_onGetDocInfoEnd',      _.bind(me._onApiGetDocInfoEnd, me));
+                me.api.asc_registerCallback('asc_onDocumentName',       _.bind(me._onApiDocumentName, me));
             },
 
             onLaunch: function () {
@@ -91,7 +99,63 @@ define([
                 });
 
                 Common.NotificationCenter.trigger('settingscontainer:show');
-            }
+            },
+
+            // API handlers
+
+            _onApiGetDocInfoStart: function () {
+                var me = this;
+                inProgress = true;
+                infoObj = {
+                    PageCount       : 0,
+                    WordsCount      : 0,
+                    ParagraphCount  : 0,
+                    SymbolsCount    : 0,
+                    SymbolsWSCount  : 0
+                };
+
+                _.defer(function(){
+                    if (!inProgress)
+                        return;
+
+                    $('#statistic-pages').html(me.txtLoading);
+                    $('#statistic-words').html(me.txtLoading);
+                    $('#statistic-paragraphs').html(me.txtLoading);
+                    $('#statistic-symbols').html(me.txtLoading);
+                    $('#statistic-spaces').html(me.txtLoading);
+                }, 2000);
+            },
+
+            _onApiGetDocInfoEnd: function() {
+                inProgress = false;
+
+                $('#statistic-pages').html(infoObj.PageCount);
+                $('#statistic-words').html(infoObj.WordsCount);
+                $('#statistic-paragraphs').html(infoObj.ParagraphCount);
+                $('#statistic-symbols').html(infoObj.SymbolsCount);
+                $('#statistic-spaces').html(infoObj.SymbolsWSCount);
+            },
+
+            _onApiDocInfo: function(obj) {
+                if (obj) {
+                    if (obj.get_PageCount() > -1)
+                        infoObj.PageCount = obj.get_PageCount();
+                    if (obj.get_WordsCount() > -1)
+                        infoObj.WordsCount = obj.get_WordsCount();
+                    if (obj.get_ParagraphCount() > -1)
+                        infoObj.ParagraphCount = obj.get_ParagraphCount();
+                    if (obj.get_SymbolsCount() > -1)
+                        infoObj.SymbolsCount = obj.get_SymbolsCount();
+                    if (obj.get_SymbolsWSCount() > -1)
+                        infoObj.SymbolsWSCount = obj.get_SymbolsWSCount();
+                }
+            },
+
+            _onApiDocumentName: function(name) {
+                $('#settings-document-title').html(name ? name : '-');
+            },
+
+            txtLoading: 'Loading...'
         }
     })());
 });

@@ -37,6 +37,9 @@ define([
             this.createView('Toolbar').render();
         },
 
+        setDocumentTitle: function (title) {
+            $('#toolbar-title').html(title);
+        },
 
         // Search
 

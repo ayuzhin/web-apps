@@ -55,10 +55,10 @@ define([
             // When our application is ready, lets get started
             onLaunch: function() {
                 // Device detection
-                console.debug('Layout profile:', isTablet() ? 'Tablet' : 'Phone');
+                console.debug('Layout profile:', isPhone() ? 'Phone' : 'Tablet');
 
                 Common.SharedSettings.set('android', Framework7.prototype.device.android);
-                Common.SharedSettings.set('phone', !isTablet());
+                Common.SharedSettings.set('phone', isPhone());
 
                 // Create and render main view
                 this.editorView = this.createView('Editor').render();

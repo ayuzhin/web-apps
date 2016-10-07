@@ -180,16 +180,19 @@ define([
                 this.api.asc_setDocInfo(docInfo);
                 this.api.asc_getEditorPermissions(this.editorConfig.licenseUrl, this.editorConfig.customerId);
 
-//                if (data.doc) {
-//                    this.getApplication()
-//                        .getController('Viewport')
-//                        .getView('Common.Views.Header')
-//                        .setDocumentCaption(data.doc.title);
-//                }
+                Common.SharedSettings.set('document', data.doc);
+
+               if (data.doc) {
+                   this.getApplication()
+                       .getController('Toolbar')
+                       .setDocumentTitle(data.doc.title);
+               }
             },
 
             setMode: function(mode){
                 var me = this;
+
+                Common.SharedSettings.set('mode', mode);
 
                 if (me.api ) {
                     me.api.asc_enableKeyEvents(mode == 'edit');
