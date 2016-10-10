@@ -39,8 +39,8 @@ define([
         // Render layout
         render: function() {
             this.layout = $('<div/>').append(this.template({
-                android: Common.SharedSettings.get('android'),
-                phone: Common.SharedSettings.get('phone')
+                android : Common.SharedSettings.get('android'),
+                phone   : Common.SharedSettings.get('phone')
             }));
 
             return this;

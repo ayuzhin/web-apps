@@ -102,3 +102,27 @@ i.icon-search {
 .item-link.no-indicator .item-inner {
   background-image: none;
 }
+.about .page-content {
+  text-align: center;
+}
+.about .content-block:first-child {
+  margin: 15px 0;
+}
+.about .content-block {
+  margin: 0 auto 15px;
+}
+.about .content-block a {
+  color: #000;
+}
+.about h3 {
+  font-weight: normal;
+  margin: 0;
+}
+.about h3.vendor {
+  color: #000;
+  font-weight: bold;
+  margin-top: 15px;
+}
+.about p > label {
+  margin-right: 5px;
+}

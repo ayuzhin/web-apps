@@ -96,11 +96,12 @@
                     <li>
                         <div class="item-content rightcontrol">
                             <div class="item-inner">
-                                <div class="item-title">Font size</div>
+                                <div class="item-title">Size<label style="margin: 0 5px;">10</label>pt</div>
                                 <div class="item-after">
-                                    <a id="font-decrement" class="button">-</a>
-                                    <span id="font-size-value" class="text-value">10</span>
-                                    <a id="font-increment" class="button">+</a>
+                                    <p class="buttons-row" style="min-width: 90px;">
+                                        <span id="font-size-decrement" class="button <%= android ? "button-fill" : "" %>">-</span>
+                                        <span id="font-size-increment" class="button <%= android ? "button-fill" : "" %>">+</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>

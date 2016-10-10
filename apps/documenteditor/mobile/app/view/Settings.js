@@ -33,9 +33,15 @@ define([
             },
 
             initEvents: function () {
-                $('#settings-document-info').single('click', _.bind(this.showDocumentInfo, this));
+                var me = this;
 
-                this.initControls();
+                $('#settings-document-info').single('click',    _.bind(me.showDocumentInfo, me));
+                $('#settings-download').single('click',         _.bind(me.showDownload, me));
+                $('#settings-history').single('click',          _.bind(me.showHistory, me));
+                $('#settings-help').single('click',             _.bind(me.showHelp, me));
+                $('#settings-about').single('click',            _.bind(me.showAbout, me));
+
+                me.initControls();
             },
 
             // Render layout
@@ -86,6 +92,8 @@ define([
                     rootView.router.load({
                         content: $content.html()
                     });
+
+                    this.fireEvent('page:show', this);
                 }
             },
 
@@ -103,6 +111,23 @@ define([
                     $('#settings-document-autor').html(info.author ? info.author : this.unknownText);
                     $('#settings-document-date').html(info.created ? info.created : this.unknownText);
                 }
+            },
+
+            showDownload: function () {
+                this.showPage('#settings-download-view');
+            },
+
+            showHistory: function () {
+                this.showPage('#settings-history-view');
+            },
+
+            showHelp: function () {
+                window.open('http://support.onlyoffice.com/', "_blank");
+                DE.getController('Settings').hideModal();
+            },
+
+            showAbout: function () {
+                this.showPage('#settings-about-view');
             },
 
             unknownText: 'Unknown'

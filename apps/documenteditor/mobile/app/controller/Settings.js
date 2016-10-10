@@ -18,7 +18,8 @@ define([
         // private
         var rootView,
             inProgress,
-            infoObj;
+            infoObj,
+            modalView;
 
         return {
             models: [],
@@ -29,6 +30,12 @@ define([
 
             initialize: function () {
                 Common.NotificationCenter.on('settingscontainer:show', _.bind(this.initEvents, this));
+
+                this.addListeners({
+                    'Settings': {
+                        'page:show' : this.onPageShow
+                    }
+                });
             },
 
             setApi: function (api) {
@@ -51,7 +58,8 @@ define([
             },
 
             initEvents: function () {
-                var me = this;
+
+
                 // $('#font-bold').single('click',             _.bind(me.onBold, me));
                 // $('#font-italic').single('click',           _.bind(me.onItalic, me));
                 // $('#font-underline').single('click',        _.bind(me.onUnderline, me));
@@ -64,7 +72,7 @@ define([
 
             showModal: function() {
                 if (Common.SharedSettings.get('phone')) {
-                    uiApp.popup(
+                    modalView = uiApp.popup(
                         '<div class="popup container-settings">' +
                             '<div class="content-block">' +
                                 '<div class="view settings-root-view navbar-through">' +
@@ -74,7 +82,7 @@ define([
                         '</div>'
                     );
                 } else {
-                    uiApp.popover(
+                    modalView = uiApp.popover(
                         '<div class="popover container-settings">' +
                             '<div class="popover-angle"></div>' +
                             '<div class="popover-inner">' +
@@ -99,6 +107,17 @@ define([
                 });
 
                 Common.NotificationCenter.trigger('settingscontainer:show');
+            },
+
+            hideModal: function() {
+                if (modalView) {
+                    uiApp.closeModal(modalView);
+                }
+            },
+
+            onPageShow: function(view) {
+                var me = this;
+                $(modalView).find('.formats a').single('click', _.bind(me._onSaveFormat, me));
             },
 
             // API handlers
@@ -155,7 +174,31 @@ define([
                 $('#settings-document-title').html(name ? name : '-');
             },
 
-            txtLoading: 'Loading...'
+
+            _onSaveFormat: function(e) {
+                var me = this,
+                    format = $(e.currentTarget).data('format');
+
+                if (format) {
+                    if (format == Asc.c_oAscFileType.TXT) {
+                        uiApp.confirm(
+                            me.warnDownloadAs,
+                            me.notcriticalErrorTitle,
+                            function () {
+                                me.api.asc_DownloadAs(format);
+                            }
+                        );
+                    } else {
+                        me.api.asc_DownloadAs(format);
+                    }
+
+                    me.hideModal();
+                }
+            },
+
+            txtLoading              : 'Loading...',
+            notcriticalErrorTitle   : 'Warning',
+            warnDownloadAs          : 'If you continue saving in this format all features except the text will be lost.<br>Are you sure you want to continue?'
         }
     })());
 });

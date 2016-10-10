@@ -95,21 +95,30 @@ i.icon-search {
   height: 22px;
   background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 13' fill='#007aff'><g><path d='M5,1c2.2,0,4,1.8,4,4S7.2,9,5,9S1,7.2,1,5S2.8,1,5,1 M5,0C2.2,0,0,2.2,0,5s2.2,5,5,5s5-2.2,5-5S7.8,0,5,0 L5,0z'/></g><line stroke='#007aff' stroke-miterlimit='10' x1='12.6' y1='12.6' x2='8.2' y2='8.2'/></svg>");
 }
-.item-content.rightcontrol {
-  color: #000;
-}
-.item-content.rightcontrol .item-inner {
-  padding-right: 0;
-}
-.item-content.rightcontrol .item-after {
-  margin-top: -10px;
-  font-size: 17px;
-}
-.item-content.rightcontrol .item-after .text-value {
-  font-size: 17px;
-  color: #000;
-  margin: 5px;
-}
 .item-link.no-indicator .item-inner {
   background-image: none;
+}
+.about .page-content {
+  text-align: center;
+}
+.about .content-block:first-child {
+  margin: 15px 0;
+}
+.about .content-block {
+  margin: 0 auto 15px;
+}
+.about .content-block a {
+  color: #000;
+}
+.about h3 {
+  font-weight: normal;
+  margin: 0;
+}
+.about h3.vendor {
+  color: #000;
+  font-weight: bold;
+  margin-top: 15px;
+}
+.about p > label {
+  margin-right: 5px;
 }

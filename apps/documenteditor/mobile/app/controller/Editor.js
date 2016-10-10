@@ -15,10 +15,10 @@ define([
 
     DE.Controllers.Editor = Backbone.Controller.extend((function() {
         // private
-        var ua = navigator.userAgent;
 
         function isPhone() {
-            var isMobile = /Mobile(\/|\s)/.test(ua);
+            var ua = navigator.userAgent,
+                isMobile = /Mobile(\/|\s)/.test(ua);
 
             return /(iPhone|iPod)/.test(ua) ||
                 (!/(Silk)/.test(ua) && (/(Android)/.test(ua) && (/(Android 2)/.test(ua) || isMobile))) ||
@@ -27,6 +27,8 @@ define([
         }
 
         function isTablet() {
+            var ua = navigator.userAgent;
+
             return !isPhone(ua) && (/iPad/.test(ua) || /Android/.test(ua) || /(RIM Tablet OS)/.test(ua) ||
                 (/MSIE 10/.test(ua) && /; Touch/.test(ua)));
         }
