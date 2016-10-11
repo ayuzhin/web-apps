@@ -758,7 +758,9 @@ define([
                 Common.Gateway.on('refreshhistory',         _.bind(me.onRefreshHistory, me));
                 Common.Gateway.on('downloadas',             _.bind(me.onDownloadAs, me));
 
-                Common.Gateway.sendInfo({mode:me.appOptions.isEdit?'edit':'view'});
+                Common.Gateway.sendInfo({
+                    mode: me.appOptions.isEdit?'edit':'view'
+                });
 
 //                if (this._state.licenseWarning) {
 //                    value = Common.localStorage.getItem("de-license-warning");

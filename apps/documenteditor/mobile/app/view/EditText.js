@@ -15,92 +15,135 @@ define([
 ], function (editTemplate, $, _, Backbone) {
     'use strict';
 
-    DE.Views.EditText = Backbone.View.extend({
-        // el: '.view-main',
+    DE.Views.EditText = Backbone.View.extend((function() {
+        // private
+        var fontNames;
 
-        template: _.template(editTemplate),
+        return {
+            // el: '.view-main',
 
-        events: {
-            // "click #font-fonts" : "showPage",
-            // "click #font-color" : "showPage"
-        },
+            template: _.template(editTemplate),
 
-        initialize: function() {
-            Common.NotificationCenter.on('editcontainer:show', _.bind(this.initEvents, this));
-        },
+            events: {
+                // "click #font-fonts" : "showPage",
+                // "click #font-color" : "showPage"
+            },
 
-        initEvents: function () {
-            $('#font-fonts').single('click', _.bind(this.showFonts, this));
-            $('#font-color').single('click', _.bind(this.showFonts, this));
+            initialize: function () {
+                Common.NotificationCenter.on('editcontainer:show', _.bind(this.initEvents, this));
+            },
 
-            this.initControls();
-        },
+            initEvents: function () {
+                var me = this;
 
-        // Render layout
-        render: function() {
-            this.layout = $('<div/>').append(this.template({
-                android : Common.SharedSettings.get('android'),
-                phone   : Common.SharedSettings.get('phone')
-            }));
+                $('#font-fonts').single('click',        _.bind(me.showFonts, me));
+                $('#font-color').single('click',        _.bind(me.showFontColor, me));
+                $('#font-background').single('click',   _.bind(me.showBackgroundColor, me));
+                $('#font-additional').single('click',   _.bind(me.showAdditional, me));
 
-            return this;
-        },
+                me.initControls();
+            },
 
-        rootLayout: function () {
-            if (this.layout) {
-                return this.layout
-                    .find('#edit-text-root')
-                    .html();
-            }
+            // Render layout
+            render: function () {
+                this.layout = $('<div/>').append(this.template({
+                    android: Common.SharedSettings.get('android'),
+                    phone: Common.SharedSettings.get('phone')
+                }));
 
-            return '';
-        },
+                return this;
+            },
 
-        initControls: function() {
-            var api = DE.getController('EditText').api;
+            rootLayout: function () {
+                if (this.layout) {
+                    return this.layout
+                        .find('#edit-text-root')
+                        .html();
+                }
 
-            if (api) {
-                var stack = api.getSelectedElements(),
-                    paragraph;
+                return '';
+            },
 
-                _.each(stack, function(object) {
-                    if (Asc.c_oAscTypeSelectElement.Paragraph == object.get_ObjectType()) {
-                        paragraph = object.get_ObjectValue();
-                        return;
+            initControls: function () {
+                var api = DE.getController('EditText').api;
+
+                if (api) {
+                    var stack = api.getSelectedElements(),
+                        paragraph;
+
+                    _.each(stack, function (object) {
+                        if (Asc.c_oAscTypeSelectElement.Paragraph == object.get_ObjectType()) {
+                            paragraph = object.get_ObjectValue();
+                            return;
+                        }
+                    });
+
+                    if (paragraph) {
+
                     }
-                });
 
-                if (paragraph) {
 
                 }
+                // $('#font-bold').active
+                // $('#font-
+                // $('#font-
+                // $('#font-
+            },
 
+            showPage: function (templateId) {
+                var rootView = DE.getController('EditContainer').rootView;
 
-            }
-            // $('#font-bold').active
-            // $('#font-
-            // $('#font-
-            // $('#font-
-        },
+                if (rootView && this.layout) {
+                    var $content = this.layout.find(templateId);
 
-        showPage: function(templateId) {
-            var rootView = DE.getController('EditContainer').rootView;
+                    // Android fix for navigation
+                    if (Framework7.prototype.device.android) {
+                        $content.find('.page').append($content.find('.navbar'));
+                    }
 
-            if (rootView && this.layout) {
-                var $content = this.layout.find(templateId);
+                    rootView.router.load({
+                        content: $content.html()
+                    });
 
-                // Android fix for navigation
-                if (Framework7.prototype.device.android) {
-                    $content.find('.page').append($content.find('.navbar'));
+                    this.fireEvent('page:show', this);
+                }
+            },
+
+            showFonts: function () {
+                this.showPage('#edit-text-fonts');
+
+                var fonts = [];
+                for (var i = 0; i < 500; i++) {
+                    fonts.push({
+                        title: 'Font name ' + i,
+                        picture: 'path/to/font.jpg'
+                    })
                 }
 
-                rootView.router.load({
-                    content: $content.html()
+                fontNames = uiApp.virtualList('#font-list.virtual-list', {
+                    items: fonts,
+                    template:
+                    '<li class="item-content">' +
+                        '<div class="item-media"><img src="{{picture}}"></div>' +
+                        '<div class="item-inner">' +
+                            '<div class="item-title">{{title}}</div>' +
+                        '</div>' +
+                    '</li>'
                 });
-            }
-        },
+            },
 
-        showFonts: function() {
-            this.showPage('#edit-text-fonts')
+            showFontColor: function () {
+                this.showPage('#edit-text-color');
+            },
+
+            showBackgroundColor: function () {
+                this.showPage('#edit-text-background');
+            },
+
+            showAdditional: function () {
+                this.showPage('#edit-text-additional');
+            }
+
         }
-    });
+    })());
 });

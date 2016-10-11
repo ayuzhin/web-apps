@@ -33,6 +33,10 @@ define([
             this.api = api;
         },
 
+        setMode: function (mode) {
+            this.getView('Toolbar').setMode(mode);
+        },
+
         onLaunch: function() {
             this.createView('Toolbar').render();
         },

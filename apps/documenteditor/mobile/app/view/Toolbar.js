@@ -30,7 +30,16 @@ define([
 
         // Set innerHTML and get the references to the DOM elements
         initialize: function() {
-            //
+            var me = this;
+
+            Common.NotificationCenter.on('readermode:change', function (reader) {
+                if (reader) {
+                    me.hideSearch();
+                    $('#toolbar-search').addClass('disabled');
+                } else {
+                    $('#toolbar-search').removeClass('disabled');
+                }
+            });
         },
 
         // Render layout
@@ -39,11 +48,19 @@ define([
 
             $el.prepend(this.template({
                 android     : Common.SharedSettings.get('android'),
-                backTitle   : Common.SharedSettings.get('android') ? '' : 'Back',
-                phone       : Common.SharedSettings.get('phone')
+                phone       : Common.SharedSettings.get('phone'),
+                backTitle   : Common.SharedSettings.get('android') ? '' : 'Back'
             }));
 
             return this;
+        },
+
+        setMode: function (mode) {
+            var isEdit = (mode === 'edit');
+
+            if (isEdit) {
+                $('#toolbar-edit').show();
+            }
         },
 
         // Search
@@ -74,7 +91,7 @@ define([
                 me.fireEvent('searchbar:render', me);
                 searchBar = $$('.searchbar.document');
 
-                setTimeout(function() {
+                _.defer(function() {
                     uiApp.showNavbar(searchBar);
 
                     searchBar.transitionEnd(function () {
@@ -95,7 +112,7 @@ define([
                     return;
                 }
 
-                setTimeout(function() {
+                _.defer(function() {
                     searchBar.transitionEnd(function () {
                         me.fireEvent('searchbar:hide', me);
                         searchBar.remove();

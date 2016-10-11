@@ -62,10 +62,15 @@ define([
                 if (this.layout) {
                     var $layour = this.layout
                         .find('#settings-root-view');
+                    var isPhone = Common.SharedSettings.get('phone');
 
-                    // Hide edit document item
                     if (isEdit) {
                         $layour.find('#settings-edit-document').hide();
+                        $layour.find('#settings-readermode').hide();
+                    } else {
+                        $layour.find('#settings-readermode input:checkbox')
+                            .attr('checked', Common.SharedSettings.get('readerMode'))
+                            .prop('checked', Common.SharedSettings.get('readerMode'));
                     }
 
                     return $layour.html();

@@ -19,24 +19,32 @@
                     </div>
                 </div>
             </div></li>
-            <li><a id="font-color" class="item-link">
-                <div class="item-content">
-                    <div class="item-inner">
-                        <div class="item-title">Font color</div>
+            <li>
+                <a id="font-color" class="item-link">
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">Font color</div>
+                        </div>
                     </div>
-                </div></a></li>
-            <li><a href="#font-background" class="item-link">
+                </a>
+            </li>
+            <li><a id="font-background" class="item-link">
                 <div class="item-content">
                     <div class="item-inner">
                         <div class="item-title">Highlight color</div>
                     </div>
-                </div></a></li>
-            <li><a href="#font-additional" class="item-link">
-                <div class="item-content">
-                    <div class="item-inner">
-                        <div class="item-title">Additional formatting</div>
+                </div>
+            </a>
+            </li>
+            <li>
+                <a id="font-additional" class="item-link">
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">Additional formatting</div>
+                        </div>
                     </div>
-                </div></a></li>
+                </a>
+            </li>
         </ul>
     </div>
     <div class="list-block">
@@ -94,7 +102,7 @@
             <div class="list-block">
                 <ul>
                     <li>
-                        <div class="item-content rightcontrol">
+                        <div class="item-content">
                             <div class="item-inner">
                                 <div class="item-title">Size<label style="margin: 0 5px;">10</label>pt</div>
                                 <div class="item-after">
@@ -108,10 +116,140 @@
                     </li>
                 </ul>
             </div>
-            <div class="list-block virtual-list">
+            <div class="content-block-title">Fonts</div>
+            <div id="font-list" class="list-block virtual-list">
                 <!-- Fonts List -->
             </div>
         </div>
     </div>
 </div>
 
+<!-- Font color view -->
+<div id="edit-text-color">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="center sliding">Font Colors</div>
+            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+        </div>
+    </div>
+    <div class="page" data-page="edit-text-font-color">
+        <div class="page-content">
+            <!--TODO: Color palette component -->
+            <div class="content-block-title">Font Colors</div>
+            <div class="content-block inset">
+                <div class="content-block-inner">
+                    <p>Under construction</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Highlight color view -->
+<div id="edit-text-background">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="center sliding">Highlight Colors</div>
+            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+        </div>
+    </div>
+    <div class="page" data-page="edit-text-font-background">
+        <div class="page-content">
+            <!--TODO: Color palette component -->
+            <div class="content-block-title">Highlight color</div>
+            <div class="content-block inset">
+                <div class="content-block-inner">
+                    <p>Under construction</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Additional view -->
+<div id="edit-text-additional">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="center sliding">Additional</div>
+            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+        </div>
+    </div>
+    <div class="page" id="page-text-additional" data-page="edit-text-additional">
+        <div class="page-content">
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <label class="label-radio item-content">
+                            <input type="radio" name="text-strikethrough" value="strikethrough">
+                            <div class="item-inner">
+                                <div class="item-title">Strikethrough</div>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="label-radio item-content">
+                            <input type="radio" name="text-strikethrough" value="double-strikethrough">
+                            <div class="item-inner">
+                                <div class="item-title">Double Strikethrough</div>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="label-radio item-content">
+                            <input type="radio" name="text-script" value="superscript">
+                            <div class="item-inner">
+                                <div class="item-title">Superscript</div>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="label-radio item-content">
+                            <input type="radio" name="text-script" value="subscript">
+                            <div class="item-inner">
+                                <div class="item-title">Subscript</div>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="label-radio item-content">
+                            <input type="radio" name="text-caps" value="small">
+                            <div class="item-inner">
+                                <div class="item-title">Small Caps</div>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="label-radio item-content">
+                            <input type="radio" name="text-caps" value="all">
+                            <div class="item-inner">
+                                <div class="item-title">All Caps</div>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Letter Spacing</div>
+                                <div class="item-after" style="color: #000;">
+                                    <label style="margin: 0 5px;">10</label>pt
+                                    <p class="buttons-row" style="min-width: 90px; margin-left: 10px;">
+                                        <span id="letter-spacing-decrement" class="button <%= android ? "button-fill" : "" %>">-</span>
+                                        <span id="letter-spacing-increment" class="button <%= android ? "button-fill" : "" %>">+</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

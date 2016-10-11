@@ -29,6 +29,7 @@ define([
             ],
 
             initialize: function () {
+                Common.SharedSettings.set('readerMode', false);
                 Common.NotificationCenter.on('settingscontainer:show', _.bind(this.initEvents, this));
 
                 this.addListeners({
@@ -107,6 +108,7 @@ define([
                 });
 
                 Common.NotificationCenter.trigger('settingscontainer:show');
+                this.onPageShow(this.getView('Settings'));
             },
 
             hideModal: function() {
@@ -117,8 +119,11 @@ define([
 
             onPageShow: function(view) {
                 var me = this;
+                $('#settings-readermode input:checkbox').single('change', _.bind(me._onReaderMode, me));
+                $('#settings-edit-document').single('click',    _.bind(me._onEditDocumet, me));
                 $(modalView).find('.formats a').single('click', _.bind(me._onSaveFormat, me));
             },
+
 
             // API handlers
 
@@ -174,6 +179,25 @@ define([
                 $('#settings-document-title').html(name ? name : '-');
             },
 
+            _onEditDocumet: function() {
+                Common.Gateway.requestEditRights();
+            },
+
+            _onReaderMode: function (e) {
+                var me = this;
+
+                Common.SharedSettings.set('readerMode', !Common.SharedSettings.get('readerMode'));
+
+                me.api && me.api.ChangeReaderMode();
+
+                if (Common.SharedSettings.get('phone')) {
+                    _.defer(function () {
+                        me.hideModal();
+                    }, 1000);
+                }
+
+                Common.NotificationCenter.trigger('readermode:change', Common.SharedSettings.get('readerMode'));
+            },
 
             _onSaveFormat: function(e) {
                 var me = this,
