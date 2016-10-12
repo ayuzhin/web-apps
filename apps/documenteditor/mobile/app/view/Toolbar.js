@@ -15,122 +15,141 @@ define([
 ], function (toolbarTemplate, $, _, Backbone) {
     'use strict';
 
-    DE.Views.Toolbar = Backbone.View.extend({
-        el: '.view-main',
+    DE.Views.Toolbar = Backbone.View.extend((function() {
+        // private
 
-        // Compile our stats template
-        template: _.template(toolbarTemplate),
+        return {
+            el: '.view-main',
 
-        // Delegated events for creating new items, and clearing completed ones.
-        events: {
-            "click #toolbar-search"     : "searchToggle",
-            "click #toolbar-edit"       : "showEdition",
-            "click #toolbar-settings"   : "showSettings"
-        },
+            // Compile our stats template
+            template: _.template(toolbarTemplate),
 
-        // Set innerHTML and get the references to the DOM elements
-        initialize: function() {
-            var me = this;
+            // Delegated events for creating new items, and clearing completed ones.
+            events: {
+                "click #toolbar-search"     : "searchToggle",
+                "click #toolbar-edit"       : "showEdition",
+                "click #toolbar-settings"   : "showSettings"
+            },
 
-            Common.NotificationCenter.on('readermode:change', function (reader) {
-                if (reader) {
-                    me.hideSearch();
-                    $('#toolbar-search').addClass('disabled');
-                } else {
-                    $('#toolbar-search').removeClass('disabled');
+            // Set innerHTML and get the references to the DOM elements
+            initialize: function() {
+                var me = this;
+
+                Common.Gateway.on('init', _.bind(me.loadConfig, me));
+
+                Common.NotificationCenter.on('readermode:change', function (reader) {
+                    if (reader) {
+                        me.hideSearch();
+                        $('#toolbar-search').addClass('disabled');
+                    } else {
+                        $('#toolbar-search').removeClass('disabled');
+                    }
+                });
+            },
+
+            // Render layout
+            render: function() {
+                var $el = $(this.el);
+
+                $el.prepend(this.template({
+                    android     : Common.SharedSettings.get('android'),
+                    phone       : Common.SharedSettings.get('phone'),
+                    backTitle   : Common.SharedSettings.get('android') ? '' : 'Back'
+                }));
+
+                return this;
+            },
+
+            setMode: function (mode) {
+                var isEdit = (mode === 'edit');
+
+                if (isEdit) {
+                    $('#toolbar-edit').show();
                 }
-            });
-        },
+            },
 
-        // Render layout
-        render: function() {
-            var $el = $(this.el);
+            loadConfig: function(data) {
+                if (data && data.config && data.config.canBackToFolder !== false &&
+                    data.config.customization && data.config.customization.goback && data.config.customization.goback.url) {
+                    var me = this;
 
-            $el.prepend(this.template({
-                android     : Common.SharedSettings.get('android'),
-                phone       : Common.SharedSettings.get('phone'),
-                backTitle   : Common.SharedSettings.get('android') ? '' : 'Back'
-            }));
+                    $('#document-back')
+                        .show()
+                        .on('click', _.bind(function () {
+                            window.parent.location.href = data.config.customization.goback.url;
+                        }, me));
+                }
+            },
 
-            return this;
-        },
+            // Search
+            searchToggle: function() {
+                if ($$('.searchbar.document').length > 0) {
+                    this.hideSearch();
+                } else {
+                    this.showSearch();
+                }
+            },
 
-        setMode: function (mode) {
-            var isEdit = (mode === 'edit');
+            showSearch: function () {
+                var me = this,
+                    searchBar = $$('.searchbar.document');
 
-            if (isEdit) {
-                $('#toolbar-edit').show();
-            }
-        },
-
-        // Search
-        searchToggle: function() {
-            if ($$('.searchbar.document').length > 0) {
-                this.hideSearch();
-            } else {
-                this.showSearch();
-            }
-        },
-
-        showSearch: function () {
-            var me = this,
-                searchBar = $$('.searchbar.document');
-
-            if (searchBar.length < 1) {
-                $(me.el).find('.pages .page').first().prepend(_.template(
-                    '<form class="searchbar document navbar navbar-hidden">' +
+                if (searchBar.length < 1) {
+                    $(me.el).find('.pages .page').first().prepend(_.template(
+                        '<form class="searchbar document navbar navbar-hidden">' +
                         '<div class="searchbar-input">' +
-                            '<input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>' +
+                        '<input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>' +
                         '</div>' +
                         '<p class="buttons-row">' +
-                            '<a href="#" class="button prev button-round disabled">&lt;</a>' +
-                            '<a href="#" class="button next button-round disabled">&gt;</a>' +
+                        '<a href="#" class="button prev button-round disabled">&lt;</a>' +
+                        '<a href="#" class="button next button-round disabled">&gt;</a>' +
                         '</p>' +
-                    '</form>', {}
-                ));
-                me.fireEvent('searchbar:render', me);
-                searchBar = $$('.searchbar.document');
+                        '</form>', {}
+                    ));
+                    me.fireEvent('searchbar:render', me);
+                    searchBar = $$('.searchbar.document');
 
-                _.defer(function() {
-                    uiApp.showNavbar(searchBar);
+                    _.defer(function() {
+                        uiApp.showNavbar(searchBar);
 
-                    searchBar.transitionEnd(function () {
-                        if (!searchBar.hasClass('navbar-hidden'))
-                            me.fireEvent('searchbar:show', me);
-                    });
-                }, 10);
-            }
-        },
-
-        hideSearch: function () {
-            var me = this,
-                searchBar = $$('.searchbar.document');
-
-            if (searchBar.length > 0) {
-                // Animating
-                if (searchBar.hasClass('.navbar-hidding')) {
-                    return;
+                        searchBar.transitionEnd(function () {
+                            if (!searchBar.hasClass('navbar-hidden'))
+                                me.fireEvent('searchbar:show', me);
+                        });
+                    }, 10);
                 }
+            },
 
-                _.defer(function() {
-                    searchBar.transitionEnd(function () {
-                        me.fireEvent('searchbar:hide', me);
-                        searchBar.remove();
-                    });
+            hideSearch: function () {
+                var me = this,
+                    searchBar = $$('.searchbar.document');
 
-                    uiApp.hideNavbar(searchBar);
-                }, 10);
+                if (searchBar.length > 0) {
+                    // Animating
+                    if (searchBar.hasClass('.navbar-hidding')) {
+                        return;
+                    }
+
+                    _.defer(function() {
+                        searchBar.transitionEnd(function () {
+                            me.fireEvent('searchbar:hide', me);
+                            searchBar.remove();
+                        });
+
+                        uiApp.hideNavbar(searchBar);
+                    }, 10);
+                }
+            },
+
+            // Editor
+            showEdition: function () {
+                DE.getController('EditContainer').showModal();
+            },
+
+            // Settings
+            showSettings: function () {
+                DE.getController('Settings').showModal();
             }
-        },
-
-        // Editor
-        showEdition: function () {
-            DE.getController('EditContainer').showModal();
-        },
-
-        // Settings
-        showSettings: function () {
-            DE.getController('Settings').showModal();
         }
-    });
+    })());
 });

@@ -30,6 +30,8 @@ define([
 
             initialize: function() {
                 Common.NotificationCenter.on('settingscontainer:show', _.bind(this.initEvents, this));
+
+                Common.Gateway.on('opendocument', _.bind(this.loadDocument, this));
             },
 
             initEvents: function () {
@@ -133,6 +135,18 @@ define([
 
             showAbout: function () {
                 this.showPage('#settings-about-view');
+            },
+
+            loadDocument: function(data) {
+                var permissions = {};
+
+                if (data.doc) {
+                    permissions = _.extend(permissions, data.doc.permissions);
+
+                    if (permissions.edit === false) {
+                        $('#settings-edit-document').hide();
+                    }
+                }
             },
 
             unknownText: 'Unknown'

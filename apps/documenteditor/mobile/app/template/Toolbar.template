@@ -1,7 +1,7 @@
 <div class="navbar" id="editor-navbar">
     <div class="navbar-inner">
         <div class="left">
-            <a href="#" class="link">
+            <a id="document-back" href="#" class="link" style="display: none;">
                 <i class="icon icon-back"></i>
                 <% if (backTitle) { %>
                 <span class="subtitle"><%= backTitle %></span>
