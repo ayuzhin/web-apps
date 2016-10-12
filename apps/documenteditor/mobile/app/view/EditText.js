@@ -47,8 +47,8 @@ define([
             // Render layout
             render: function () {
                 this.layout = $('<div/>').append(this.template({
-                    android: Common.SharedSettings.get('android'),
-                    phone: Common.SharedSettings.get('phone')
+                    android : Common.SharedSettings.get('android'),
+                    phone   : Common.SharedSettings.get('phone')
                 }));
 
                 return this;
@@ -112,23 +112,29 @@ define([
             showFonts: function () {
                 this.showPage('#edit-text-fonts');
 
-                var fonts = [];
-                for (var i = 0; i < 500; i++) {
-                    fonts.push({
-                        title: 'Font name ' + i,
-                        picture: 'path/to/font.jpg'
-                    })
-                }
+                var me = this,
+                    $template = $(
+                        '<div>' +
+                            '<li>' +
+                                '<label class="label-radio item-content">' +
+                                    '<input type="radio" name="font-name" value="{{name}}">' +
+                                    (Framework7.prototype.device.android ? '<div class="item-media"><i class="icon icon-form-radio"></i></div>' : '') +
+                                    '<div class="item-inner">' +
+                                        '<div class="item-title">{{name}}</div>' +
+                                    '</div>' +
+                                '</label>' +
+                            '</li>' +
+                        '</div>'
+                    );
 
                 fontNames = uiApp.virtualList('#font-list.virtual-list', {
-                    items: fonts,
-                    template:
-                    '<li class="item-content">' +
-                        '<div class="item-media"><img src="{{picture}}"></div>' +
-                        '<div class="item-inner">' +
-                            '<div class="item-title">{{title}}</div>' +
-                        '</div>' +
-                    '</li>'
+                    items: DE.getController('EditText').getFonts(),
+                    template: $template.html(),
+                    onItemsAfterInsert: function (list, fragment) {
+                        $('#font-list li').single('click', function (e) {
+                            me.fireEvent('font:click', [me, e]);
+                        });
+                    }
                 });
             },
 

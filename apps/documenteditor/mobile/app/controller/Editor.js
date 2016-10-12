@@ -52,10 +52,6 @@ define([
 
             setApi: function(api) {
                 this.api = api;
-
-                this.api.asc_registerCallback('asc_onInitEditorFonts',  _.bind(function () {
-                    console.log(asc_onInitEditorFonts);
-                }, this));
             },
 
             // When our application is ready, lets get started

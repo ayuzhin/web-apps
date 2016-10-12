@@ -50,7 +50,8 @@ define([
 
                 this.addListeners({
                     'EditText': {
-                        'page:show' : this.onPageShow
+                        'page:show' : this.onPageShow,
+                        'font:click': this.onFontClick
                     }
                 });
             },
@@ -70,15 +71,17 @@ define([
 
             initEvents: function () {
                 var me = this;
-                $('#font-bold').single('click',             _.bind(me.onBold, me));
-                $('#font-italic').single('click',           _.bind(me.onItalic, me));
-                $('#font-underline').single('click',        _.bind(me.onUnderline, me));
-                $('#font-strikethrough').single('click',    _.bind(me.onStrikethrough, me));
+                $('#font-bold').single('click',                 _.bind(me.onBold, me));
+                $('#font-italic').single('click',               _.bind(me.onItalic, me));
+                $('#font-underline').single('click',            _.bind(me.onUnderline, me));
+                $('#font-strikethrough').single('click',        _.bind(me.onStrikethrough, me));
+
+                $('#paragraph-align .button').single('click',   _.bind(me.onParagraphAlign, me));
             },
 
             onPageShow: function () {
                 var me = this;
-                $('#page-text-additional input:radio').single('click', _.bind(me.onAdditional, me));
+                $('#page-text-additional li').single('click', _.bind(me.onAdditional, me));
             },
 
             // Public
@@ -125,6 +128,28 @@ define([
                 }
             },
 
+            onParagraphAlign: function (e) {
+                var $target = $(e.currentTarget);
+
+                if ($target) {
+                    var id = $target.attr('id'),
+                        type = 1;
+
+                    if ('font-just' == id) {
+                        type = 3;
+                    } else if ('font-right' == id) {
+                        type = 0;
+                    } else if ('font-center' == id) {
+                        type = 2;
+                    }
+
+                    $('#paragraph-align .button').removeClass('active');
+                    $target.addClass('active');
+
+                    this.api.put_PrAlign(type);
+                }
+            },
+
             onAdditionalStrikethrough : function ($target) {
                 var value   = $target.prop('value'),
                     checked = $target.prop('checked');
@@ -165,13 +190,14 @@ define([
 
             onAdditional: function(e) {
                 var me = this,
-                    $target = $(e.currentTarget),
+                    $target = $(e.currentTarget).find('input'),
                     prevValue = $target.prop('prevValue');
 
                 if (prevValue == $target.prop('value')) {
                     $target.prop('checked', false);
                     prevValue = null;
                 } else {
+                    $target.prop('checked', true);
                     prevValue = $target.prop('value');
                 }
 
@@ -184,6 +210,19 @@ define([
                     me.onAdditionalScript($target);
                 } else if ('text-caps' == radioName){
                     me.onAdditionalCaps($target);
+                }
+
+                // Workaround ui problem
+                if (!Framework7.prototype.device.android || null == prevValue) {
+                    return false;
+                }
+            },
+
+            onFontClick: function (view, e) {
+                var $item = $(e.currentTarget).find('input');
+
+                if ($item) {
+                    this.api.put_TextPrFontName($item.prop('value'));
                 }
             },
 

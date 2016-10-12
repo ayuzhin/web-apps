@@ -49,12 +49,13 @@
     </div>
     <div class="list-block">
         <ul>
-            <li><div class="item-content buttons">
+            <li><div id="paragraph-align" class="item-content buttons">
                 <div class="item-inner">
                     <div class="row">
-                        <a id="font-left" class="button">B</a>
-                        <a id="font-center" class="button">B</a>
-                        <a id="font-right" class="button">U</a>
+                        <a id="font-left" class="button">L</a>
+                        <a id="font-center" class="button">C</a>
+                        <a id="font-right" class="button">R</a>
+                        <a id="font-just" class="button">J</a>
                     </div>
                 </div>
             </div></li>
@@ -92,7 +93,7 @@
 <div id="edit-text-fonts">
     <div class="navbar">
         <div class="navbar-inner">
-            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></div>
             <div class="center sliding">Fonts</div>
             <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
         </div>
@@ -128,7 +129,7 @@
 <div id="edit-text-color">
     <div class="navbar">
         <div class="navbar-inner">
-            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></a></div>
             <div class="center sliding">Font Colors</div>
             <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
         </div>
@@ -150,7 +151,7 @@
 <div id="edit-text-background">
     <div class="navbar">
         <div class="navbar-inner">
-            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></a></div>
             <div class="center sliding">Highlight Colors</div>
             <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
         </div>
@@ -173,7 +174,7 @@
 <div id="edit-text-additional">
     <div class="navbar">
         <div class="navbar-inner">
-            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></a></div>
             <div class="center sliding">Additional</div>
             <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
         </div>
@@ -185,6 +186,7 @@
                     <li>
                         <label class="label-radio item-content">
                             <input type="radio" name="text-strikethrough" value="strikethrough">
+                            <% if (android) { %><div class="item-media"><i class="icon icon-form-radio"></i></div><% } %>
                             <div class="item-inner">
                                 <div class="item-title">Strikethrough</div>
                             </div>
@@ -193,6 +195,7 @@
                     <li>
                         <label class="label-radio item-content">
                             <input type="radio" name="text-strikethrough" value="double-strikethrough">
+                            <% if (android) { %><div class="item-media"><i class="icon icon-form-radio"></i></div><% } %>
                             <div class="item-inner">
                                 <div class="item-title">Double Strikethrough</div>
                             </div>
@@ -201,6 +204,7 @@
                     <li>
                         <label class="label-radio item-content">
                             <input type="radio" name="text-script" value="superscript">
+                            <% if (android) { %><div class="item-media"><i class="icon icon-form-radio"></i></div><% } %>
                             <div class="item-inner">
                                 <div class="item-title">Superscript</div>
                             </div>
@@ -209,6 +213,7 @@
                     <li>
                         <label class="label-radio item-content">
                             <input type="radio" name="text-script" value="subscript">
+                            <% if (android) { %><div class="item-media"><i class="icon icon-form-radio"></i></div><% } %>
                             <div class="item-inner">
                                 <div class="item-title">Subscript</div>
                             </div>
@@ -217,6 +222,7 @@
                     <li>
                         <label class="label-radio item-content">
                             <input type="radio" name="text-caps" value="small">
+                            <% if (android) { %><div class="item-media"><i class="icon icon-form-radio"></i></div><% } %>
                             <div class="item-inner">
                                 <div class="item-title">Small Caps</div>
                             </div>
@@ -225,6 +231,7 @@
                     <li>
                         <label class="label-radio item-content">
                             <input type="radio" name="text-caps" value="all">
+                            <% if (android) { %><div class="item-media"><i class="icon icon-form-radio"></i></div><% } %>
                             <div class="item-inner">
                                 <div class="item-title">All Caps</div>
                             </div>
