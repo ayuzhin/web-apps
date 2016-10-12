@@ -77,11 +77,13 @@ define([
                 $('#font-strikethrough').single('click',        _.bind(me.onStrikethrough, me));
 
                 $('#paragraph-align .button').single('click',   _.bind(me.onParagraphAlign, me));
+                $('#font-moveleft, #font-moveright').single('click',   _.bind(me.onParagraphMove, me));
             },
 
             onPageShow: function () {
                 var me = this;
-                $('#page-text-additional li').single('click', _.bind(me.onAdditional, me));
+                $('#page-text-additional li').single('click',   _.bind(me.onAdditional, me));
+                $('#page-text-linespacing li').single('click',  _.bind(me.onLineSpacing, me));
             },
 
             // Public
@@ -150,6 +152,20 @@ define([
                 }
             },
 
+            onParagraphMove: function (e) {
+                var $target = $(e.currentTarget);
+
+                if ($target && this.api) {
+                    var id = $target.attr('id');
+
+                    if ('font-moveleft' == id) {
+                        this.api.DecreaseIndent();
+                    } else {
+                        this.api.IncreaseIndent();
+                    }
+                }
+            },
+
             onAdditionalStrikethrough : function ($target) {
                 var value   = $target.prop('value'),
                     checked = $target.prop('checked');
@@ -215,6 +231,17 @@ define([
                 // Workaround ui problem
                 if (!Framework7.prototype.device.android || null == prevValue) {
                     return false;
+                }
+            },
+
+            onLineSpacing: function (e) {
+                var $target = $(e.currentTarget).find('input');
+
+                if ($target && this.api) {
+                    var value = parseFloat($target.prop('value')),
+                        LINERULE_AUTO = 1;
+
+                    this.api.put_PrLineSpacing(LINERULE_AUTO, value);
                 }
             },
 

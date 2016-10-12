@@ -444,12 +444,13 @@ define([
                             me._state.timerSave = setInterval(function(){
                                 if ((new Date()) - me._state.isSaving>500) {
                                     clearInterval(me._state.timerSave);
-                                    console.log("me.getApplication().getController('Statusbar').setStatusCaption('');");
+                                    console.debug('End long action');
                                     me._state.timerSave = undefined;
                                 }
                             }, 500);
-                    } else
-                        console.log("this.getApplication().getController('Statusbar').setStatusCaption('');");
+                    } else {
+                        console.debug('End long action');
+                    }
                 }
 
                 action = this.stackLongActions.get({type: Asc.c_oAscAsyncActionType.BlockInteraction});

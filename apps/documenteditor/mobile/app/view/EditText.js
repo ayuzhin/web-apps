@@ -40,6 +40,7 @@ define([
                 $('#font-color').single('click',        _.bind(me.showFontColor, me));
                 $('#font-background').single('click',   _.bind(me.showBackgroundColor, me));
                 $('#font-additional').single('click',   _.bind(me.showAdditional, me));
+                $('#font-line-spacing').single('click', _.bind(me.showLineSpacing, me));
 
                 me.initControls();
             },
@@ -120,7 +121,7 @@ define([
                                     '<input type="radio" name="font-name" value="{{name}}">' +
                                     (Framework7.prototype.device.android ? '<div class="item-media"><i class="icon icon-form-radio"></i></div>' : '') +
                                     '<div class="item-inner">' +
-                                        '<div class="item-title">{{name}}</div>' +
+                                        '<div class="item-title" style="font-family: \'{{name}}\';">{{name}}</div>' +
                                     '</div>' +
                                 '</label>' +
                             '</li>' +
@@ -148,6 +149,10 @@ define([
 
             showAdditional: function () {
                 this.showPage('#edit-text-additional');
+            },
+
+            showLineSpacing: function () {
+                this.showPage('#edit-text-linespacing');
             }
 
         }
