@@ -112,8 +112,9 @@ require([
         fileref.setAttribute('type', 'text/css');
         fileref.setAttribute('href', filename);
 
-        if (typeof fileref != 'undefined')
+        if (typeof fileref != 'undefined') {
             document.getElementsByTagName("head")[0].appendChild(fileref);
+        }
     };
 
     //Store Framework7 initialized instance for easy access
@@ -139,11 +140,10 @@ require([
     //Export DOM7 to local variable to make it easy accessable
     window.$$ = Dom7;
 
-    //Load Framework7 platform styles
-    loadPlatformCss('../../../vendor/framework7/css/framework7.' + (device.android ? 'material' : 'ios') + '.min.css');
-    loadPlatformCss('../../../vendor/framework7/css/framework7.' + (device.android ? 'material' : 'ios') + '.colors.min.css');
+    //Load platform styles
     loadPlatformCss('resources/css/app-' + (device.android ? 'material' : 'ios') + '.css');
 
+    //Extend jQuery functions
     jQuery.fn.extend( {
         single: function(types, selector, data, fn) {
             return this.off(types, fn).on(types, selector, data, fn);

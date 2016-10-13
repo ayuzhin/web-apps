@@ -1,8 +1,66 @@
+@import url('../../../../../vendor/framework7/src/less/material/_mixins.less');
+@import url('../../../../../vendor/framework7/src/less/material/_colors-vars.less');
+
+// Colors
+@themeColor: #4066D7; // (64,102,215)
+@navBarIconColor: #fff;
+
+@import url('../../../../../vendor/framework7/src/less/material/intro.less');
+@import url('../../../../../vendor/framework7/src/less/material/grid.less');
+@import url('../../../../../vendor/framework7/src/less/material/views.less');
+@import url('../../../../../vendor/framework7/src/less/material/pages.less');
+@import url('../../../../../vendor/framework7/src/less/material/toolbars.less');
+@import url('../../../../../vendor/framework7/src/less/material/toolbars-pages.less');
+@import url('../../../../../vendor/framework7/src/less/material/searchbar.less');
+@import url('../../../../../vendor/framework7/src/less/material/messagebar.less');
+@import url('../../../../../vendor/framework7/src/less/material/icons.less');
+@import url('../../../../../vendor/framework7/src/less/material/badges.less');
+//@import url('../../../../../vendor/framework7/src/less/material/chips.less');
+@import url('../../../../../vendor/framework7/src/less/material/content-block.less');
+@import url('../../../../../vendor/framework7/src/less/material/lists.less');
+//@import url('../../../../../vendor/framework7/src/less/material/contacts.less');
+@import url('../../../../../vendor/framework7/src/less/material/forms.less');
+@import url('../../../../../vendor/framework7/src/less/material/floating-button.less');
+//@import url('../../../../../vendor/framework7/src/less/material/accordion.less');
+//@import url('../../../../../vendor/framework7/src/less/material/cards.less');
+@import url('../../../../../vendor/framework7/src/less/material/modals.less');
+@import url('../../../../../vendor/framework7/src/less/material/panels.less');
+//@import url('../../../../../vendor/framework7/src/less/material/lazy-load.less');
+@import url('../../../../../vendor/framework7/src/less/material/tabs.less');
+@import url('../../../../../vendor/framework7/src/less/material/messages.less');
+@import url('../../../../../vendor/framework7/src/less/material/statusbar.less');
+@import url('../../../../../vendor/framework7/src/less/material/preloader.less');
+@import url('../../../../../vendor/framework7/src/less/material/progressbar.less');
+//@import url('../../../../../vendor/framework7/src/less/material/pull-to-refresh.less');
+//@import url('../../../../../vendor/framework7/src/less/material/autocomplete.less');
+//@import url('../../../../../vendor/framework7/src/less/material/swiper.less');
+//@import url('../../../../../vendor/framework7/src/less/material/photo-browser.less');
+@import url('../../../../../vendor/framework7/src/less/material/picker.less');
+//@import url('../../../../../vendor/framework7/src/less/material/calendar.less');
+@import url('../../../../../vendor/framework7/src/less/material/notifications.less');
+//@import url('../../../../../vendor/framework7/src/less/material/login-screen.less');
+@import url('../../../../../vendor/framework7/src/less/material/ripple.less');
+@import url('../../../../../vendor/framework7/src/less/material/disabled.less');
+
+
 // Icons
-i.icon-search {
-  width: 21px;
-  height: 100%;
-  background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 13' fill='#fff'><g><path d='M5,1c2.2,0,4,1.8,4,4S7.2,9,5,9S1,7.2,1,5S2.8,1,5,1 M5,0C2.2,0,0,2.2,0,5s2.2,5,5,5s5-2.2,5-5S7.8,0,5,0 L5,0z'/></g><line stroke='#fff' stroke-miterlimit='10' x1='12.6' y1='12.6' x2='8.2' y2='8.2'/></svg>");
+i.icon {
+  &.icon-search {
+    width: 22px;
+    height: 22px;
+    .encoded-svg-background('<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve" fill="@{themeColor}"><path id="XMLID_2_" d="M25,22.3l-3.5-3.5c0.7-1.1,1.1-2.4,1.1-3.8c0-4.1-3.4-7.5-7.5-7.5c-4.1,0-7.5,3.4-7.5,7.5s3.4,7.5,7.5,7.5 c1.4,0,2.7-0.4,3.8-1.1l3.5,3.5c0.7,0.7,1.9,0.7,2.6,0C25.7,24.2,25.7,23.1,25,22.3z M15,20.8c-3.2,0-5.8-2.6-5.8-5.8 c0-3.2,2.6-5.8,5.8-5.8c3.2,0,5.8,2.6,5.8,5.8C20.8,18.2,18.2,20.8,15,20.8z"/></svg>');
+  }
+}
+
+// Overwrite color for toolbar
+.navbar {
+  i.icon {
+    &.icon-search {
+      width: 22px;
+      height: 22px;
+      .encoded-svg-background('<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve" fill="@{navBarIconColor}"><path id="XMLID_2_" d="M25,22.3l-3.5-3.5c0.7-1.1,1.1-2.4,1.1-3.8c0-4.1-3.4-7.5-7.5-7.5c-4.1,0-7.5,3.4-7.5,7.5s3.4,7.5,7.5,7.5 c1.4,0,2.7-0.4,3.8-1.1l3.5,3.5c0.7,0.7,1.9,0.7,2.6,0C25.7,24.2,25.7,23.1,25,22.3z M15,20.8c-3.2,0-5.8-2.6-5.8-5.8 c0-3.2,2.6-5.8,5.8-5.8c3.2,0,5.8,2.6,5.8,5.8C20.8,18.2,18.2,20.8,15,20.8z"/></svg>');
+    }
+  }
 }
 
 // Edit container
@@ -88,18 +146,6 @@ i.icon-search {
       }
     }
   }
-
-  /*
-   * Begin DEBUG
-   */
-  .icon-search {
-    width: 22px;
-    height: 22px;
-    background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 13' fill='#007aff'><g><path d='M5,1c2.2,0,4,1.8,4,4S7.2,9,5,9S1,7.2,1,5S2.8,1,5,1 M5,0C2.2,0,0,2.2,0,5s2.2,5,5,5s5-2.2,5-5S7.8,0,5,0 L5,0z'/></g><line stroke='#007aff' stroke-miterlimit='10' x1='12.6' y1='12.6' x2='8.2' y2='8.2'/></svg>");
-  }
-  /*
-   * End DEBUG
-   */
 }
 
 .item-link {
