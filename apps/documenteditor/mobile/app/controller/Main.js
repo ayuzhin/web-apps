@@ -76,6 +76,8 @@ define([
 
                 // Initialize api
 
+                window["flat_desine"] = true;
+
                 me.api = new Asc.asc_docs_api({
                     'id-view'  : 'editor_sdk',
                     'mobile'   : true

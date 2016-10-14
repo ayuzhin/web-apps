@@ -9,7 +9,7 @@
 
 define([
     'core',
-    'documenteditor/mobile/app/view/EditParagraph'
+    'documenteditor/mobile/app/view/edit/EditParagraph'
 ], function (core) {
     'use strict';
 
@@ -30,7 +30,8 @@ define([
 
                 this.addListeners({
                     'EditParagraph': {
-                        'page:show': this.onPageShow
+                        'page:show'     : this.onPageShow,
+                        'style:click'   : this.onStyleClick
                     }
                 });
             },
@@ -55,6 +56,14 @@ define([
             onPageShow: function () {
                 var me = this;
                 // $('#page-text-additional li').single('click',   _.buffered(me.onAdditional, 100, me));
+            },
+
+            onStyleClick: function (view, e) {
+                var $item = $(e.currentTarget).find('input');
+
+                if ($item) {
+                    this.api.put_Style($item.prop('value'));
+                }
             },
 
             // Public

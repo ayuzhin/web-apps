@@ -5825,35 +5825,47 @@ i.icon.icon-search {
   margin-right: 5px;
 }
 .container-edit.popup .list-block ul,
+.container-add.popup .list-block ul,
 .container-settings.popup .list-block ul,
 .container-edit.popover .list-block ul,
+.container-add.popover .list-block ul,
 .container-settings.popover .list-block ul {
   border-radius: 0 !important;
   background: #fff;
 }
 .container-edit.popup .list-block:first-child,
+.container-add.popup .list-block:first-child,
 .container-settings.popup .list-block:first-child,
 .container-edit.popover .list-block:first-child,
+.container-add.popover .list-block:first-child,
 .container-settings.popover .list-block:first-child {
   margin-top: 0;
 }
 .container-edit.popup .list-block:first-child li:first-child a,
+.container-add.popup .list-block:first-child li:first-child a,
 .container-settings.popup .list-block:first-child li:first-child a,
 .container-edit.popover .list-block:first-child li:first-child a,
+.container-add.popover .list-block:first-child li:first-child a,
 .container-settings.popover .list-block:first-child li:first-child a,
 .container-edit.popup .list-block:first-child li:last-child a,
+.container-add.popup .list-block:first-child li:last-child a,
 .container-settings.popup .list-block:first-child li:last-child a,
 .container-edit.popover .list-block:first-child li:last-child a,
+.container-add.popover .list-block:first-child li:last-child a,
 .container-settings.popover .list-block:first-child li:last-child a {
   border-radius: 0 !important;
 }
 .container-edit.popup > .content-block,
+.container-add.popup > .content-block,
 .container-settings.popup > .content-block,
 .container-edit.popover > .content-block,
+.container-add.popover > .content-block,
 .container-settings.popover > .content-block,
 .container-edit.popup .popover-inner > .content-block,
+.container-add.popup .popover-inner > .content-block,
 .container-settings.popup .popover-inner > .content-block,
 .container-edit.popover .popover-inner > .content-block,
+.container-add.popover .popover-inner > .content-block,
 .container-settings.popover .popover-inner > .content-block {
   width: 100%;
   height: 100%;
@@ -5862,26 +5874,33 @@ i.icon.icon-search {
   color: #000;
 }
 .container-edit.popup .popover-view,
+.container-add.popup .popover-view,
 .container-settings.popup .popover-view,
 .container-edit.popover .popover-view,
+.container-add.popover .popover-view,
 .container-settings.popover .popover-view {
   border-radius: 13px;
 }
 .container-edit.popup .popover-view > .pages,
+.container-add.popup .popover-view > .pages,
 .container-settings.popup .popover-view > .pages,
 .container-edit.popover .popover-view > .pages,
+.container-add.popover .popover-view > .pages,
 .container-settings.popover .popover-view > .pages {
   border-radius: 13px;
 }
 .container-edit .categories,
+.container-add .categories,
 .container-settings .categories {
   width: 100%;
 }
 .container-edit .categories > .buttons-row,
+.container-add .categories > .buttons-row,
 .container-settings .categories > .buttons-row {
   width: 100%;
 }
 .container-edit .popover-inner,
+.container-add .popover-inner,
 .container-settings .popover-inner {
   height: 400px;
 }

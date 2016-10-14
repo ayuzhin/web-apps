@@ -108,7 +108,8 @@ require([
             'Settings',
             'EditContainer',
             'EditText',
-            'EditParagraph'
+            'EditParagraph',
+            'AddContainer'
         ]
     });
 
@@ -158,9 +159,10 @@ require([
         'documenteditor/mobile/app/controller/Toolbar',
         'documenteditor/mobile/app/controller/Main',
         'documenteditor/mobile/app/controller/Settings',
-        'documenteditor/mobile/app/controller/EditContainer',
-        'documenteditor/mobile/app/controller/EditText',
-        'documenteditor/mobile/app/controller/EditParagraph'
+        'documenteditor/mobile/app/controller/edit/EditContainer',
+        'documenteditor/mobile/app/controller/edit/EditText',
+        'documenteditor/mobile/app/controller/edit/EditParagraph',
+        'documenteditor/mobile/app/controller/add/AddContainer'
 
     ], function() {
         app.start();

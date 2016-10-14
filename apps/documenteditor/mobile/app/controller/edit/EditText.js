@@ -9,7 +9,7 @@
 
 define([
     'core',
-    'documenteditor/mobile/app/view/EditText'
+    'documenteditor/mobile/app/view/edit/EditText'
 ], function (core) {
     'use strict';
 

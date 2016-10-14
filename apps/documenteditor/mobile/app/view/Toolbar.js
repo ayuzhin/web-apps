@@ -28,6 +28,7 @@ define([
             events: {
                 "click #toolbar-search"     : "searchToggle",
                 "click #toolbar-edit"       : "showEdition",
+                "click #toolbar-add"        : "showInserts",
                 "click #toolbar-settings"   : "showSettings"
             },
 
@@ -64,7 +65,7 @@ define([
                 var isEdit = (mode === 'edit');
 
                 if (isEdit) {
-                    $('#toolbar-edit').show();
+                    $('#toolbar-edit, #toolbar-add').show();
                 }
             },
 
@@ -144,6 +145,12 @@ define([
             // Editor
             showEdition: function () {
                 DE.getController('EditContainer').showModal();
+            },
+
+            // Inserts
+
+            showInserts: function () {
+                DE.getController('AddContainer').showModal();
             },
 
             // Settings
