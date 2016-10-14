@@ -181,7 +181,7 @@
     </div>
     <div class="page" id="page-text-additional" data-page="edit-text-additional">
         <div class="page-content">
-            <div class="list-block">
+            <div class="list-block" id="text-additional">
                 <ul>
                     <li>
                         <label class="label-radio item-content">
@@ -241,15 +241,15 @@
             </div>
             <div class="list-block">
                 <ul>
-                    <li>
+                    <li id="letter-spacing" id="letter-spacing">
                         <div class="item-content">
                             <div class="item-inner">
                                 <div class="item-title">Letter Spacing</div>
-                                <div class="item-after" style="color: #000;">
-                                    <label style="margin: 0 5px;">10</label>pt
-                                    <p class="buttons-row" style="min-width: 90px; margin-left: 10px;">
-                                        <span id="letter-spacing-decrement" class="button <%= android ? "button-fill" : "" %>">-</span>
-                                        <span id="letter-spacing-increment" class="button <%= android ? "button-fill" : "" %>">+</span>
+                                <div class="item-after splitter">
+                                    <label>0</label>pt
+                                    <p class="buttons-row">
+                                        <span class="button decrement <%= android ? "button-fill" : "" %>">-</span>
+                                        <span class="button increment <%= android ? "button-fill" : "" %>">+</span>
                                     </p>
                                 </div>
                             </div>

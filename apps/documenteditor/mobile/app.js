@@ -22,6 +22,7 @@ require.config({
         jsrsasign       : '../vendor/jsrsasign/jsrsasign-latest-all-min',
         api             : 'api/documents/api',
         core            : 'common/main/lib/core/application',
+        extendes        : 'common/main/lib/core/extendes',
         notification    : 'common/main/lib/core/NotificationCenter',
         localstorage    : 'common/main/lib/util/LocalStorage',
         analytics       : 'common/Analytics',
@@ -58,6 +59,12 @@ require.config({
                 'sharedsettings'
             ]
         },
+        extendes: {
+            deps: [
+                'underscore',
+                'jquery'
+            ]
+        },
         gateway: {
             deps: [
                 'jquery'
@@ -75,6 +82,7 @@ require([
     'backbone',
     'framework7',
     'core',
+    'extendes',
     'api',
     'analytics',
     'gateway',
@@ -99,7 +107,8 @@ require([
             'Main',
             'Settings',
             'EditContainer',
-            'EditText'
+            'EditText',
+            'EditParagraph'
         ]
     });
 
@@ -143,13 +152,6 @@ require([
     //Load platform styles
     loadPlatformCss('resources/css/app-' + (device.android ? 'material' : 'ios') + '.css');
 
-    //Extend jQuery functions
-    jQuery.fn.extend( {
-        single: function(types, selector, data, fn) {
-            return this.off(types, fn).on(types, selector, data, fn);
-        }
-    } );
-
     require([
         'common/main/lib/util/LocalStorage',
         'documenteditor/mobile/app/controller/Editor',
@@ -157,7 +159,8 @@ require([
         'documenteditor/mobile/app/controller/Main',
         'documenteditor/mobile/app/controller/Settings',
         'documenteditor/mobile/app/controller/EditContainer',
-        'documenteditor/mobile/app/controller/EditText'
+        'documenteditor/mobile/app/controller/EditText',
+        'documenteditor/mobile/app/controller/EditParagraph'
 
     ], function() {
         app.start();

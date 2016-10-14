@@ -82,8 +82,8 @@ define([
 
             onPageShow: function () {
                 var me = this;
-                $('#page-text-additional li').single('click',   _.bind(me.onAdditional, me));
-                $('#page-text-linespacing li').single('click',  _.bind(me.onLineSpacing, me));
+                $('#text-additional li').single('click',        _.buffered(me.onAdditional, 100, me));
+                $('#page-text-linespacing li').single('click',  _.buffered(me.onLineSpacing, 100, me));
             },
 
             // Public
@@ -226,11 +226,6 @@ define([
                     me.onAdditionalScript($target);
                 } else if ('text-caps' == radioName){
                     me.onAdditionalCaps($target);
-                }
-
-                // Workaround ui problem
-                if (!Framework7.prototype.device.android || null == prevValue) {
-                    return false;
                 }
             },
 

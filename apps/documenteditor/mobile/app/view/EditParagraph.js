@@ -1,23 +1,23 @@
 /**
- *  EditText.js
+ *  EditParagraph.js
  *  Document Editor
  *
- *  Created by Alexander Yuzhin on 10/4/16
+ *  Created by Alexander Yuzhin on 10/14/16
  *  Copyright (c) 2016 Ascensio System SIA. All rights reserved.
  *
  */
 
 define([
-    'text!documenteditor/mobile/app/template/EditText.template',
+    'text!documenteditor/mobile/app/template/EditParagraph.template',
     'jquery',
     'underscore',
     'backbone'
 ], function (editTemplate, $, _, Backbone) {
     'use strict';
 
-    DE.Views.EditText = Backbone.View.extend((function() {
+    DE.Views.EditParagraph = Backbone.View.extend((function() {
         // private
-        var fontNames;
+        // var _paragraphStyles;
 
         return {
             // el: '.view-main',
@@ -36,12 +36,10 @@ define([
             initEvents: function () {
                 var me = this;
 
-                $('#font-fonts').single('click',        _.bind(me.showFonts, me));
-                $('#font-color').single('click',        _.bind(me.showFontColor, me));
-                $('#font-background').single('click',   _.bind(me.showBackgroundColor, me));
-                $('#font-additional').single('click',   _.bind(me.showAdditional, me));
-                $('#font-line-spacing').single('click', _.bind(me.showLineSpacing, me));
+                $('#paragraph-background').single('click',  _.bind(me.showColors, me));
+                $('#paragraph-advanced').single('click',    _.bind(me.showAdvanced, me));
 
+                me.renderStyles();
                 me.initControls();
             },
 
@@ -58,7 +56,7 @@ define([
             rootLayout: function () {
                 if (this.layout) {
                     return this.layout
-                        .find('#edit-text-root')
+                        .find('#edit-paragraph-root')
                         .html();
                 }
 
@@ -66,7 +64,7 @@ define([
             },
 
             initControls: function () {
-                var api = DE.getController('EditText').api;
+                var api = DE.getController('EditParagraph').api;
 
                 if (api) {
                     var stack = api.getSelectedElements(),
@@ -82,13 +80,7 @@ define([
                     if (paragraph) {
 
                     }
-
-
                 }
-                // $('#font-bold').active
-                // $('#font-
-                // $('#font-
-                // $('#font-
             },
 
             showPage: function (templateId) {
@@ -110,51 +102,36 @@ define([
                 }
             },
 
-            showFonts: function () {
-                this.showPage('#edit-text-fonts');
-
+            renderStyles: function () {
                 var me = this,
-                    $template = $(
-                        '<div>' +
-                            '<li>' +
-                                '<label class="label-radio item-content">' +
-                                    '<input type="radio" name="font-name" value="{{name}}">' +
-                                    (Framework7.prototype.device.android ? '<div class="item-media"><i class="icon icon-form-radio"></i></div>' : '') +
-                                    '<div class="item-inner">' +
-                                        '<div class="item-title" style="font-family: \'{{name}}\';">{{name}}</div>' +
-                                    '</div>' +
-                                '</label>' +
-                            '</li>' +
-                        '</div>'
+                    thimbSize = DE.getController('EditParagraph').getTumbSize(),
+                    $styleList = $('#paragraph-list ul'),
+                    template = _.template(
+                        '<li>' +
+                            '<label class="label-radio item-content">' +
+                                '<input type="radio" name="paragraph-style" value="<%= name %>">' +
+                                (Framework7.prototype.device.android ? '<div class="item-media"><i class="icon icon-form-radio"></i></div>' : '') +
+                                '<div class="item-inner">' +
+                                    '<div data-name="<%= name %>" class="item-title style" style="background-image: url(<%= image %>); width: ' +  thimbSize.width + 'px; height: ' + thimbSize.height + 'px;"></div>' +
+                                '</div>' +
+                            '</label>' +
+                        '</li>'
                     );
 
-                fontNames = uiApp.virtualList('#font-list.virtual-list', {
-                    items: DE.getController('EditText').getFonts(),
-                    template: $template.html(),
-                    onItemsAfterInsert: function (list, fragment) {
-                        $('#font-list li').single('click', _.buffered(function (e) {
-                            me.fireEvent('font:click', [me, e]);
-                        }, 100));
-                    }
+                _.each(DE.getController('EditParagraph').getStyles(), function(style) {
+                    $(template(style)).appendTo($styleList).on('click', _.buffered(function (e) {
+                        me.fireEvent('style:click', [me, e]);
+                    }, 100))
                 });
             },
 
-            showFontColor: function () {
-                this.showPage('#edit-text-color');
+            showColors: function () {
+                this.showPage('#edit-paragraph-color');
             },
 
-            showBackgroundColor: function () {
-                this.showPage('#edit-text-background');
-            },
-
-            showAdditional: function () {
-                this.showPage('#edit-text-additional');
-            },
-
-            showLineSpacing: function () {
-                this.showPage('#edit-text-linespacing');
+            showAdvanced: function () {
+                this.showPage('#edit-paragraph-advanced');
             }
-
         }
     })());
 });

@@ -5885,13 +5885,15 @@ i.icon.icon-search {
 .container-settings .popover-inner {
   height: 400px;
 }
-.item-content {
-  /*
-   * Begin DEBUG
-   */
-  /*
-   * End DEBUG
-   */
+.item-content .item-after.splitter {
+  color: #000;
+}
+.item-content .item-after.splitter label {
+  margin: 0 5px;
+}
+.item-content .item-after.splitter .buttons-row {
+  min-width: 90px;
+  margin-left: 10px;
 }
 .item-content.buttons .item-inner {
   padding-top: 0;
@@ -5911,10 +5913,6 @@ i.icon.icon-search {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.item-content .icon-search {
-  width: 22px;
-  height: 22px;
 }
 .item-link.no-indicator .item-inner {
   background-image: none;

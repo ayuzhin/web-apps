@@ -93,14 +93,18 @@ define([
                     editors.push({
                         caption: 'Text',
                         id: 'edit-text',
-                        layout: DE.getController('EditText').getView('EditText').rootLayout()
+                        layout: DE.getController('EditText')
+                            .getView('EditText')
+                            .rootLayout()
                     })
                 }
                 if (_.contains(stack, 'paragraph')) {
                     editors.push({
                         caption: 'Paragraph',
                         id: 'edit-paragraph',
-                        layout: this._dummyEditController().layout
+                        layout: DE.getController('EditParagraph')
+                            .getView('EditParagraph')
+                            .rootLayout()
                     })
                 }
             }
