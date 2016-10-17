@@ -98,24 +98,27 @@ define([
                 if (searchBar.length < 1) {
                     $(me.el).find('.pages .page').first().prepend(_.template(
                         '<form class="searchbar document navbar navbar-hidden">' +
-                        '<div class="searchbar-input">' +
-                        '<input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>' +
-                        '</div>' +
-                        '<p class="buttons-row">' +
-                        '<a href="#" class="button prev button-round disabled">&lt;</a>' +
-                        '<a href="#" class="button next button-round disabled">&gt;</a>' +
-                        '</p>' +
+                            '<div class="searchbar-input">' +
+                                '<input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>' +
+                            '</div>' +
+                            '<p class="buttons-row">' +
+                                '<a href="#" class="button prev button-round disabled">&lt;</a>' +
+                                '<a href="#" class="button next button-round disabled">&gt;</a>' +
+                            '</p>' +
                         '</form>', {}
                     ));
                     me.fireEvent('searchbar:render', me);
+
                     searchBar = $$('.searchbar.document');
 
                     _.defer(function() {
                         uiApp.showNavbar(searchBar);
 
                         searchBar.transitionEnd(function () {
-                            if (!searchBar.hasClass('navbar-hidden'))
+                            if (!searchBar.hasClass('navbar-hidden')) {
                                 me.fireEvent('searchbar:show', me);
+                                $('.searchbar input').focus();
+                            }
                         });
                     }, 10);
                 }
