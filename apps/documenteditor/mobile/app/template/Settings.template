@@ -200,10 +200,7 @@
         <div class="navbar-inner">
             <div class="left sliding">
                 <a href="#" class="back link">
-                    <i class="icon icon-back"></i>
-                    <% if (!android) { %>
-                    <span>Back</span>
-                    <% } %>
+                    <i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %>
                 </a>
             </div>
             <div class="center sliding">Download</div>

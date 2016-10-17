@@ -95,7 +95,9 @@ define([
                 addViews.push({
                     caption: 'Other',
                     id: 'add-other',
-                    layout: this._dummyEditController().layout //DE.getController('AddTable').getView('AddTable').rootLayout()
+                    layout: DE.getController('AddOther')
+                        .getView('AddOther')
+                        .rootLayout()
                 });
 
                 return addViews;
@@ -116,7 +118,7 @@ define([
                     '<div class="navbar">' +
                         '<div data-page="index" class="navbar-inner">' +
                             '<div class="center sliding categories"></div>' +
-                            (isPhone ? '<div class="right sliding"><a href="#" class="link close-picker">Done</a></div>' : '') +
+                            (isPhone ? '<div class="right sliding"><a href="#" class="link close-popup">Done</a></div>' : '') +
                         '</div>' +
                     '</div>'
                 );
@@ -181,17 +183,14 @@ define([
                 });
 
                 if (isPhone) {
-                    me.picker = $$(uiApp.pickerModal(
-                        '<div class="picker-modal container-add">' +
+                    me.picker = $$(uiApp.popup(
+                        '<div class="popup container-add">' +
                             '<div class="view add-root-view navbar-through">' +
                                 $layoutNavbar.prop('outerHTML') +
                                 $layoutPages.prop('outerHTML') +
                             '</div>' +
                         '</div>'
-                    )).on('close', function (e) {
-                        mainView.showNavbar();
-                    });
-                    mainView.hideNavbar();
+                    ))
                 } else {
                     me.picker = uiApp.popover(
                         '<div class="popover container-add">' +
