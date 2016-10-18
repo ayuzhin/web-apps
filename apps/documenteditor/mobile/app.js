@@ -112,6 +112,7 @@ require([
             'AddContainer',
             'AddTable',
             'AddShape',
+            'AddImage',
             'AddOther'
         ]
     });
@@ -168,6 +169,7 @@ require([
         'documenteditor/mobile/app/controller/add/AddContainer',
         'documenteditor/mobile/app/controller/add/AddTable',
         'documenteditor/mobile/app/controller/add/AddShape',
+        'documenteditor/mobile/app/controller/add/AddImage',
         'documenteditor/mobile/app/controller/add/AddOther'
 
     ], function() {

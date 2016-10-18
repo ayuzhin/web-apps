@@ -93,7 +93,9 @@ define([
                 addViews.push({
                     caption: 'Image',
                     id: 'add-image',
-                    layout: this._dummyEditController().layout //DE.getController('AddTable').getView('AddTable').rootLayout()
+                    layout: DE.getController('AddImage')
+                        .getView('AddImage')
+                        .rootLayout()
                 });
 
                 addViews.push({

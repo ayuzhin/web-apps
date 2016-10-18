@@ -426,7 +426,9 @@ define([
             },
 
             onLongActionEnd: function(type, id) {
-                var action = {id: id, type: type};
+                var me = this,
+                    action = {id: id, type: type};
+
                 this.stackLongActions.pop(action);
 
 //                this.getApplication()
@@ -456,7 +458,14 @@ define([
                 }
 
                 action = this.stackLongActions.get({type: Asc.c_oAscAsyncActionType.BlockInteraction});
-                action ? this.setLongActionView(action) : setTimeout(function () {uiApp.hidePreloader();}, 200);
+
+                if (action) {
+                    this.setLongActionView(action)
+                } else {
+                    _.delay(function () {
+                        $(me.loadMask).hasClass('modal-in') && uiApp.closeModal(me.loadMask);
+                    }, 200);
+                }
 
                 if (id==Asc.c_oAscAsyncAction['Save'] && (!this._state.fastCoauth || this._state.usersCount<2)) {
                     this.synchronizeChanges();

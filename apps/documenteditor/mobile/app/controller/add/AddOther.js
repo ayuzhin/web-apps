@@ -63,7 +63,9 @@ define([
                 $('#addother-sectionbreak-view li').single('click',  _.buffered(me.onSectionBreak, 100, me));
                 $('#addother-pagenumber-view li').single('click',    _.buffered(me.onPageNumber, 100, me));
 
-                $('#addother-link-view input[type="url"]').focus();
+                _.delay(function () {
+                    $('#addother-link-view input[type="url"]').focus();
+                }, 1000);
             },
 
             // Handlers
