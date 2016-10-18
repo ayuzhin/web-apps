@@ -60,10 +60,10 @@ define([
             onPageShow: function () {
                 var me = this;
 
-                $('#addother-sectionbreak-view a').single('click',  _.bind(me.onSectionBreak, me));
-                $('#addother-pagenumber-view a').single('click',    _.bind(me.onPageNumber, me));
-                // $('#text-additional li').single('click',        _.buffered(me.onAdditional, 100, me));
-                // $('#page-text-linespacing li').single('click',  _.buffered(me.onLineSpacing, 100, me));
+                $('#addother-sectionbreak-view li').single('click',  _.buffered(me.onSectionBreak, 100, me));
+                $('#addother-pagenumber-view li').single('click',    _.buffered(me.onPageNumber, 100, me));
+
+                $('#addother-link-view input[type="url"]').focus();
             },
 
             // Handlers

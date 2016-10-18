@@ -77,13 +77,17 @@ define([
                 addViews.push({
                     caption: 'Table',
                     id: 'add-table',
-                    layout: this._dummyEditController().layout //DE.getController('AddTable').getView('AddTable').rootLayout()
+                    layout: DE.getController('AddTable')
+                        .getView('AddTable')
+                        .rootLayout()
                 });
 
                 addViews.push({
                     caption: 'Shape',
                     id: 'add-shape',
-                    layout: this._dummyEditController().layout //DE.getController('AddTable').getView('AddTable').rootLayout()
+                    layout: DE.getController('AddShape')
+                        .getView('AddShape')
+                        .rootLayout()
                 });
 
                 addViews.push({

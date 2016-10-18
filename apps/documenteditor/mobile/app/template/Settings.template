@@ -327,7 +327,7 @@
         <div class="page about" data-page="settings-about-view">
             <div class="page-content">
                 <div class="content-block">
-                    <div class="logo" style="display: inline-block; width: 250px; height: 55px; background-color: #0a6aac"></div>
+                    <div class="logo" style="display: inline-block; width: 100%; height: 55px;"></div>
                 </div>
                 <div class="content-block">
                     <h3>DOCUMENT EDITOR</h3>

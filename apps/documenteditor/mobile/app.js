@@ -110,6 +110,8 @@ require([
             'EditText',
             'EditParagraph',
             'AddContainer',
+            'AddTable',
+            'AddShape',
             'AddOther'
         ]
     });
@@ -164,6 +166,8 @@ require([
         'documenteditor/mobile/app/controller/edit/EditText',
         'documenteditor/mobile/app/controller/edit/EditParagraph',
         'documenteditor/mobile/app/controller/add/AddContainer',
+        'documenteditor/mobile/app/controller/add/AddTable',
+        'documenteditor/mobile/app/controller/add/AddShape',
         'documenteditor/mobile/app/controller/add/AddOther'
 
     ], function() {

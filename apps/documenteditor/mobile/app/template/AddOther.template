@@ -128,7 +128,7 @@
             <div class="center sliding">Add Link</div>
         </div>
     </div>
-    <div class="page" data-page="addother-link-view">
+    <div class="page" id="addother-link-view">
         <div class="page-content">
             <div class="list-block">
                 <ul>
@@ -157,7 +157,7 @@
                             <div class="item-inner">
                                 <div class="item-title label">Screen Tip</div>
                                 <div class="item-input">
-                                    <input type="url" placeholder="Screen Tip">
+                                    <input type="text" placeholder="Screen Tip">
                                 </div>
                             </div>
                         </div>
@@ -165,11 +165,15 @@
                 </ul>
             </div>
             <div class="list-block">
+                <% if (android) { %>
+                <a href="#" class="button button-fill button-raised" style="margin: 20px 16px;">Insert</a>
+                <% } else { %>
                 <ul>
                     <li>
                         <a href="#" id="add-link-insert" class="list-button item-link">Insert</a>
                     </li>
                 </ul>
+                <% } %>
             </div>
         </div>
     </div>

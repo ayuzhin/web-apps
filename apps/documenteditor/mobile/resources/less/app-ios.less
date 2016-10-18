@@ -194,4 +194,62 @@ i.icon {
   p > label {
     margin-right: 5px;
   }
+
+  .logo {
+    background-image: url('../../../../common/mobile/resources/img/about/onlyoffice.png');
+
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 2dppx),
+    only screen and (min-resolution: 192dpi) {
+      background-image: url('../../../../common/mobile/resources/img/about/onlyoffice@2x.png');
+      background-size: auto;
+    }
+  }
+}
+
+// Add Container
+
+#add-table,
+#add-shape {
+  .page {
+    background-color: #fff;
+  }
+}
+
+// Data view
+
+.dataview {
+  ul {
+    padding: 0 10px;
+    list-style: none;
+
+    li {
+      display: inline-block;
+    }
+  }
+}
+
+// Table styles
+
+.table-styles {
+  li {
+    margin: 0;
+    padding: 1px;
+
+    img {
+      width: 70px;
+      height: 50px;
+    }
+  }
+}
+
+// Shapes
+
+.shapes {
+  li {
+    width: 70px;
+    height: 70px;
+    margin: 0 1px;
+  }
 }

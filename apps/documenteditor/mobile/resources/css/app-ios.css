@@ -5960,3 +5960,36 @@ i.icon.icon-search {
 .about p > label {
   margin-right: 5px;
 }
+.about .logo {
+  background-image: url('../../../../common/mobile/resources/img/about/onlyoffice.png');
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 2dppx), only screen and (min-resolution: 192dpi) {
+  .about .logo {
+    background-image: url('../../../../common/mobile/resources/img/about/onlyoffice@2x.png');
+    background-size: auto;
+  }
+}
+#add-table .page,
+#add-shape .page {
+  background-color: #fff;
+}
+.dataview ul {
+  padding: 0 10px;
+  list-style: none;
+}
+.dataview ul li {
+  display: inline-block;
+}
+.table-styles li {
+  margin: 0;
+  padding: 1px;
+}
+.table-styles li img {
+  width: 70px;
+  height: 50px;
+}
+.shapes li {
+  width: 70px;
+  height: 70px;
+  margin: 0 1px;
+}

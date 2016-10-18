@@ -1,0 +1,12 @@
+<!-- Root view -->
+<div id="add-shapes-root">
+    <div class="page-content dataview shapes">
+        <ul>
+            <% _.each(shapes, function(shape) { %>
+            <li data-type="<%= shape.type %>" style="background-color:<%= shape.color %>;">
+                <img src="<%= shape.thumb %>">
+            </li>
+            <% }); %>
+        </ul>
+    </div>
+</div>
