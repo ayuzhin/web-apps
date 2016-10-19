@@ -92,8 +92,6 @@ define([
                     urltype = me.api.asc_getUrlType($.trim(url)),
                     isEmail = (urltype == 2);
 
-                DE.getController('AddContainer').hideModal();
-
                 if (urltype < 1) {
                     uiApp.alert(me.txtNotUrl);
                     return;

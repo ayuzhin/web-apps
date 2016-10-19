@@ -15,6 +15,19 @@
         }
     });
 
+    //Extend Dom7 functions
+    var methods = ['addClass', 'toggleClass', 'removeClass'];
+
+    _.each(methods, function (method, index) {
+        var originalMethod = Dom7.fn[method];
+
+        Dom7.fn[method] = function(className) {
+            var result = originalMethod.apply(this, arguments);
+            this.trigger(method, className);
+            return result;
+        };
+    });
+
     //Extend Underscope functions
     _.buffered = function(func, buffer, scope, args) {
         var timerId;

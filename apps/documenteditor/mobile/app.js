@@ -62,7 +62,8 @@ require.config({
         extendes: {
             deps: [
                 'underscore',
-                'jquery'
+                'jquery',
+                'framework7'
             ]
         },
         gateway: {

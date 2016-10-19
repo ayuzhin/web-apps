@@ -80,12 +80,11 @@ define([
                 if ($input) {
                     var value = ($input.val()).replace(/ /g, '');
 
-                    DE.getController('AddContainer').hideModal();
-
                     _.delay(function () {
                         if (!_.isEmpty(value)) {
                             if ((/((^https?)|(^ftp)):\/\/.+/i.test(value))) {
                                 me.api.AddImageUrl(value);
+                                DE.getController('AddContainer').hideModal();
                             } else {
                                 uiApp.alert(me.txtNotUrl);
                             }

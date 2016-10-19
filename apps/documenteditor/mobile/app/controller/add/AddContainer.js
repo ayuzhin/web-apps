@@ -211,6 +211,20 @@ define([
                             '</div>',
                         $$('#toolbar-add')
                     );
+
+                    // Prevent hide overlay. Conflict popover and modals.
+                    var $overlay = $('.modal-overlay');
+
+                    $$(me.picker).on('opened', function () {
+                        $overlay.on('removeClass', function () {
+                            if (!$overlay.hasClass('modal-overlay-visible')) {
+                                $overlay.addClass('modal-overlay-visible')
+                            }
+                        });
+                    }).on('close', function () {
+                        $overlay.off('removeClass');
+                        $overlay.removeClass('modal-overlay-visible')
+                    });
                 }
 
                 if (isAndroid) {
