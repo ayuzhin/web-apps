@@ -160,6 +160,7 @@ require([
 
     require([
         'common/main/lib/util/LocalStorage',
+        'common/main/lib/util/utils',
         'documenteditor/mobile/app/controller/Editor',
         'documenteditor/mobile/app/controller/Toolbar',
         'documenteditor/mobile/app/controller/Main',

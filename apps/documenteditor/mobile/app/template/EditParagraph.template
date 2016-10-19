@@ -73,7 +73,7 @@
                             <div class="item-inner">
                                 <div class="item-title">Before</div>
                                 <div class="item-after splitter">
-                                    <label>0</label>pt
+                                    <label>Auto</label>
                                     <p class="buttons-row">
                                         <span class="button decrement <%= android ? "button-fill" : "" %>">-</span>
                                         <span class="button increment <%= android ? "button-fill" : "" %>">+</span>
@@ -87,7 +87,7 @@
                             <div class="item-inner">
                                 <div class="item-title">After</div>
                                 <div class="item-after splitter">
-                                    <label>0</label>pt
+                                    <label>Auto</label>
                                     <p class="buttons-row">
                                         <span class="button decrement <%= android ? "button-fill" : "" %>">-</span>
                                         <span class="button increment <%= android ? "button-fill" : "" %>">+</span>

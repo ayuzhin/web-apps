@@ -40,7 +40,8 @@ define([
                 $('#paragraph-advanced').single('click',    _.bind(me.showAdvanced, me));
 
                 me.renderStyles();
-                me.initControls();
+
+                DE.getController('EditParagraph').initSettings();
             },
 
             // Render layout
@@ -61,26 +62,6 @@ define([
                 }
 
                 return '';
-            },
-
-            initControls: function () {
-                var api = DE.getController('EditParagraph').api;
-
-                if (api) {
-                    var stack = api.getSelectedElements(),
-                        paragraph;
-
-                    _.each(stack, function (object) {
-                        if (Asc.c_oAscTypeSelectElement.Paragraph == object.get_ObjectType()) {
-                            paragraph = object.get_ObjectValue();
-                            return;
-                        }
-                    });
-
-                    if (paragraph) {
-
-                    }
-                }
             },
 
             showPage: function (templateId) {

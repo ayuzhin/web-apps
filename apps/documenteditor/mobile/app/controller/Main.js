@@ -90,6 +90,8 @@ define([
                         case '2': me.api.SetFontRenderingMode(2); break;
                     }
 
+                    Common.Utils.Metric.setCurrentMetric(1); //pt
+
                     me.api.asc_registerCallback('asc_onError',                      _.bind(me.onError, me));
                     me.api.asc_registerCallback('asc_onDocumentContentReady',       _.bind(me.onDocumentContentReady, me));
                     me.api.asc_registerCallback('asc_onOpenDocumentProgress',       _.bind(me.onOpenDocument, me));

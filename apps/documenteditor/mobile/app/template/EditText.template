@@ -246,7 +246,7 @@
                             <div class="item-inner">
                                 <div class="item-title">Letter Spacing</div>
                                 <div class="item-after splitter">
-                                    <label>∅</label>pt
+                                    <label>Auto</label>
                                     <p class="buttons-row">
                                         <span class="button decrement <%= android ? "button-fill" : "" %>">-</span>
                                         <span class="button increment <%= android ? "button-fill" : "" %>">+</span>

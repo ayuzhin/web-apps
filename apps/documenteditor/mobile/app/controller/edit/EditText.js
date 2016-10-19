@@ -141,8 +141,8 @@ define([
                         paragraph.get_SmallCaps() && $inputTextCaps.val(['small']).prop('prevValue', 'small');
                         paragraph.get_AllCaps() && $inputTextCaps.val(['all']).prop('prevValue', 'all');
 
-                        $('#letter-spacing .item-after label').text(paragraph.get_TextSpacing());
-                        _fontInfo.letterSpacing = paragraph.get_TextSpacing();
+                        _fontInfo.letterSpacing = Common.Utils.Metric.fnRecalcFromMM(paragraph.get_TextSpacing());
+                        $('#letter-spacing .item-after label').text(_fontInfo.letterSpacing + ' ' + Common.Utils.Metric.getCurrentMetricName());
                     }
                 });
             },
@@ -339,10 +339,10 @@ define([
                 }
                 _fontInfo.letterSpacing = spacing;
 
-                var properties = new Asc.asc_CParagraphProperty();
-                properties.put_TextSpacing(spacing);
+                $('#letter-spacing .item-after label').text(spacing + ' ' + Common.Utils.Metric.getCurrentMetricName());
 
-                $('#letter-spacing .item-after label').text(spacing);
+                var properties = new Asc.asc_CParagraphProperty();
+                properties.put_TextSpacing(Common.Utils.Metric.fnRecalcToMM(spacing));
 
                 this.api.paraApply(properties);
             },
