@@ -17,7 +17,8 @@ define([
 
     DE.Views.EditText = Backbone.View.extend((function() {
         // private
-        var fontNames;
+        var _fontsList,
+            _editTextController;
 
         return {
             // el: '.view-main',
@@ -30,6 +31,7 @@ define([
             },
 
             initialize: function () {
+                _editTextController = DE.getController('EditText');
                 Common.NotificationCenter.on('editcontainer:show', _.bind(this.initEvents, this));
             },
 
@@ -66,29 +68,7 @@ define([
             },
 
             initControls: function () {
-                var api = DE.getController('EditText').api;
-
-                if (api) {
-                    var stack = api.getSelectedElements(),
-                        paragraph;
-
-                    _.each(stack, function (object) {
-                        if (Asc.c_oAscTypeSelectElement.Paragraph == object.get_ObjectType()) {
-                            paragraph = object.get_ObjectValue();
-                            return;
-                        }
-                    });
-
-                    if (paragraph) {
-
-                    }
-
-
-                }
-                // $('#font-bold').active
-                // $('#font-
-                // $('#font-
-                // $('#font-
+                //
             },
 
             showPage: function (templateId) {
@@ -128,10 +108,13 @@ define([
                         '</div>'
                     );
 
-                fontNames = uiApp.virtualList('#font-list.virtual-list', {
+                _fontsList = uiApp.virtualList('#font-list.virtual-list', {
                     items: DE.getController('EditText').getFonts(),
                     template: $template.html(),
                     onItemsAfterInsert: function (list, fragment) {
+                        var fontInfo = _editTextController.getFontInfo();
+                        $('#font-list input[name=font-name]').val([fontInfo.name]);
+
                         $('#font-list li').single('click', _.buffered(function (e) {
                             me.fireEvent('font:click', [me, e]);
                         }, 100));

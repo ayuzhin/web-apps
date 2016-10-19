@@ -15,7 +15,7 @@
                             <a id="settings-edit-document" class="item-link no-indicator">
                                 <div class="item-content">
                                     <div class="item-media">
-                                        <i class="icon icon-search"></i>
+                                        <i class="icon icon-editdoc"></i>
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title">Edit Document</div>
@@ -26,7 +26,7 @@
                         <li>
                             <div id="settings-readermode" class="item-content">
                                 <div class="item-media">
-                                    <i class="icon icon-search"></i>
+                                    <i class="icon icon-reader"></i>
                                 </div>
                                 <div class="item-inner">
                                     <div class="item-title">Reader Mode</div>
@@ -43,7 +43,7 @@
                             <a id="settings-download" class="item-link">
                                 <div class="item-content">
                                     <div class="item-media">
-                                        <i class="icon icon-search"></i>
+                                        <i class="icon icon-download"></i>
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title">Download</div>
@@ -55,7 +55,7 @@
                             <a id="settings-document-info" class="item-link">
                                 <div class="item-content">
                                     <div class="item-media">
-                                        <i class="icon icon-search"></i>
+                                        <i class="icon icon-info"></i>
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title">Document Info</div>

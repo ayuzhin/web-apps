@@ -14,17 +14,15 @@ define([
     'use strict';
 
     DE.Controllers.EditText = Backbone.Controller.extend((function() {
-        var fontsArray = [],
-            stack = [];
+        var _fontsArray = [],
+            _stack = [],
+            _fontInfo = {};
 
-        function onApiFontChange(fontobj) {
-            Common.NotificationCenter.trigger('fonts:change', fontobj)
-        }
 
         function onApiLoadFonts(fonts, select) {
             _.each(fonts, function(font){
                 var fontId = font.asc_getFontId();
-                fontsArray.push({
+                _fontsArray.push({
                     id          : fontId,
                     name        : font.asc_getFontName(),
 //                    displayValue: font.asc_getFontName(),
@@ -35,7 +33,7 @@ define([
 
             console.log('onApiLoadFonts');
 
-            Common.NotificationCenter.trigger('fonts:load', fontsArray, select);
+            Common.NotificationCenter.trigger('fonts:load', _fontsArray, select);
         }
 
         return {
@@ -57,12 +55,47 @@ define([
             },
 
             setApi: function (api) {
-                var me = this;
+                var me = this
                 me.api = api;
 
                 me.api.asc_registerCallback('asc_onInitEditorFonts',    _.bind(onApiLoadFonts, me));
-                me.api.asc_registerCallback('asc_onFontFamily',         _.bind(onApiFontChange, me));
                 me.api.asc_registerCallback('asc_onFocusObject',        _.bind(me.onApiFocusObject, me));
+                me.api.asc_registerCallback('asc_onFontFamily',         _.bind(me.onApiChangeFont, me));
+                me.api.asc_registerCallback('asc_onFontSize',           _.bind(me.onApiFontSize, me));
+                me.api.asc_registerCallback('asc_onBold',               _.bind(me.onApiBold, me));
+                me.api.asc_registerCallback('asc_onItalic',             _.bind(me.onApiItalic, me));
+                me.api.asc_registerCallback('asc_onUnderline',          _.bind(me.onApiUnderline, me));
+                me.api.asc_registerCallback('asc_onStrikeout',          _.bind(me.onApiStrikeout, me));
+                me.api.asc_registerCallback('asc_onVerticalAlign',      _.bind(me.onApiVerticalAlign, me));
+                // this.api.asc_registerCallback('asc_onCanUndo',              _.bind(this.onApiCanRevert, this, 'undo'));
+                // this.api.asc_registerCallback('asc_onCanRedo',              _.bind(this.onApiCanRevert, this, 'redo'));
+                // this.api.asc_registerCallback('asc_onListType',             _.bind(this.onApiBullets, this));
+                me.api.asc_registerCallback('asc_onPrAlign',            _.bind(me.onApiParagraphAlign, me));
+                // this.api.asc_registerCallback('asc_onTextColor',            _.bind(this.onApiTextColor, this));
+                me.api.asc_registerCallback('asc_onParaSpacingLine',    _.bind(me.onApiLineSpacing, me));
+                // this.api.asc_registerCallback('asc_onCanAddHyperlink',      _.bind(this.onApiCanAddHyperlink, this));
+                // this.api.asc_registerCallback('asc_onFocusObject',          _.bind(this.onApiFocusObject, this));
+                // this.api.asc_registerCallback('asc_onDocSize',              _.bind(this.onApiPageSize, this));
+                // this.api.asc_registerCallback('asc_onPaintFormatChanged',   _.bind(this.onApiStyleChange, this));
+                // this.api.asc_registerCallback('asc_onParaStyleName',        _.bind(this.onApiParagraphStyleChange, this));
+                // this.api.asc_registerCallback('asc_onEndAddShape',          _.bind(this.onApiEndAddShape, this)); //for shapes
+                // this.api.asc_registerCallback('asc_onPageOrient',           _.bind(this.onApiPageOrient, this));
+                // this.api.asc_registerCallback('asc_onLockDocumentProps',    _.bind(this.onApiLockDocumentProps, this));
+                // this.api.asc_registerCallback('asc_onUnLockDocumentProps',  _.bind(this.onApiUnLockDocumentProps, this));
+                // this.api.asc_registerCallback('asc_onLockDocumentSchema',   _.bind(this.onApiLockDocumentSchema, this));
+                // this.api.asc_registerCallback('asc_onUnLockDocumentSchema', _.bind(this.onApiUnLockDocumentSchema, this));
+                // this.api.asc_registerCallback('asc_onLockHeaderFooters',    _.bind(this.onApiLockHeaderFooters, this));
+                // this.api.asc_registerCallback('asc_onUnLockHeaderFooters',  _.bind(this.onApiUnLockHeaderFooters, this));
+                // this.api.asc_registerCallback('asc_onZoomChange',           _.bind(this.onApiZoomChange, this));
+                // this.api.asc_registerCallback('asc_onMarkerFormatChanged',  _.bind(this.onApiStartHighlight, this));
+                // this.api.asc_registerCallback('asc_onTextHighLight',        _.bind(this.onApiHighlightColor, this));
+                // this.api.asc_registerCallback('asc_onInitEditorStyles',     _.bind(this.onApiInitEditorStyles, this));
+                // this.api.asc_registerCallback('asc_onCoAuthoringDisconnect',_.bind(this.onApiCoAuthoringDisconnect, this));
+                // Common.NotificationCenter.on('api:disconnect',              _.bind(this.onApiCoAuthoringDisconnect, this));
+                // this.api.asc_registerCallback('asc_onCanCopyCut',           _.bind(this.onApiCanCopyCut, this));
+                // this.api.asc_registerCallback('asc_onMathTypes',            _.bind(this.onMathTypes, this));
+                // this.api.asc_registerCallback('asc_onColumnsProps',         _.bind(this.onColumnsProps, this));
+                // this.api.asc_registerCallback('asc_onSectionProps',         _.bind(this.onSectionProps, this));
             },
 
             onLaunch: function () {
@@ -78,22 +111,54 @@ define([
 
                 $('#paragraph-align .button').single('click',   _.bind(me.onParagraphAlign, me));
                 $('#font-moveleft, #font-moveright').single('click',   _.bind(me.onParagraphMove, me));
+
+                me.initSettings();
             },
 
             onPageShow: function () {
                 var me = this;
                 $('#text-additional li').single('click',        _.buffered(me.onAdditional, 100, me));
                 $('#page-text-linespacing li').single('click',  _.buffered(me.onLineSpacing, 100, me));
+                $('#font-size .button').single('click',         _.bind(me.onFontSize, me));
+                $('#letter-spacing .button').single('click',    _.bind(me.onLetterSpacing, me));
+
+                me.initSettings();
+            },
+
+            initSettings: function () {
+                this.api && this.api.UpdateInterfaceState();
+
+                _.each(_stack, function(object) {
+                    if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Paragraph) {
+                        var paragraph = object.get_ObjectValue();
+
+                        var $inputStrikethrough = $('#text-additional input[name=text-strikethrough]');
+                        var $inputTextCaps = $('#text-additional input[name=text-caps]');
+
+                        paragraph.get_Strikeout() && $inputStrikethrough.val(['strikethrough']).prop('prevValue', 'strikethrough');
+                        paragraph.get_DStrikeout() && $inputStrikethrough.val(['double-strikethrough']).prop('prevValue', 'double-strikethrough');
+
+                        paragraph.get_SmallCaps() && $inputTextCaps.val(['small']).prop('prevValue', 'small');
+                        paragraph.get_AllCaps() && $inputTextCaps.val(['all']).prop('prevValue', 'all');
+
+                        $('#letter-spacing .item-after label').text(paragraph.get_TextSpacing());
+                        _fontInfo.letterSpacing = paragraph.get_TextSpacing();
+                    }
+                });
             },
 
             // Public
 
             getFonts: function() {
-                return fontsArray;
+                return _fontsArray;
             },
 
             getStack: function() {
-                return stack;
+                return _stack;
+            },
+
+            getFontInfo: function () {
+                return _fontInfo;
             },
 
             // Handlers
@@ -248,10 +313,98 @@ define([
                 }
             },
 
+            onFontSize: function (e) {
+                var $button = $(e.currentTarget),
+                    fontSize = _fontInfo.size;
+
+                if ($button.hasClass('decrement')) {
+                    _.isUndefined(fontSize) ? this.api.FontSizeOut() : fontSize = Math.max(1, --fontSize);
+                } else {
+                    _.isUndefined(fontSize) ? this.api.FontSizeIn() : fontSize = Math.min(100, ++fontSize);
+                }
+
+                if (! _.isUndefined(fontSize)) {
+                    this.api.put_TextPrFontSize(fontSize);
+                }
+            },
+
+            onLetterSpacing: function (e) {
+                var $button = $(e.currentTarget),
+                    spacing = _fontInfo.letterSpacing;
+
+                if ($button.hasClass('decrement')) {
+                    spacing = Math.max(-100, --spacing);
+                } else {
+                    spacing = Math.min(100, ++spacing);
+                }
+                _fontInfo.letterSpacing = spacing;
+
+                var properties = new Asc.asc_CParagraphProperty();
+                properties.put_TextSpacing(spacing);
+
+                $('#letter-spacing .item-after label').text(spacing);
+
+                this.api.paraApply(properties);
+            },
+
             // API handlers
 
             onApiFocusObject: function (objects) {
-                stack = objects;
+                _stack = objects;
+            },
+
+            onApiChangeFont: function(font) {
+                var name = (_.isFunction(font.get_Name) ?  font.get_Name() : font.asc_getName()) || 'Fonts';
+                _fontInfo.name = name;
+
+                $('#font-fonts .item-title').html(name);
+            },
+
+            onApiFontSize: function(size) {
+                _fontInfo.size = size;
+
+                $('#font-fonts .item-after span:first-child').html(size);
+                $('#font-size .item-after label').html(size);
+            },
+
+            onApiBold: function(on) {
+                $('#font-bold').toggleClass('active', on);
+            },
+
+            onApiItalic: function(on) {
+                $('#font-italic').toggleClass('active', on);
+            },
+
+            onApiUnderline: function(on) {
+                $('#font-underline').toggleClass('active', on);
+            },
+
+            onApiStrikeout: function(on) {
+                $('#font-strikethrough').toggleClass('active', on);
+            },
+
+            onApiParagraphAlign: function(align) {
+                $('#font-right').toggleClass('active', align===0);
+                $('#font-left').toggleClass('active', align===1);
+                $('#font-center').toggleClass('active', align===2);
+                $('#font-just').toggleClass('active', align===3);
+            },
+
+            onApiVerticalAlign: function(typeBaseline) {
+                var value;
+
+                typeBaseline==1 && (value = 'superscript');
+                typeBaseline==2 && (value = 'subscript');
+
+                if (!_.isUndefined(value)) {
+                    $('#text-additional input[name=text-script]').val([value]).prop('prevValue', value);
+                }
+            },
+
+            onApiLineSpacing: function(vc) {
+                var line = (vc.get_Line() === null || vc.get_LineRule() === null || vc.get_LineRule() != 1) ? -1 : vc.get_Line();
+
+                $('#page-text-linespacing input').val([line]);
             },
 
             // Helpers

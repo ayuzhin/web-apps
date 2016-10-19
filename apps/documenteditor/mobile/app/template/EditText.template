@@ -5,8 +5,8 @@
             <li><a id="font-fonts" class="item-link">
                 <div class="item-content">
                     <div class="item-inner">
-                        <div class="item-title">Font Name</div>
-                        <div class="item-after" style="color: #000">10 pt</div>
+                        <div class="item-title">Fonts</div>
+                        <div class="item-after" style="color: #000;"><span>∅</span><span style="margin-left: 5px;">pt</span></div>
                     </div>
                 </div></a></li>
             <li><div class="item-content buttons">
@@ -102,16 +102,16 @@
         <div class="page-content">
             <div class="list-block">
                 <ul>
-                    <li>
+                    <li id="font-size">
                         <div class="item-content">
                             <div class="item-inner">
-                                <div class="item-title">Size<label style="margin: 0 5px;">10</label>pt</div>
-                                <div class="item-after">
-                                    <p class="buttons-row" style="min-width: 90px;">
-                                        <span id="font-size-decrement" class="button <%= android ? "button-fill" : "" %>">-</span>
-                                        <span id="font-size-increment" class="button <%= android ? "button-fill" : "" %>">+</span>
+                                <div class="item-title">Size</div>
+                                <div class="item-after splitter">
+                                    <label>∅</label>pt
+                                    <p class="buttons-row">
+                                        <span class="button decrement <%= android ? "button-fill" : "" %>">-</span>
+                                        <span class="button increment <%= android ? "button-fill" : "" %>">+</span>
                                     </p>
-                                </div>
                             </div>
                         </div>
                     </li>
@@ -246,7 +246,7 @@
                             <div class="item-inner">
                                 <div class="item-title">Letter Spacing</div>
                                 <div class="item-after splitter">
-                                    <label>0</label>pt
+                                    <label>∅</label>pt
                                     <p class="buttons-row">
                                         <span class="button decrement <%= android ? "button-fill" : "" %>">-</span>
                                         <span class="button increment <%= android ? "button-fill" : "" %>">+</span>
@@ -276,7 +276,7 @@
                 <ul>
                     <li>
                         <label class="label-radio item-content">
-                            <input type="radio" name="line-spacing" value="1.0">
+                            <input type="radio" name="line-spacing" value="1">
                             <% if (android) { %><div class="item-media"><i class="icon icon-form-radio"></i></div><% } %>
                             <div class="item-inner">
                                 <div class="item-title">1.0</div>
@@ -303,7 +303,7 @@
                     </li>
                     <li>
                         <label class="label-radio item-content">
-                            <input type="radio" name="line-spacing" value="2.0">
+                            <input type="radio" name="line-spacing" value="2">
                             <% if (android) { %><div class="item-media"><i class="icon icon-form-radio"></i></div><% } %>
                             <div class="item-inner">
                                 <div class="item-title">2.0</div>
@@ -321,7 +321,7 @@
                     </li>
                     <li>
                         <label class="label-radio item-content">
-                            <input type="radio" name="line-spacing" value="3.0">
+                            <input type="radio" name="line-spacing" value="3">
                             <% if (android) { %><div class="item-media"><i class="icon icon-form-radio"></i></div><% } %>
                             <div class="item-inner">
                                 <div class="item-title">3.0</div>
