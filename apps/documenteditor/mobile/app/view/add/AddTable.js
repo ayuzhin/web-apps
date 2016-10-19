@@ -45,6 +45,11 @@ define([
                     styles  : Common.SharedSettings.get('tablestyles')
                 }));
 
+                var $tableStyles = $('.table-styles');
+                if ($tableStyles) {
+                    $tableStyles.replaceWith(this.layout.find('#add-table-root').html());
+                }
+
                 return this;
             },
 

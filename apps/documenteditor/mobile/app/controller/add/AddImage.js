@@ -80,21 +80,23 @@ define([
                 if ($input) {
                     var value = ($input.val()).replace(/ /g, '');
 
-                    if (!_.isEmpty(value)) {
-                        if ((/((^https?)|(^ftp)):\/\/.+/i.test(value))) {
-                            DE.getController('AddContainer').hideModal();
+                    DE.getController('AddContainer').hideModal();
 
-                            me.api.AddImageUrl(value);
+                    _.delay(function () {
+                        if (!_.isEmpty(value)) {
+                            if ((/((^https?)|(^ftp)):\/\/.+/i.test(value))) {
+                                me.api.AddImageUrl(value);
+                            } else {
+                                uiApp.alert(me.txtNotUrl);
+                            }
                         } else {
-                            uiApp.alert(me.txtNotUrl);
+                            uiApp.alert(me.textEmptyImgUrl);
                         }
-                    } else {
-                        uiApp.alert(me.textEmptyImgUrl);
-                    }
+                    }, 300);
                 }
             },
 
-            textEmptyImgUrl                            : 'You need to specify image URL.',
+            textEmptyImgUrl : 'You need to specify image URL.',
             txtNotUrl       : 'This field should be a URL in the format \"http://www.example.com\"'
         }
     })());

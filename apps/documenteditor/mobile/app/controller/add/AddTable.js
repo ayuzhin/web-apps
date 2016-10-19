@@ -32,13 +32,6 @@ define([
                 var me = this;
                 me.api = api;
 
-                _styles = [{
-                    imageUrl    : null,
-                    templateId  : 'sample'
-                }];
-                Common.SharedSettings.set('tablestyles', _styles);
-                Common.NotificationCenter.trigger('tablestyles:load', _styles);
-
                 me.api.asc_registerCallback('asc_onInitTableTemplates', _.bind(me.onApiInitTemplates, me));
             },
 
@@ -48,6 +41,10 @@ define([
 
             initEvents: function () {
                 var me = this;
+
+                if (_styles.length < 1) {
+                    me.api.asc_GetDefaultTableStyles();
+                }
 
                 $('#add-table li').single('click',  _.buffered(me.onStyleClick, 100, me));
             },

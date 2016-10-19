@@ -202,10 +202,7 @@ define([
                     $target = $(e.currentTarget);
 
                 if ($target && me.api) {
-                    var type = $target.data('type');
-
-                    me.api.StartAddShape(type, false);
-                    // me.api.EndAddShape(type, true);
+                    me.api.AddShapeOnCurrentPage($target.data('type'));
                 }
 
                 DE.getController('AddContainer').hideModal();

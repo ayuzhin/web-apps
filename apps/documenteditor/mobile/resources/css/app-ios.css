@@ -5841,18 +5841,18 @@ i.icon.icon-search {
 .container-settings.popover .list-block:first-child {
   margin-top: 0;
 }
-.container-edit.popup .list-block:first-child li:first-child a,
-.container-add.popup .list-block:first-child li:first-child a,
-.container-settings.popup .list-block:first-child li:first-child a,
-.container-edit.popover .list-block:first-child li:first-child a,
-.container-add.popover .list-block:first-child li:first-child a,
-.container-settings.popover .list-block:first-child li:first-child a,
-.container-edit.popup .list-block:first-child li:last-child a,
-.container-add.popup .list-block:first-child li:last-child a,
-.container-settings.popup .list-block:first-child li:last-child a,
-.container-edit.popover .list-block:first-child li:last-child a,
-.container-add.popover .list-block:first-child li:last-child a,
-.container-settings.popover .list-block:first-child li:last-child a {
+.container-edit.popup .list-block li:first-child a,
+.container-add.popup .list-block li:first-child a,
+.container-settings.popup .list-block li:first-child a,
+.container-edit.popover .list-block li:first-child a,
+.container-add.popover .list-block li:first-child a,
+.container-settings.popover .list-block li:first-child a,
+.container-edit.popup .list-block li:last-child a,
+.container-add.popup .list-block li:last-child a,
+.container-settings.popup .list-block li:last-child a,
+.container-edit.popover .list-block li:last-child a,
+.container-add.popover .list-block li:last-child a,
+.container-settings.popover .list-block li:last-child a {
   border-radius: 0 !important;
 }
 .container-edit.popup > .content-block,

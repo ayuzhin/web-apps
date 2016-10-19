@@ -164,13 +164,13 @@
                     </li>
                 </ul>
             </div>
-            <div class="list-block">
+            <div class="list-block disabled" id="add-link-insert">
                 <% if (android) { %>
                 <a href="#" class="button button-fill button-raised" style="margin: 20px 16px;">Insert</a>
                 <% } else { %>
                 <ul>
                     <li>
-                        <a href="#" id="add-link-insert" class="list-button item-link">Insert</a>
+                        <a href="#" class="list-button item-link">Insert</a>
                     </li>
                 </ul>
                 <% } %>

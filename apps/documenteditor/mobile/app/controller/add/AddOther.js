@@ -60,15 +60,60 @@ define([
             onPageShow: function () {
                 var me = this;
 
-                $('#addother-sectionbreak-view li').single('click',  _.buffered(me.onSectionBreak, 100, me));
-                $('#addother-pagenumber-view li').single('click',    _.buffered(me.onPageNumber, 100, me));
+                $('#addother-sectionbreak-view li').single('click',  _.buffered(me.onInsertSectionBreak, 100, me));
+                $('#addother-pagenumber-view li').single('click',    _.buffered(me.onInsertPageNumber, 100, me));
+                $('#add-link-insert').single('click',                _.buffered(me.onInsertLink, 100, me));
+
+                $('#add-link-url input, #add-link-display input').single('input', _.bind(me.onFieldChange, me));
 
                 _.delay(function () {
                     $('#addother-link-view input[type="url"]').focus();
                 }, 1000);
+
+                // Init Link
+                if ($('#addother-link-view')) {
+                    _.defer(function () {
+                        $('#add-link-display input').val(me.api.can_AddHyperlink());
+                    });
+                }
             },
 
             // Handlers
+
+            onFieldChange: function () {
+                $('#add-link-insert')[_.isEmpty($('#add-link-url input').val()) ? 'addClass' : 'removeClass']('disabled');
+            },
+
+            onInsertLink: function (e) {
+                var me      = this,
+                    url     = $('#add-link-url input').val(),
+                    display = $('#add-link-display input').val(),
+                    tip     = $('#add-link-tip input').val(),
+                    urltype = me.api.asc_getUrlType($.trim(url)),
+                    isEmail = (urltype == 2);
+
+                DE.getController('AddContainer').hideModal();
+
+                if (urltype < 1) {
+                    uiApp.alert(me.txtNotUrl);
+                    return;
+                }
+
+                url = url.replace(/^\s+|\s+$/g,'');
+
+                if (! /(((^https?)|(^ftp)):\/\/)|(^mailto:)/i.test(url) )
+                    url = (isEmail ? 'mailto:' : 'http://' ) + url;
+
+                url = url.replace(new RegExp("%20",'g')," ");
+
+                var props = new Asc.asc_CHyperlink();
+                // props.asc_setType(1);
+                props.asc_setHyperlinkUrl(url);
+                props.asc_setText(_.isEmpty(display) ? url : display);
+                props.asc_setTooltip(tip);
+
+                me.api.add_Hyperlink(props);
+            },
 
             onPageBreak: function (e) {
                 this.api && this.api.put_AddPageBreak();
@@ -80,7 +125,7 @@ define([
                 DE.getController('AddContainer').hideModal();
             },
 
-            onSectionBreak: function (e) {
+            onInsertSectionBreak: function (e) {
                 var $target = $(e.currentTarget);
 
                 if ($target && this.api) {
@@ -103,7 +148,7 @@ define([
                 DE.getController('AddContainer').hideModal();
             },
 
-            onPageNumber: function (e) {
+            onInsertPageNumber: function (e) {
                 var $target = $(e.currentTarget);
 
                 if ($target && this.api) {
@@ -134,13 +179,9 @@ define([
                 }
 
                 DE.getController('AddContainer').hideModal();
-            }
+            },
 
-            // API handlers
-
-
-
-            // Helpers
+            txtNotUrl:          'This field should be a URL in the format \"http://www.example.com\"'
 
         }
     })());
