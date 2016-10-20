@@ -71,7 +71,7 @@
             <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
         </div>
     </div>
-    <div class="page" id="edit-table-page" data-page="edit-table-wrap">
+    <div class="page" id="edit-tablewrap-page" data-page="edit-table-wrap">
         <div class="page-content">
             <div class="list-block" id="table-wrap-type">
                 <ul>
@@ -148,6 +148,68 @@
                                     <a id="table-align-center" class="button">C</a>
                                     <a id="table-align-right" class="button">R</a>
                                 </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Options view -->
+<div id="edit-table-options">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></div>
+            <div class="center sliding">Options</div>
+            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+        </div>
+    </div>
+    <div class="page" data-page="edit-table-wrap">
+        <div class="page-content">
+            <div class="list-block">
+                <ul>
+                    <li id="table-option-repeatasheader">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Repeat as Header Row</div>
+                                <div class="item-after">
+                                    <label class="label-switch">
+                                        <input type="checkbox">
+                                        <div class="checkbox"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="table-option-resizetofit">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Resize to Fit Content</div>
+                                <div class="item-after">
+                                    <label class="label-switch">
+                                        <input type="checkbox">
+                                        <div class="checkbox"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-block-title">Cell margins</div>
+            <div class="list-block" style="margin-bottom: 40px;">
+                <ul>
+                    <li id="table-options-margins">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <div class="range-slider">
+                                        <input type="range" min="0" max="150" value="0" step="1">
+                                    </div>
+                                </div>
+                                <div class="item-after" style="margin-left: 10px; color: #000;">0 pt</div>
                             </div>
                         </div>
                     </li>

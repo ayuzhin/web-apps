@@ -75,13 +75,18 @@ define([
             onPageShow: function () {
                 var me = this;
 
-                $('#table-wrap-type input').single('click',         _.bind(me.onWrapType, me));
-                $('#table-move-text input').single('click',         _.bind(me.onWrapMoveText, me));
-                $('#table-distance input').single('change',         _.bind(me.onWrapDistance, me));
-                $('#table-distance input').single('input',          _.bind(me.onWrapDistanceChanging, me));
-                $('#table-align-left').single('click',              _.bind(me.onWrapAlign, me, c_tableAlign.TABLE_ALIGN_LEFT));
-                $('#table-align-center').single('click',            _.bind(me.onWrapAlign, me, c_tableAlign.TABLE_ALIGN_CENTER));
-                $('#table-align-right').single('click',             _.bind(me.onWrapAlign, me, c_tableAlign.TABLE_ALIGN_RIGHT));
+                $('#table-wrap-type input').single('click',             _.bind(me.onWrapType, me));
+                $('#table-move-text input').single('click',             _.bind(me.onWrapMoveText, me));
+                $('#table-distance input').single('change',             _.bind(me.onWrapDistance, me));
+                $('#table-distance input').single('input',              _.bind(me.onWrapDistanceChanging, me));
+                $('#table-align-left').single('click',                  _.bind(me.onWrapAlign, me, c_tableAlign.TABLE_ALIGN_LEFT));
+                $('#table-align-center').single('click',                _.bind(me.onWrapAlign, me, c_tableAlign.TABLE_ALIGN_CENTER));
+                $('#table-align-right').single('click',                 _.bind(me.onWrapAlign, me, c_tableAlign.TABLE_ALIGN_RIGHT));
+
+                $('#table-option-repeatasheader input').single('click', _.bind(me.onOptionRepeat, me));
+                $('#table-option-resizetofit input').single('click',    _.bind(me.onOptionResize, me));
+                $('#table-options-margins input').single('change',      _.bind(me.onOptionMargin, me));
+                $('#table-options-margins input').single('input',       _.bind(me.onOptionMarginChanging, me));
 
                 me.initSettings();
             },
@@ -96,25 +101,43 @@ define([
                         _tableObject = object.get_ObjectValue();
                         var type = _tableObject.get_TableWrap() == c_tableWrap.TABLE_WRAP_NONE ? 'inline' : 'flow';
 
+                        /**
+                         * Wrapping
+                         */
+
                         // wrap type
                         $('#table-wrap-type input').val([type]);
                         me._uiTransformByWrap(type);
 
-                        // move text
+                        // wrap move text
                         $('#table-move-text input').prop('checked', (_tableObject.get_PositionV() && _tableObject.get_PositionV().get_RelativeFrom()==Asc.c_oAscVAnchor.Text));
 
-                        // align
+                        // wrap align
                         var align = _tableObject.get_TableAlignment();
                         $('#table-align-left').toggleClass('active', align == c_tableAlign.TABLE_ALIGN_LEFT);
                         $('#table-align-center').toggleClass('active', align == c_tableAlign.TABLE_ALIGN_CENTER);
                         $('#table-align-right').toggleClass('active', align == c_tableAlign.TABLE_ALIGN_RIGHT);
 
-                        // distance
+                        // wrap distance
                         var paddings = _tableObject.get_TablePaddings();
                         if (paddings) {
                             var distance = Common.Utils.Metric.fnRecalcFromMM(paddings.get_Top());
                             $('#table-distance input').val(distance);
                             $('#table-distance .item-after').text(distance + ' ' + _metricText);
+                        }
+
+                        /**
+                         * Options
+                         */
+
+                        $('#table-option-repeatasheader input').prop('checked', _tableObject.get_RowsInHeader());
+                        $('#table-option-resizetofit input').prop('checked', _tableObject.get_TableLayout()==Asc.c_oAscTableLayout.AutoFit);
+
+                        var margins = _tableObject.get_DefaultMargins();
+                        if (margins) {
+                            var distance = Common.Utils.Metric.fnRecalcFromMM(margins.get_Left());
+                            $('#table-options-margins input').val(distance);
+                            $('#table-options-margins .item-after').text(distance + ' ' + _metricText);
                         }
                     }
                 });
@@ -198,6 +221,50 @@ define([
                 me.api.tblApply(properties);
             },
 
+            onOptionRepeat: function (e) {
+                var me = this,
+                    $target = $(e.currentTarget),
+                    properties = new Asc.CTableProp();
+
+                properties.put_RowsInHeader($target.is(':checked') ? 1 : 0 );
+                me.api.tblApply(properties);
+            },
+
+            onOptionResize: function (e) {
+                var me = this,
+                    $target = $(e.currentTarget),
+                    properties = new Asc.CTableProp();
+
+                properties.put_TableLayout($target.is(':checked') ? Asc.c_oAscTableLayout.AutoFit : Asc.c_oAscTableLayout. Fixed);
+                me.api.tblApply(properties);
+            },
+
+            onOptionMargin: function (e) {
+                var me = this,
+                    $target = $(e.currentTarget),
+                    value = $target.val(),
+                    properties = new Asc.CTableProp(),
+                    margins = new Asc.asc_CPaddings();
+
+                $('#table-options-margins .item-after').text(value + ' ' + _metricText);
+
+                value = Common.Utils.Metric.fnRecalcToMM(value);
+
+                margins.put_Top(value);
+                margins.put_Right(value);
+                margins.put_Bottom(value);
+                margins.put_Left(value);
+
+                properties.put_DefaultMargins(margins);
+
+                me.api.tblApply(properties);
+            },
+
+            onOptionMarginChanging: function (e) {
+                var $target = $(e.currentTarget);
+                $('#table-options-margins .item-after').text($target.val() + ' ' + _metricText);
+            },
+
             // API handlers
 
             onApiFocusObject: function (objects) {
@@ -226,12 +293,12 @@ define([
 
             _uiTransformByWrap: function (type) {
                 if ('inline' == type) {
-                    $('#edit-table-page .inline').show();
-                    $('#edit-table-page .flow').hide();
+                    $('#edit-tablewrap-page .inline').show();
+                    $('#edit-tablewrap-page .flow').hide();
                     $('#table-move-text').addClass('disabled');
                 } else {
-                    $('#edit-table-page .inline').hide();
-                    $('#edit-table-page .flow').show();
+                    $('#edit-tablewrap-page .inline').hide();
+                    $('#edit-tablewrap-page .flow').show();
                     $('#table-move-text').removeClass('disabled');
                 }
             }

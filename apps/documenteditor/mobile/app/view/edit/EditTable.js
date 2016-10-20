@@ -34,6 +34,7 @@ define([
                 var me = this;
 
                 $('#table-wrap').single('click',        _.bind(me.showTableWrap, me));
+                $('#table-options').single('click',     _.bind(me.showTableOptions, me));
                 // $('#font-color').single('click',        _.bind(me.showFontColor, me));
                 // $('#font-background').single('click',   _.bind(me.showBackgroundColor, me));
                 // $('#font-additional').single('click',   _.bind(me.showAdditional, me));
@@ -87,6 +88,10 @@ define([
 
             showTableWrap: function () {
                 this.showPage('#edit-table-wrap');
+            },
+
+            showTableOptions: function () {
+                this.showPage('#edit-table-options');
             }
 
         }
