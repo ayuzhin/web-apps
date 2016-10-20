@@ -111,7 +111,9 @@ define([
                         editors.push({
                             caption: 'Table',
                             id: 'edit-table',
-                            layout: this._dummyEditController().layout
+                            layout: DE.getController('EditTable')
+                                .getView('EditTable')
+                                .rootLayout()
                         })
                     }
                 }

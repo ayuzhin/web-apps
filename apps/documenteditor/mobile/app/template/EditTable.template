@@ -1,0 +1,158 @@
+<!-- Root view -->
+<div id="edit-table-root">
+    <div class="list-block">
+        <ul>
+            <li id="table-insert">
+                <div class="item-content buttons">
+                    <div class="item-inner">
+                        <div class="row">
+                            <a id="insert-column-left" class="button">CL</a>
+                            <a id="insert-column-right" class="button">CR</a>
+                            <a id="insert-row-above" class="button">RA</a>
+                            <a id="insert-row-below" class="button">RB</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li id="table-remove">
+                <div class="item-content buttons">
+                    <div class="item-inner">
+                        <div class="row">
+                            <a id="remove-column" class="button">C</a>
+                            <a id="remove-row" class="button">R</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a id="table-remove-all" class="item-link list-button" style="color: #f00">Remove Table</a>
+            </li>
+        </ul>
+    </div>
+    <div class="list-block">
+        <ul>
+            <li>
+                <a id="table-options" class="item-link">
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">Table Options</div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a id="table-style" class="item-link">
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">Style</div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a id="table-wrap" class="item-link">
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">Wrap</div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Wrap view -->
+<div id="edit-table-wrap">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></div>
+            <div class="center sliding">Wrap</div>
+            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+        </div>
+    </div>
+    <div class="page" id="edit-table-page" data-page="edit-table-wrap">
+        <div class="page-content">
+            <div class="list-block" id="table-wrap-type">
+                <ul>
+                    <li>
+                        <label class="label-radio item-content">
+                            <input type="radio" name="table-wrap" value="inline">
+                            <% if (android) { %>
+                            <div class="item-media"><i class="icon icon-form-radio"></i></div>
+                            <% } else { %>
+                            <div class="item-media"><i class="icon icon-search"></i></div>
+                            <% } %>
+                            <div class="item-inner">
+                                <div class="item-title">Inline</div>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="label-radio item-content">
+                            <input type="radio" name="table-wrap" value="flow">
+                            <% if (android) { %>
+                            <div class="item-media"><i class="icon icon-form-radio"></i></div>
+                            <% } else { %>
+                            <div class="item-media"><i class="icon icon-search"></i></div>
+                            <% } %>
+                            <div class="item-inner">
+                                <div class="item-title">Flow</div>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block">
+                <ul>
+                    <li id="table-move-text">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Move with Text</div>
+                                <div class="item-after">
+                                    <label class="label-switch">
+                                        <input type="checkbox">
+                                        <div class="checkbox"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-block-title flow">Distance from text</div>
+            <div class="list-block flow" style="margin-bottom: 40px;">
+                <ul>
+                    <li id="table-distance">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <div class="range-slider">
+                                        <input type="range" min="0" max="200" value="0" step="1">
+                                    </div>
+                                </div>
+                                <div class="item-after" style="margin-left: 10px; color: #000;">0 pt</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-block-title inline">Align</div>
+            <div class="list-block inline" style="margin-bottom: 40px;">
+                <ul>
+                    <li id="table-align">
+                        <div class="item-content buttons">
+                            <div class="item-inner">
+                                <div class="row">
+                                    <a id="table-align-left" class="button">L</a>
+                                    <a id="table-align-center" class="button">C</a>
+                                    <a id="table-align-right" class="button">R</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
