@@ -186,11 +186,12 @@ define([
 
                 Common.SharedSettings.set('document', data.doc);
 
-               if (data.doc) {
-                   this.getApplication()
+
+                if (data.doc) {
+                    this.getApplication()
                        .getController('Toolbar')
                        .setDocumentTitle(data.doc.title);
-               }
+                }
             },
 
             setMode: function(mode){
@@ -775,6 +776,11 @@ define([
                 Common.Gateway.sendInfo({
                     mode: me.appOptions.isEdit?'edit':'view'
                 });
+
+                if (this.api) {
+                    this.api.Resize();
+                    this.api.zoomFitToWidth();
+                }
 
 //                if (this._state.licenseWarning) {
 //                    value = Common.localStorage.getItem("de-license-warning");

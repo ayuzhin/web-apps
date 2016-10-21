@@ -145,7 +145,9 @@ define([
 
             // Public
 
-
+            getTable: function() {
+                return _tableObject;
+            },
 
             // Handlers
 
