@@ -116,6 +116,15 @@ define([
                                 .rootLayout()
                         })
                     }
+                    if (_.contains(_settings, 'shape')) {
+                        editors.push({
+                            caption: 'Shape',
+                            id: 'edit-shape',
+                            layout: DE.getController('EditShape')
+                                .getView('EditShape')
+                                .rootLayout()
+                        })
+                    }
                 }
 
                 return editors;
@@ -281,9 +290,13 @@ define([
                     } else if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Table) {
                         _settings.push('table');
                     } else if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Image) {
-                        _settings.push('image');
-                    } else if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Shape) {
-                        _settings.push('shape');
+                        if (object.get_ObjectValue().get_ChartProperties()) {
+                            _settings.push('chart');
+                        } else if (object.get_ObjectValue().get_ShapeProperties()) {
+                            _settings.push('shape');
+                        } else {
+                            _settings.push('image');
+                        }
                     }
                 });
             }
