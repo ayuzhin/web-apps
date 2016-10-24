@@ -15,7 +15,7 @@
                             <a id="settings-edit-document" class="item-link no-indicator">
                                 <div class="item-content">
                                     <div class="item-media">
-                                        <i class="icon icon-editdoc"></i>
+                                        <i class="icon icon-edit"></i>
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title">Edit Document</div>
@@ -67,7 +67,7 @@
                             <a id="settings-history" class="item-link">
                                 <div class="item-content">
                                     <div class="item-media">
-                                        <i class="icon icon-search"></i>
+                                        <i class="icon icon-versions"></i>
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title">Document History</div>
@@ -79,7 +79,7 @@
                             <a id="settings-help" class="item-link">
                                 <div class="item-content">
                                     <div class="item-media">
-                                        <i class="icon icon-search"></i>
+                                        <i class="icon icon-help"></i>
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title">Help</div>
@@ -91,7 +91,7 @@
                             <a id="settings-about" class="item-link">
                                 <div class="item-content">
                                     <div class="item-media">
-                                        <i class="icon icon-search"></i>
+                                        <i class="icon icon-about"></i>
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title">About</div>

@@ -362,9 +362,12 @@ define([
 
             onApiFontSize: function(size) {
                 _fontInfo.size = size;
+                var displaySize = _fontInfo.size;
 
-                $('#font-fonts .item-after span:first-child').html(size);
-                $('#font-size .item-after label').html(size);
+                _.isUndefined(displaySize) ? displaySize = 'Auto' : displaySize = displaySize + ' ' + 'pt';
+
+                $('#font-fonts .item-after span:first-child').html(displaySize);
+                $('#font-size .item-after label').html(displaySize);
             },
 
             onApiBold: function(on) {

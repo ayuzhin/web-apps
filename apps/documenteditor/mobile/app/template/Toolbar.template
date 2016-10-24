@@ -7,24 +7,38 @@
                 <span class="subtitle"><%= backTitle %></span>
                 <% } %>
             </a>
-            <!--<% if (!android) { %>-->
-            <!--<a href="#" class="link">Undo</a>-->
-            <!--<% } %>-->
+            <% if (!android) { %>
+            <a href="#" id="toolbar-undo" class="link icon-only disabled" style="display: none;">
+                <i class="icon icon-undo"></i>
+            </a>
+            <a href="#" id="toolbar-redo" class="link icon-only disabled" style="display: none;">
+                <i class="icon icon-redo"></i>
+            </a>
+            <% } %>
         </div>
         <% if (!phone) { %>
         <div class="center" id="toolbar-title"></div>
         <% } %>
         <div class="right">
-            <!--<% if (android) { %>-->
-            <!--<a href="#" class="link">Undo</a>-->
-            <!--<% } %>-->
-            <a href="#" id="toolbar-edit" class="link" style="display: none;">Edit</a>
-            <a href="#" id="toolbar-add" class="link" style="display: none;">Add</a>
+            <% if (android) { %>
+            <a href="#" id="toolbar-undo" class="link icon-only disabled" style="display: none;">
+                <i class="icon icon-undo"></i>
+            </a>
+            <a href="#" id="toolbar-redo" class="link icon-only disabled" style="display: none;">
+                <i class="icon icon-redo"></i>
+            </a>
+            <% } %>
+            <a href="#" id="toolbar-edit" class="link icon-only" style="display: none;">
+                <i class="icon icon-edit"></i>
+            </a>
+            <a href="#" id="toolbar-add" class="link icon-only" style="display: none;">
+                <i class="icon icon-plus"></i>
+            </a>
             <a href="#" id="toolbar-search" class="link icon-only">
                 <i class="icon icon-search"></i>
             </a>
             <a href="#" id="toolbar-settings" class="link icon-only">
-                <i class="icon icon-bars"></i>
+                <i class="icon icon-burger"></i>
             </a>
         </div>
     </div>

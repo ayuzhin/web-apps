@@ -3,8 +3,8 @@
     <div class="page-content dataview shapes">
         <ul>
             <% _.each(shapes, function(shape) { %>
-            <li data-type="<%= shape.type %>" style="background-color:<%= shape.color %>;">
-                <img src="<%= shape.thumb %>">
+            <li data-type="<%= shape.type %>">
+                <div class="thumb" style="-webkit-mask-image:url('../mobile/resources/img/shapes/<%= shape.thumb %>')"></div>
             </li>
             <% }); %>
         </ul>

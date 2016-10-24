@@ -29,6 +29,7 @@ define([
 
             initialize: function () {
                 Common.NotificationCenter.on('editcontainer:show', _.bind(this.initEvents, this));
+                Common.NotificationCenter.on('editcategory:show',  _.bind(this.categoryShow, this));
             },
 
             initEvents: function () {
@@ -39,8 +40,15 @@ define([
                 $('#shape-replace').single('click', _.bind(me.showReplace, me));
                 $('#shape-reorder').single('click', _.bind(me.showReorder, me));
 
+                $('.edit-shape-style .categories a').single('click', _.bind(me.showStyleCategory, me));
 
                 me.initControls();
+            },
+
+            categoryShow: function(e) {
+                // if ('edit-shape' == $(e.currentTarget).prop('id')) {
+                //     this.initEvents();
+                // }
             },
 
             // Render layout
@@ -84,7 +92,21 @@ define([
                     });
 
                     this.fireEvent('page:show', this);
+
+                    this.initEvents();
                 }
+            },
+
+            showStyleCategory: function (e) {
+                var $target = $(e.currentTarget),
+                    category = $target.data('type');
+
+                $('.edit-shape-style .categories a').removeClass('active');
+                $target.addClass('active');
+
+                $('.edit-shape-style .list-block').hide();
+                $('.edit-shape-style .list-block.' + category).show();
+
             },
 
             showStyle: function () {

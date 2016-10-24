@@ -257,6 +257,10 @@ define([
                     });
                 }
 
+                $('.container-edit .tab').single('show', function (e) {
+                    Common.NotificationCenter.trigger('editcategory:show', e);
+                });
+
                 if (isAndroid) {
                     $$('.view.edit-root-view.navbar-through').removeClass('navbar-through').addClass('navbar-fixed');
                     $$('.view.edit-root-view .navbar').prependTo('.view.edit-root-view > .pages > .page');

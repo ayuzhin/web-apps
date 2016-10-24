@@ -65,7 +65,7 @@ define([
                 var isEdit = (mode === 'edit');
 
                 if (isEdit) {
-                    $('#toolbar-edit, #toolbar-add').show();
+                    $('#toolbar-edit, #toolbar-add, #toolbar-undo, #toolbar-redo').show();
                 }
             },
 

@@ -73,10 +73,11 @@
                             <div class="item-inner">
                                 <div class="item-title">Before</div>
                                 <div class="item-after splitter">
-                                    <label>Auto</label>
+                                    <% if (!android) { %><label>Auto</label><% } %>
                                     <p class="buttons-row">
-                                        <span class="button decrement <%= android ? "button-fill" : "" %>">-</span>
-                                        <span class="button increment <%= android ? "button-fill" : "" %>">+</span>
+                                        <span class="button decrement"><% if (android) { %><i class="icon icon-expand-down"></i><% } else { %>-<% } %></span>
+                                        <% if (android) { %><label>Auto</label><% } %>
+                                        <span class="button increment"><% if (android) { %><i class="icon icon-expand-up"></i><% } else { %>+<% } %></span>
                                     </p>
                                 </div>
                             </div>
@@ -87,10 +88,11 @@
                             <div class="item-inner">
                                 <div class="item-title">After</div>
                                 <div class="item-after splitter">
-                                    <label>Auto</label>
+                                    <% if (!android) { %><label>Auto</label><% } %>
                                     <p class="buttons-row">
-                                        <span class="button decrement <%= android ? "button-fill" : "" %>">-</span>
-                                        <span class="button increment <%= android ? "button-fill" : "" %>">+</span>
+                                        <span class="button decrement"><% if (android) { %><i class="icon icon-expand-down"></i><% } else { %>-<% } %></span>
+                                        <% if (android) { %><label>Auto</label><% } %>
+                                        <span class="button increment"><% if (android) { %><i class="icon icon-expand-up"></i><% } else { %>+<% } %></span>
                                     </p>
                                 </div>
                             </div>

@@ -6,7 +6,7 @@
                 <div class="item-content">
                     <div class="item-inner">
                         <div class="item-title">Fonts</div>
-                        <div class="item-after" style="color: #000;"><span>∅</span><span style="margin-left: 5px;">pt</span></div>
+                        <div class="item-after" style="color: #000;"><span></span><span style="margin-left: 5px;"></span></div>
                     </div>
                 </div></a></li>
             <li><div class="item-content buttons">
@@ -52,18 +52,18 @@
             <li><div id="paragraph-align" class="item-content buttons">
                 <div class="item-inner">
                     <div class="row">
-                        <a id="font-left" class="button">L</a>
-                        <a id="font-center" class="button">C</a>
-                        <a id="font-right" class="button">R</a>
-                        <a id="font-just" class="button">J</a>
+                        <a id="font-left" class="button no-ripple"><i class="icon icon-text-align-left"></i></a>
+                        <a id="font-center" class="button no-ripple"><i class="icon icon-text-align-center"></i></a>
+                        <a id="font-right" class="button no-ripple"><i class="icon icon-text-align-right"></i></a>
+                        <a id="font-just" class="button no-ripple"><i class="icon icon-text-align-jast"></i></a>
                     </div>
                 </div>
             </div></li>
             <li><div class="item-content buttons">
                 <div class="item-inner">
                     <div class="row">
-                        <a id="font-moveleft" class="button">&lt;</a>
-                        <a id="font-moveright" class="button">&gt;</a>
+                        <a id="font-moveleft" class="button no-ripple"><i class="icon icon-de-indent"></i></a>
+                        <a id="font-moveright" class="button no-ripple"><i class="icon icon-in-indent"></i></a>
                     </div>
                 </div>
             </div></li>
@@ -107,11 +107,13 @@
                             <div class="item-inner">
                                 <div class="item-title">Size</div>
                                 <div class="item-after splitter">
-                                    <label>∅</label>pt
+                                    <% if (!android) { %><label></label><% } %>
                                     <p class="buttons-row">
-                                        <span class="button decrement <%= android ? "button-fill" : "" %>">-</span>
-                                        <span class="button increment <%= android ? "button-fill" : "" %>">+</span>
+                                        <span class="button decrement"><% if (android) { %><i class="icon icon-expand-down"></i><% } else { %>-<% } %></span>
+                                        <% if (android) { %><label></label><% } %>
+                                        <span class="button increment"><% if (android) { %><i class="icon icon-expand-up"></i><% } else { %>+<% } %></span>
                                     </p>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -246,10 +248,11 @@
                             <div class="item-inner">
                                 <div class="item-title">Letter Spacing</div>
                                 <div class="item-after splitter">
-                                    <label>Auto</label>
+                                    <% if (!android) { %><label></label><% } %>
                                     <p class="buttons-row">
-                                        <span class="button decrement <%= android ? "button-fill" : "" %>">-</span>
-                                        <span class="button increment <%= android ? "button-fill" : "" %>">+</span>
+                                        <span class="button decrement"><% if (android) { %><i class="icon icon-expand-down"></i><% } else { %>-<% } %></span>
+                                        <% if (android) { %><label></label><% } %>
+                                        <span class="button increment"><% if (android) { %><i class="icon icon-expand-up"></i><% } else { %>+<% } %></span>
                                     </p>
                                 </div>
                             </div>

@@ -75,7 +75,7 @@ define([
             onPageShow: function () {
                 var me = this;
 
-                $('#table-wrap-type input').single('click',             _.bind(me.onWrapType, me));
+                $('#table-wrap-type li').single('click',                _.buffered(me.onWrapType, 100, me));
                 $('#table-move-text input').single('click',             _.bind(me.onWrapMoveText, me));
                 $('#table-distance input').single('change',             _.bind(me.onWrapDistance, me));
                 $('#table-distance input').single('input',              _.bind(me.onWrapDistanceChanging, me));
@@ -153,7 +153,7 @@ define([
 
             onWrapType: function (e) {
                 var me = this,
-                    $target = $(e.currentTarget),
+                    $target = $(e.currentTarget).find('input'),
                     value = $target.val();
 
                 me._uiTransformByWrap(value);
@@ -194,7 +194,7 @@ define([
 
                 $('#table-distance .item-after').text(value + ' ' + _metricText);
 
-                value = Common.Utils.Metric.fnRecalcToMM(value);
+                value = Common.Utils.Metric.fnRecalcToMM(parseInt(value));
 
                 paddings.put_Top(value);
                 paddings.put_Right(value);

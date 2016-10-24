@@ -35,146 +35,122 @@ define([
                 _styles = [
                     {
                         title: 'Text',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-01.svg',
                         type: 'textRect'
                     },
                     {
                         title: 'Line',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-02.svg',
                         type: 'line'
                     },
                     {
                         title: 'Line with arrow',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-03.svg',
                         type: 'lineWithArrow'
                     },
                     {
                         title: 'Line with two arrows',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-04.svg',
                         type: 'lineWithTwoArrows'
                     },
                     {
                         title: 'Rect',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-05.svg',
                         type: 'rect'
                     },
                     {
                         title: 'Hexagon',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-06.svg',
                         type: 'hexagon'
                     },
                     {
                         title: 'Round rect',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-07.svg',
                         type: 'roundRect'
                     },
                     {
                         title: 'Ellipse',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-08.svg',
                         type: 'ellipse'
                     },
                     {
                         title: 'Triangle',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-09.svg',
                         type: 'triangle'
                     },
                     {
                         title: 'Triangle',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-10.svg',
                         type: 'rtTriangle'
                     },
                     {
                         title: 'Trapezoid',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-11.svg',
                         type: 'trapezoid'
                     },
                     {
                         title: 'Diamond',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-12.svg',
                         type: 'diamond'
                     },
                     {
                         title: 'Right arrow',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-13.svg',
                         type: 'rightArrow'
                     },
                     {
                         title: 'Left-right arrow',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-14.svg',
                         type: 'leftRightArrow'
                     },
                     {
                         title: 'Left arrow callout',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-15.svg',
                         type: 'leftArrowCallout'
                     },
                     {
                         title: 'Right arrow callout',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-16.svg',
                         type: 'rightArrowCallout'
                     },
                     {
                         title: 'Flow chart off page connector',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-17.svg',
                         type: 'flowChartOffpageConnector'
                     },
                     {
                         title: 'Heart',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-18.svg',
                         type: 'heart'
                     },
                     {
                         title: 'Math minus',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-19.svg',
                         type: 'mathMinus'
                     },
                     {
                         title: 'Math plus',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-20.svg',
                         type: 'mathPlus'
                     },
                     {
                         title: 'Parallelogram',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-21.svg',
                         type: 'parallelogram'
                     },
                     {
                         title: 'Wedge rect callout',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-22.svg',
                         type: 'wedgeRectCallout'
                     },
                     {
                         title: 'Wedge ellipse callout',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-23.svg',
                         type: 'wedgeEllipseCallout'
                     },
                     {
                         title: 'Cloud callout',
-                        thumb: '',
-                        color: randomColor(),
+                        thumb: 'shape-24.svg',
                         type: 'cloudCallout'
                     }
                 ];

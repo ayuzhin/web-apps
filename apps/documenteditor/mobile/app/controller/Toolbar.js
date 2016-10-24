@@ -23,14 +23,17 @@ define([
         initialize: function() {
             this.addListeners({
                 'Toolbar': {
-                    'searchbar:show'    : this.onSearchbarShow,
-                    'searchbar:render'  : this.onSearchbarRender
+                    'searchbar:show'        : this.onSearchbarShow,
+                    'searchbar:render'      : this.onSearchbarRender
                 }
             });
         },
 
         setApi: function(api) {
             this.api = api;
+
+            this.api.asc_registerCallback('asc_onCanUndo',  _.bind(this.onApiCanRevert, this, 'undo'));
+            this.api.asc_registerCallback('asc_onCanRedo',  _.bind(this.onApiCanRevert, this, 'redo'));
         },
 
         setMode: function (mode) {
@@ -38,7 +41,11 @@ define([
         },
 
         onLaunch: function() {
-            this.createView('Toolbar').render();
+            var me = this;
+            me.createView('Toolbar').render();
+
+            $('#toolbar-undo').single('click', _.bind(me.onUndo, me));
+            $('#toolbar-redo').single('click', _.bind(me.onRedo, me));
         },
 
         setDocumentTitle: function (title) {
@@ -110,6 +117,28 @@ define([
                         }
                     );
                 }
+            }
+        },
+
+        // Handlers
+
+        onUndo: function (e) {
+            if (this.api)
+                this.api.Undo();
+        },
+
+        onRedo: function (e) {
+            if (this.api)
+                this.api.Redo();
+        },
+
+        // API handlers
+
+        onApiCanRevert: function(which, can) {
+            if (which == 'undo') {
+                $('#toolbar-undo').toggleClass('disabled', !can);
+            } else {
+                $('#toolbar-redo').toggleClass('disabled', !can);
             }
         },
 
