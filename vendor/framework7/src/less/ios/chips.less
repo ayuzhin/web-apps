@@ -1,14 +1,15 @@
 /* === Chips === */
+@chipSize: 25px;
 .chip {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: normal;
-    color: rgba(0,0,0,0.87);
-    background: rgba(0,0,0,0.12);
+    color: #000;
+    background: rgba(0,0,0,0.1);
     display: inline-block;
-    height: 32px;
-    line-height: 32px;
+    height: @chipSize;
+    line-height: @chipSize;
     border-radius: 16px;
-    padding: 0 12px;
+    padding: 0 10px;
     box-sizing: border-box;
     vertical-align: middle;
     .flexbox-inline();
@@ -16,16 +17,16 @@
     margin: 2px 0;
 }
 .chip-media {
-    width: 32px;
-    height: 32px;
-    margin-left: -12px;
+    width: @chipSize - 4px;
+    height: @chipSize - 4px;
+    margin-left: -8px;
     vertical-align: top;
     border-radius: 50%;
     text-align: center;
-    line-height: 32px;
+    line-height: @chipSize - 4px;
     color: #fff;
+    font-size: 14px;
     .flex-shrink(0);
-    font-size: 16px;
     .flexbox();
     .align-items(center);
     .justify-content(center);
@@ -38,7 +39,7 @@
         display: block;
     }
     + .chip-label {
-        margin-left: 8px;
+        margin-left: 4px;
     }
 }
 .chip-label {
@@ -54,17 +55,18 @@
 }
 .chip-delete {
     margin-right: -8px;
-    width: 24px;
-    height: 24px;
+    width: @chipSize - 2px;
+    height: @chipSize - 2px;
     text-align: center;
-    line-height: 24px;
+    line-height: @chipSize - 2px;
     cursor: pointer;
     .flex-shrink(0);
-    .encoded-svg-background("<svg fill='#000' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    .encoded-svg-background("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'><circle cx='14' cy='14' r='14' fill='#8e8e93'/><line stroke='#000' stroke-width='2' stroke-miterlimit='10' x1='8' y1='8' x2='20' y2='20'/><line fill='none' stroke='#000' stroke-width='2' stroke-miterlimit='10' x1='20' y1='8' x2='8' y2='20'/></svg>");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 20px 20px;
-    opacity: 0.54;
+    -webkit-background-size: 13px 13px;
+    background-size: 13px 13px;
+    opacity: 0.7;
     html:not(.watch-active-state) &:active, &.active-state {
         opacity: 1;
     }
