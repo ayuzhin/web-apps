@@ -141,7 +141,7 @@
     </div>
     <div class="page shape-wrap">
         <div class="page-content">
-            <div class="list-block">
+            <div class="list-block shape-wrap-types">
                 <ul>
                     <li>
                         <label class="label-radio item-content">

@@ -87,14 +87,14 @@ define([
             onPageShow: function () {
                 var me = this;
 
-                $('.shape-reorder a').single('click',               _.bind(me.onReorder, me));
-                $('.shape-replace li').single('click',              _.buffered(me.onReplace, 100, me));
-                $('.shape-wrap li').single('click',                 _.buffered(me.onWrapType, 100, me));
-                $('.shape-wrap .align a').single('click',           _.bind(me.onAlign, me));
-                $('#edit-shape-movetext input').single('click',     _.bind(me.onMoveText, me));
-                $('#edit-shape-overlap input').single('click',      _.bind(me.onOverlap, me));
-                $('.shape-wrap .distance input').single('change',   _.bind(me.onWrapDistance, me));
-                $('.shape-wrap .distance input').single('input',    _.bind(me.onWrapDistanceChanging, me));
+                $('.shape-reorder a').single('click',                   _.bind(me.onReorder, me));
+                $('.shape-replace li').single('click',                  _.buffered(me.onReplace, 100, me));
+                $('.shape-wrap .shape-wrap-types li').single('click',   _.buffered(me.onWrapType, 100, me));
+                $('.shape-wrap .align a').single('click',               _.bind(me.onAlign, me));
+                $('#edit-shape-movetext input').single('click',         _.bind(me.onMoveText, me));
+                $('#edit-shape-overlap input').single('click',          _.bind(me.onOverlap, me));
+                $('.shape-wrap .distance input').single('change',       _.bind(me.onWrapDistance, me));
+                $('.shape-wrap .distance input').single('input',        _.bind(me.onWrapDistanceChanging, me));
 
                 me.initSettings();
             },
