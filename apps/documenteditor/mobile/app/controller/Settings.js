@@ -119,9 +119,10 @@ define([
 
             onPageShow: function(view) {
                 var me = this;
-                $('#settings-readermode input:checkbox').single('change', _.bind(me._onReaderMode, me));
-                $('#settings-edit-document').single('click',    _.bind(me._onEditDocumet, me));
-                $(modalView).find('.formats a').single('click', _.bind(me._onSaveFormat, me));
+                $('#settings-search').single('click',                       _.bind(me._onSearch, me));
+                $('#settings-readermode input:checkbox').single('change',   _.bind(me._onReaderMode, me));
+                $('#settings-edit-document').single('click',                _.bind(me._onEditDocumet, me));
+                $(modalView).find('.formats a').single('click',             _.bind(me._onSaveFormat, me));
             },
 
 
@@ -181,6 +182,16 @@ define([
 
             _onEditDocumet: function() {
                 Common.Gateway.requestEditRights();
+            },
+
+            _onSearch: function (e) {
+                var toolbarView = DE.getController('Toolbar').getView('Toolbar');
+
+                if (toolbarView) {
+                    toolbarView.showSearch();
+                }
+
+                this.hideModal();
             },
 
             _onReaderMode: function (e) {

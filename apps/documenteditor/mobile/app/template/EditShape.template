@@ -58,7 +58,7 @@
             <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
         </div>
     </div>
-    <div class="page">
+    <div class="page shape-reorder">
         <div class="page-content">
             <div class="list-block">
                 <ul>
@@ -117,7 +117,7 @@
             <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
         </div>
     </div>
-    <div class="page">
+    <div class="page shape-replace">
         <div class="page-content dataview shapes">
             <ul>
                 <% _.each(shapes, function(shape) { %>
@@ -139,7 +139,7 @@
             <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
         </div>
     </div>
-    <div class="page">
+    <div class="page shape-wrap">
         <div class="page-content">
             <div class="list-block">
                 <ul>
@@ -246,9 +246,9 @@
                         <div class="item-content buttons">
                             <div class="item-inner">
                                 <div class="row">
-                                    <a data-type="left" class="button">L</a>
-                                    <a data-type="center" class="button">C</a>
-                                    <a data-type="right" class="button">R</a>
+                                    <a data-type="left" class="button no-ripple"><i class="icon icon-text-align-left"></i></a>
+                                    <a data-type="center" class="button no-ripple"><i class="icon icon-text-align-center"></i></a>
+                                    <a data-type="right" class="button no-ripple"><i class="icon icon-text-align-right"></i></a>
                                 </div>
                             </div>
                         </div>

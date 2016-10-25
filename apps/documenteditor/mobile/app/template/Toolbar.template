@@ -3,7 +3,7 @@
         <div class="left">
             <a id="document-back" href="#" class="link" style="display: none;">
                 <i class="icon icon-back"></i>
-                <% if (backTitle) { %>
+                <% if (backTitle && !phone) { %>
                 <span class="subtitle"><%= backTitle %></span>
                 <% } %>
             </a>

@@ -1,5 +1,6 @@
 html,
-body {
+body,
+.framework7-root {
   position: relative;
   height: 100%;
   width: 100%;
@@ -17,15 +18,20 @@ body {
   background: #fff;
   overflow: hidden;
 }
+.framework7-root {
+  overflow: hidden;
+}
 @media all and (width: 1024px) and (height: 691px) and (orientation: landscape) {
   html,
-  body {
+  body,
+  .framework7-root {
     height: 671px;
   }
 }
 @media all and (width: 1024px) and (height: 692px) and (orientation: landscape) {
   html,
-  body {
+  body,
+  .framework7-root {
     height: 672px;
   }
 }
@@ -1478,6 +1484,35 @@ html.pixel-ratio-3 .toolbar:before {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.subnavbar input[type="text"],
+.navbar input[type="text"],
+.subnavbar input[type="password"],
+.navbar input[type="password"],
+.subnavbar input[type="search"],
+.navbar input[type="search"],
+.subnavbar input[type="email"],
+.navbar input[type="email"],
+.subnavbar input[type="tel"],
+.navbar input[type="tel"],
+.subnavbar input[type="url"],
+.navbar input[type="url"] {
+  box-sizing: border-box;
+  width: 100%;
+  height: 28px;
+  display: block;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  border-radius: 5px;
+  font-family: inherit;
+  color: #000;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 0 8px;
+  background-color: #fff;
+}
 @media all and (min-width: 768px) {
   .tabbar .toolbar-inner {
     -webkit-box-pack: center;
@@ -1791,7 +1826,7 @@ html.pixel-ratio-3 .searchbar:after {
 .searchbar input[type="search"] {
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
+  height: 28px;
   display: block;
   border: none;
   -webkit-appearance: none;
@@ -1803,8 +1838,10 @@ html.pixel-ratio-3 .searchbar:after {
   color: #000;
   font-size: 14px;
   font-weight: normal;
-  padding: 0 28px;
+  padding: 0 8px;
   background-color: #fff;
+  padding: 0 28px;
+  height: 100%;
   background-repeat: no-repeat;
   background-position: 8px center;
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2013'%20enable-background%3D'new%200%200%2013%2013'%3E%3Cg%3E%3Cpath%20fill%3D'%23939398'%20d%3D'M5%2C1c2.2%2C0%2C4%2C1.8%2C4%2C4S7.2%2C9%2C5%2C9S1%2C7.2%2C1%2C5S2.8%2C1%2C5%2C1%20M5%2C0C2.2%2C0%2C0%2C2.2%2C0%2C5s2.2%2C5%2C5%2C5s5-2.2%2C5-5S7.8%2C0%2C5%2C0%20L5%2C0z'%2F%3E%3C%2Fg%3E%3Cline%20stroke%3D'%23939398'%20stroke-miterlimit%3D'10'%20x1%3D'12.6'%20y1%3D'12.6'%20x2%3D'8.2'%20y2%3D'8.2'%2F%3E%3C%2Fsvg%3E");
@@ -2137,6 +2174,16 @@ i.icon.icon-plus {
   padding: 0 15px;
   color: #6d6d72;
   box-sizing: border-box;
+}
+.content-block.no-hairlines:before,
+.content-block.no-hairlines ul:before,
+.content-block.no-hairlines .content-block-inner:before {
+  display: none;
+}
+.content-block.no-hairlines:after,
+.content-block.no-hairlines ul:after,
+.content-block.no-hairlines .content-block-inner:after {
+  display: none;
 }
 .content-block-title {
   position: relative;
@@ -2884,6 +2931,23 @@ html.pixel-ratio-3 .list-block li li:last-child .item-inner:after,
 html.pixel-ratio-3 .list-block li:last-child li .item-inner:after {
   -webkit-transform: scaleY(0.33);
   transform: scaleY(0.33);
+}
+.list-block.no-hairlines:before,
+.list-block.no-hairlines ul:before,
+.list-block.no-hairlines .content-block-inner:before {
+  display: none;
+}
+.list-block.no-hairlines:after,
+.list-block.no-hairlines ul:after,
+.list-block.no-hairlines .content-block-inner:after {
+  display: none;
+}
+.list-block.no-hairlines-between .item-inner:after,
+.list-block.no-hairlines-between .list-button:after,
+.list-block.no-hairlines-between .item-divider:after,
+.list-block.no-hairlines-between .list-group-title:after,
+.list-block.no-hairlines-between .list-group-title:after {
+  display: none;
 }
 /* === Contacts === */
 .contacts-content {
@@ -3825,6 +3889,9 @@ html.pixel-ratio-3 .modal-buttons-vertical .modal-button:after {
   width: 100%;
   -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
+  max-height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 @media (min-width: 496px) {
   .actions-modal {
@@ -4633,6 +4700,17 @@ html.ios-gt-8 .messages-date {
 .message-hide-avatar .message-avatar {
   opacity: 0;
 }
+.message-date {
+  font-size: 12px;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+.message-pic img + .message-date {
+  margin-top: 8px;
+}
+.message-sent .message-date {
+  text-align: right;
+}
 .message-sent {
   -ms-flex-item-align: end;
   -webkit-align-self: flex-end;
@@ -4811,9 +4889,6 @@ html.with-statusbar-overlay body .panel {
   -webkit-animation: preloader-spin 1s steps(12, end) infinite;
   animation: preloader-spin 1s steps(12, end) infinite;
 }
-.preloader-white {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%23fff'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
 @-webkit-keyframes preloader-spin {
   100% {
     -webkit-transform: rotate(360deg);
@@ -4869,7 +4944,8 @@ html.with-statusbar-overlay body .panel {
   -webkit-animation: progressbar-infinite 1s linear infinite;
   animation: progressbar-infinite 1s linear infinite;
 }
-html.with-statusbar-overlay body > .progressbar-infinite {
+html.with-statusbar-overlay body > .progressbar-infinite,
+html.with-statusbar-overlay .framework7-root > .progressbar-infinite {
   top: 20px;
 }
 .progressbar-infinite.color-multi {
@@ -4891,7 +4967,8 @@ html.with-statusbar-overlay body > .progressbar-infinite {
   -webkit-animation: progressbar-infinite-multicolor 3s linear infinite;
   animation: progressbar-infinite-multicolor 3s linear infinite;
 }
-html.with-statusbar-overlay body > .progressbar-infinite.color-multi {
+html.with-statusbar-overlay body > .progressbar-infinite.color-multi,
+html.with-statusbar-overlay .framework7-root > .progressbar-infinite.color-multi {
   top: 20px;
 }
 body > .progressbar,
@@ -4900,12 +4977,14 @@ body > .progressbar,
 .page > .progressbar,
 .panel > .progressbar,
 .popup > .progressbar,
+.framework7-root > .progressbar,
 body > .progressbar-infinite,
 .view > .progressbar-infinite,
 .views > .progressbar-infinite,
 .page > .progressbar-infinite,
 .panel > .progressbar-infinite,
-.popup > .progressbar-infinite {
+.popup > .progressbar-infinite,
+.framework7-root > .progressbar-infinite {
   position: absolute;
   left: 0;
   top: 0;
@@ -4997,7 +5076,8 @@ html.with-statusbar-overlay body > .progressbar {
 }
 /* === Swiper === */
 .swiper-container {
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
   overflow: hidden;
   /* Fix of Webkit flickering */
@@ -5419,6 +5499,33 @@ button.swiper-pagination-bullet {
 .swiper-container-fade .swiper-slide-active .swiper-slide-active {
   pointer-events: auto;
 }
+.swiper-zoom-container {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  text-align: center;
+}
+.swiper-zoom-container > img,
+.swiper-zoom-container > svg,
+.swiper-zoom-container > canvas {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
 /* Scrollbar */
 .swiper-scrollbar {
   border-radius: 10px;
@@ -5817,6 +5924,10 @@ html.ios-gt-8 .notifications .item-subtitle {
 }
 #editor-navbar.navbar .right a + a,
 #editor-navbar.navbar .left a + a {
+  margin-left: 0;
+}
+html:not(.phone) #editor-navbar.navbar .right a + a,
+html:not(.phone) #editor-navbar.navbar .left a + a {
   margin-left: 10px;
 }
 .searchbar.document .buttons-row {

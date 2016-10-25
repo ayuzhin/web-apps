@@ -57,10 +57,13 @@ define([
             // When our application is ready, lets get started
             onLaunch: function() {
                 // Device detection
-                console.debug('Layout profile:', isPhone() ? 'Phone' : 'Tablet');
+                var phone = isPhone();
+                console.debug('Layout profile:', phone ? 'Phone' : 'Tablet');
 
                 Common.SharedSettings.set('android', Framework7.prototype.device.android);
-                Common.SharedSettings.set('phone', isPhone());
+                Common.SharedSettings.set('phone', phone);
+
+                $('html').addClass(phone ? 'phone' : 'tablet');
 
                 // Create and render main view
                 this.editorView = this.createView('Editor').render();

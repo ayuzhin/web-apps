@@ -14,6 +14,7 @@
 @import url('../../../../../vendor/framework7/src/less/ios/messagebar.less');
 @import url('../../../../../vendor/framework7/src/less/ios/icons.less');
 //@import url('../../../../../vendor/framework7/src/less/ios/badges.less');
+//@import url('../../../../../vendor/framework7/src/less/ios/chips.less');
 @import url('../../../../../vendor/framework7/src/less/ios/content-block.less');
 @import url('../../../../../vendor/framework7/src/less/ios/lists.less');
 @import url('../../../../../vendor/framework7/src/less/ios/contacts.less');
@@ -29,6 +30,7 @@
 @import url('../../../../../vendor/framework7/src/less/ios/preloader.less');
 @import url('../../../../../vendor/framework7/src/less/ios/progressbar.less');
 //@import url('../../../../../vendor/framework7/src/less/ios/pull-to-refresh.less');
+//@import url('../../../../../vendor/framework7/src/less/ios/infinite-scroll.less');
 //@import url('../../../../../vendor/framework7/src/less/ios/autocomplete.less');
 @import url('../../../../../vendor/framework7/src/less/ios/swiper.less');
 //@import url('../../../../../vendor/framework7/src/less/ios/photo-browser.less');
@@ -41,7 +43,11 @@
 // Main Toolbar
 #editor-navbar.navbar .right a + a,
 #editor-navbar.navbar .left a + a {
-  margin-left: 10px;
+  margin-left: 0;
+
+  html:not(.phone) & {
+    margin-left: 10px;
+  }
 }
 
 // Search
