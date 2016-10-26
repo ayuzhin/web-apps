@@ -48,6 +48,28 @@ define([
             }
         })();
 
+        var borderSizeTransform = (function() {
+            var _sizes = [0, 0.5, 1, 1.5, 2.25, 3, 4.5, 6];
+
+            return {
+                sizeByIndex: function (index) {
+                    if (index < 1) return _sizes[0];
+                    if (index > _sizes.length - 1) return _sizes[_sizes.length - 1];
+                    return _sizes[index];
+                },
+
+                sizeByValue: function (value) {
+                    var index = 0;
+                    _.each(_sizes, function (size, idx) {
+                        if (Math.abs(size - value) < 0.25) {
+                            index = idx;
+                        }
+                    });
+                    return _sizes[index];
+                }
+            }
+        })();
+
         return {
             models: [],
             collections: [],
@@ -87,15 +109,19 @@ define([
             onPageShow: function () {
                 var me = this;
 
-                $('.shape-reorder a').single('click',                   _.bind(me.onReorder, me));
-                $('.shape-replace li').single('click',                  _.buffered(me.onReplace, 100, me));
-                $('.shape-wrap .shape-wrap-types li').single('click',   _.buffered(me.onWrapType, 100, me));
-                $('.shape-wrap .align a').single('click',               _.bind(me.onAlign, me));
-                $('#edit-shape-movetext input').single('click',         _.bind(me.onMoveText, me));
-                $('#edit-shape-overlap input').single('click',          _.bind(me.onOverlap, me));
-                $('.shape-wrap .distance input').single('change',       _.bind(me.onWrapDistance, me));
-                $('.shape-wrap .distance input').single('input',        _.bind(me.onWrapDistanceChanging, me));
+                $('.shape-reorder a').single('click',                           _.bind(me.onReorder, me));
+                $('.shape-replace li').single('click',                          _.buffered(me.onReplace, 100, me));
+                $('.shape-wrap .shape-wrap-types li').single('click',           _.buffered(me.onWrapType, 100, me));
+                $('.shape-wrap .align a').single('click',                       _.bind(me.onAlign, me));
+                $('#edit-shape-movetext input').single('click',                 _.bind(me.onMoveText, me));
+                $('#edit-shape-overlap input').single('click',                  _.bind(me.onOverlap, me));
+                $('.shape-wrap .distance input').single('change touchend',      _.buffered(me.onWrapDistance, 100, me));
+                $('.shape-wrap .distance input').single('input',                _.bind(me.onWrapDistanceChanging, me));
 
+                $('.edit-shape-style .border input').single('change touchend',  _.buffered(me.onBorderSize, 100, me));
+                $('.edit-shape-style .border input').single('input',            _.bind(me.onBorderSizeChanging, me));
+                $('#edit-shape-effect input').single('change touchend',         _.buffered(me.onOpacity, 100, me));
+                $('#edit-shape-effect input').single('input',                   _.bind(me.onOpacityChanging, me));
                 me.initSettings();
             },
 
@@ -109,6 +135,20 @@ define([
                         _shapeObject = object.get_ObjectValue();
 
                         var shapeProperties = _shapeObject.get_ShapeProperties();
+
+                        //************ Style ************
+
+                        // style border size
+                        var borderSize = borderSizeTransform.sizeByValue(shapeProperties.get_stroke().get_width());
+                        $('.edit-shape-style .border input').val([borderSizeTransform.sizeByIndex(shapeProperties.get_stroke().get_width())]);
+                        $('.edit-shape-style .border .item-after').text(borderSize + ' ' + _metricText);
+
+                        // style opacity
+                        $('#edit-shape-effect input').val([shapeProperties.get_fill().transparent ? shapeProperties.get_fill().transparent / 2.55 : 100]);
+                        $('#edit-shape-effect .item-after').text($('#edit-shape-effect input').val() + ' ' + "%");
+
+
+                        //************ Wrap ************
 
                         // Wrap type
                         var wrapping = _shapeObject.get_WrappingStyle(),
@@ -266,6 +306,55 @@ define([
             onWrapDistanceChanging: function (e) {
                 var $target = $(e.currentTarget);
                 $('.shape-wrap .distance .item-after').text($target.val() + ' ' + _metricText);
+            },
+
+            onBorderSize: function (e) {
+                var me = this,
+                    $target = $(e.currentTarget),
+                    value = $target.val(),
+                    properties = new Asc.asc_CImgProperty(),
+                    shape = new Asc.asc_CShapeProperty(),
+                    stroke = new Asc.asc_CStroke();
+
+                value = borderSizeTransform.sizeByIndex(parseInt(value));
+
+                if (value < 0.01) {
+                    stroke.put_type(Asc.c_oAscStrokeType.STROKE_NONE);
+                } else {
+                    stroke.put_type(Asc.c_oAscStrokeType.STROKE_COLOR);
+                    stroke.put_color(Common.Utils.ThemeColor.getRgbColor('000000')); // DEBUG\
+                    stroke.put_width(value * 25.4 / 72.0);
+                }
+
+                shape.put_stroke(stroke);
+                properties.put_ShapeProperties(shape);
+
+                me.api.ImgApply(properties);
+            },
+
+            onBorderSizeChanging: function (e) {
+                var $target = $(e.currentTarget);
+                $('.edit-shape-style .border .item-after').text(borderSizeTransform.sizeByIndex($target.val()) + ' ' + _metricText);
+            },
+
+            onOpacity: function (e) {
+                var me = this,
+                    $target = $(e.currentTarget),
+                    value = $target.val(),
+                    properties = new Asc.asc_CImgProperty(),
+                    fill = new Asc.asc_CShapeFill(),
+                    shape = new Asc.asc_CShapeProperty();
+
+                fill.put_transparent(parseInt(value * 2.55));
+                shape.put_fill(fill);
+                properties.put_ShapeProperties(shape);
+
+                me.api.ImgApply(properties);
+            },
+
+            onOpacityChanging: function (e) {
+                var $target = $(e.currentTarget);
+                $('#edit-shape-effect .item-after').text($target.val() + ' %');
             },
 
             // API handlers

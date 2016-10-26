@@ -77,7 +77,7 @@ define([
 
                 $('#table-wrap-type li').single('click',                _.buffered(me.onWrapType, 100, me));
                 $('#table-move-text input').single('click',             _.bind(me.onWrapMoveText, me));
-                $('#table-distance input').single('change',             _.bind(me.onWrapDistance, me));
+                $('#table-distance input').single('change touchend',    _.buffered(me.onWrapDistance, 100, me));
                 $('#table-distance input').single('input',              _.bind(me.onWrapDistanceChanging, me));
                 $('#table-align-left').single('click',                  _.bind(me.onWrapAlign, me, c_tableAlign.TABLE_ALIGN_LEFT));
                 $('#table-align-center').single('click',                _.bind(me.onWrapAlign, me, c_tableAlign.TABLE_ALIGN_CENTER));
@@ -85,7 +85,7 @@ define([
 
                 $('#table-option-repeatasheader input').single('click', _.bind(me.onOptionRepeat, me));
                 $('#table-option-resizetofit input').single('click',    _.bind(me.onOptionResize, me));
-                $('#table-options-margins input').single('change',      _.bind(me.onOptionMargin, me));
+                $('#table-options-margins input').single('change touchend',      _.buffered(me.onOptionMargin, 100, me));
                 $('#table-options-margins input').single('input',       _.bind(me.onOptionMarginChanging, me));
 
                 me.initSettings();

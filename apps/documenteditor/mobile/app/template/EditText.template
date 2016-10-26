@@ -22,6 +22,7 @@
             <li>
                 <a id="font-color" class="item-link">
                     <div class="item-content">
+                        <% if (!android) { %><div class="item-media"><i class="icon icon-text-color"></i></div><% } %>
                         <div class="item-inner">
                             <div class="item-title">Font color</div>
                         </div>
@@ -30,6 +31,7 @@
             </li>
             <li><a id="font-background" class="item-link">
                 <div class="item-content">
+                    <% if (!android) { %><div class="item-media"><i class="icon icon-text-selection"></i></div><% } %>
                     <div class="item-inner">
                         <div class="item-title">Highlight color</div>
                     </div>
@@ -39,6 +41,7 @@
             <li>
                 <a id="font-additional" class="item-link">
                     <div class="item-content">
+                        <% if (!android) { %><div class="item-media"><i class="icon icon-text-additional"></i></div><% } %>
                         <div class="item-inner">
                             <div class="item-title">Additional formatting</div>
                         </div>
@@ -67,20 +70,23 @@
                     </div>
                 </div>
             </div></li>
-            <li><a id="font-markers" class="item-link">
+            <li><a id="font-bullets" class="item-link">
                 <div class="item-content">
+                    <% if (!android) { %><div class="item-media"><i class="icon icon-bullets"></i></div><% } %>
                     <div class="item-inner">
                         <div class="item-title">Bullets</div>
                     </div>
                 </div></a></li>
             <li><a id="font-numbers" class="item-link">
                 <div class="item-content">
+                    <% if (!android) { %><div class="item-media"><i class="icon icon-numbers"></i></div><% } %>
                     <div class="item-inner">
                         <div class="item-title">Numbers</div>
                     </div>
                 </div></a></li>
             <li><a id="font-line-spacing" class="item-link">
                 <div class="item-content">
+                    <% if (!android) { %><div class="item-media"><i class="icon icon-linespacing"></i></div><% } %>
                     <div class="item-inner">
                         <div class="item-title">Line Spacing</div>
                     </div>
@@ -331,6 +337,62 @@
                             </div>
                         </label>
                     </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bullets view -->
+<div id="edit-text-bullets">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></a></div>
+            <div class="center sliding">Bullets</div>
+            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+        </div>
+    </div>
+    <div class="page" id="page-text-bullets">
+        <div class="page-content dataview bullets">
+            <div class="list-block">
+                <ul>
+                    <% _.each(bullets, function(bullet) { %>
+                    <li data-type="<%= bullet.type %>">
+                        <% if (bullet.thumb.length < 1) { %>
+                        <div class="thumb"><label>None</label></div>
+                        <% } else { %>
+                        <div class="thumb" style="background-image:url('../mobile/resources/img/bullets/<%= bullet.thumb %>')"></div>
+                        <% } %>
+                    </li>
+                    <% }); %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Numbers view -->
+<div id="edit-text-numbers">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></a></div>
+            <div class="center sliding">Numbers</div>
+            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+        </div>
+    </div>
+    <div class="page" id="page-text-numbers">
+        <div class="page-content dataview numbers">
+            <div class="list-block">
+                <ul>
+                    <% _.each(numbers, function(number) { %>
+                    <li data-type="<%= number.type %>">
+                        <% if (number.thumb.length < 1) { %>
+                        <div class="thumb"><label>None</label></div>
+                        <% } else { %>
+                        <div class="thumb" style="background-image:url('../mobile/resources/img/numbers/<%= number.thumb %>')"></div>
+                        <% } %>
+                    </li>
+                    <% }); %>
                 </ul>
             </div>
         </div>

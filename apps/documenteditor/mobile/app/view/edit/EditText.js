@@ -20,14 +20,34 @@ define([
         var _fontsList,
             _editTextController;
 
+        var _bullets = [
+            {type: -1, thumb: ''},
+            {type: 1, thumb: 'bullet-01.png'},
+            {type: 2, thumb: 'bullet-02.png'},
+            {type: 3, thumb: 'bullet-03.png'},
+            {type: 4, thumb: 'bullet-04.png'},
+            {type: 5, thumb: 'bullet-05.png'},
+            {type: 6, thumb: 'bullet-06.png'},
+            {type: 7, thumb: 'bullet-07.png'}
+        ];
+
+        var _numbers = [
+            {type: -1, thumb: ''},
+            {type: 4, thumb: 'number-01.png'},
+            {type: 5, thumb: 'number-02.png'},
+            {type: 6, thumb: 'number-03.png'},
+            {type: 1, thumb: 'number-04.png'},
+            {type: 2, thumb: 'number-05.png'},
+            {type: 3, thumb: 'number-06.png'},
+            {type: 7, thumb: 'number-07.png'}
+        ];
+
         return {
             // el: '.view-main',
 
             template: _.template(editTemplate),
 
             events: {
-                // "click #font-fonts" : "showPage",
-                // "click #font-color" : "showPage"
             },
 
             initialize: function () {
@@ -43,6 +63,8 @@ define([
                 $('#font-background').single('click',   _.bind(me.showBackgroundColor, me));
                 $('#font-additional').single('click',   _.bind(me.showAdditional, me));
                 $('#font-line-spacing').single('click', _.bind(me.showLineSpacing, me));
+                $('#font-bullets').single('click',      _.bind(me.showBullets, me));
+                $('#font-numbers').single('click',      _.bind(me.showNumbers, me));
 
                 me.initControls();
             },
@@ -51,7 +73,9 @@ define([
             render: function () {
                 this.layout = $('<div/>').append(this.template({
                     android : Common.SharedSettings.get('android'),
-                    phone   : Common.SharedSettings.get('phone')
+                    phone   : Common.SharedSettings.get('phone'),
+                    bullets : _bullets,
+                    numbers : _numbers
                 }));
 
                 return this;
@@ -136,6 +160,14 @@ define([
 
             showLineSpacing: function () {
                 this.showPage('#edit-text-linespacing');
+            },
+
+            showBullets: function () {
+                this.showPage('#edit-text-bullets');
+            },
+
+            showNumbers: function () {
+                this.showPage('#edit-text-numbers');
             }
 
         }

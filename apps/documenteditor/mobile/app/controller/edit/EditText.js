@@ -18,7 +18,6 @@ define([
             _stack = [],
             _fontInfo = {};
 
-
         function onApiLoadFonts(fonts, select) {
             _.each(fonts, function(font){
                 var fontId = font.asc_getFontId();
@@ -30,8 +29,6 @@ define([
                     type        : font.asc_getFontType()
                 });
             });
-
-            console.log('onApiLoadFonts');
 
             Common.NotificationCenter.trigger('fonts:load', _fontsArray, select);
         }
@@ -69,7 +66,7 @@ define([
                 me.api.asc_registerCallback('asc_onVerticalAlign',      _.bind(me.onApiVerticalAlign, me));
                 // this.api.asc_registerCallback('asc_onCanUndo',              _.bind(this.onApiCanRevert, this, 'undo'));
                 // this.api.asc_registerCallback('asc_onCanRedo',              _.bind(this.onApiCanRevert, this, 'redo'));
-                // this.api.asc_registerCallback('asc_onListType',             _.bind(this.onApiBullets, this));
+                me.api.asc_registerCallback('asc_onListType',           _.bind(me.onApiBullets, me));
                 me.api.asc_registerCallback('asc_onPrAlign',            _.bind(me.onApiParagraphAlign, me));
                 // this.api.asc_registerCallback('asc_onTextColor',            _.bind(this.onApiTextColor, this));
                 me.api.asc_registerCallback('asc_onParaSpacingLine',    _.bind(me.onApiLineSpacing, me));
@@ -121,6 +118,9 @@ define([
                 $('#page-text-linespacing li').single('click',  _.buffered(me.onLineSpacing, 100, me));
                 $('#font-size .button').single('click',         _.bind(me.onFontSize, me));
                 $('#letter-spacing .button').single('click',    _.bind(me.onLetterSpacing, me));
+
+                $('.dataview.bullets li').single('click',       _.buffered(me.onBullet, 100, me));
+                $('.dataview.numbers li').single('click',       _.buffered(me.onNumber, 100, me));
 
                 me.initSettings();
             },
@@ -347,6 +347,26 @@ define([
                 this.api.paraApply(properties);
             },
 
+            onBullet: function (e) {
+                var $bullet = $(e.currentTarget),
+                    type = $bullet.data('type');
+
+                $('.dataview.bullets li').removeClass('active');
+                $bullet.addClass('active');
+
+                this.api.put_ListType(0, parseInt(type));
+            },
+
+            onNumber: function (e) {
+                var $number = $(e.currentTarget),
+                    type = $number.data('type');
+
+                $('.dataview.numbers li').removeClass('active');
+                $number.addClass('active');
+
+                this.api.put_ListType(1, parseInt(type));
+            },
+
             // API handlers
 
             onApiFocusObject: function (objects) {
@@ -384,6 +404,20 @@ define([
 
             onApiStrikeout: function(on) {
                 $('#font-strikethrough').toggleClass('active', on);
+            },
+
+            onApiBullets: function(data) {
+                var type    = data.get_ListType(),
+                    subtype = data.get_ListSubType();
+
+                switch (type) {
+                    case 0:
+                        $('.dataview.bullets li[data-type=' + subtype + ']').addClass('active');
+                        break;
+                    case 1:
+                        $('.dataview.numbers li[data-type=' + subtype + ']').addClass('active');
+                        break;
+                }
             },
 
             onApiParagraphAlign: function(align) {
