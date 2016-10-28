@@ -102,14 +102,21 @@ define([
                                 '<input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>' +
                             '</div>' +
                             '<p class="buttons-row">' +
-                                '<a href="#" class="button prev button-round disabled">&lt;</a>' +
-                                '<a href="#" class="button next button-round disabled">&gt;</a>' +
+                                '<a href="#" class="link icon-only prev disabled"><i class="icon icon-prev"></i></a>' +
+                                '<a href="#" class="link icon-only next disabled"><i class="icon icon-next"></i></a>' +
                             '</p>' +
                         '</form>', {}
                     ));
                     me.fireEvent('searchbar:render', me);
 
                     searchBar = $$('.searchbar.document');
+
+                    if (Common.SharedSettings.get('android')) {
+                        searchBar.find('.buttons-row').css('margin-left', '10px');
+                        searchBar.find('.buttons-row a').css('min-width', '0px');
+                    } else {
+                        searchBar.find('.buttons-row .next').css('margin-left', '10px');
+                    }
 
                     _.defer(function() {
                         uiApp.showNavbar(searchBar);
