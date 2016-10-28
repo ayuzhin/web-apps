@@ -36,8 +36,6 @@ define([
             initialize: function() {
                 var me = this;
 
-                Common.Gateway.on('init', _.bind(me.loadConfig, me));
-
                 Common.NotificationCenter.on('readermode:change', function (reader) {
                     if (reader) {
                         me.hideSearch();
@@ -66,19 +64,6 @@ define([
 
                 if (isEdit) {
                     $('#toolbar-edit, #toolbar-add, #toolbar-undo, #toolbar-redo').show();
-                }
-            },
-
-            loadConfig: function(data) {
-                if (data && data.config && data.config.canBackToFolder !== false &&
-                    data.config.customization && data.config.customization.goback && data.config.customization.goback.url) {
-                    var me = this;
-
-                    $('#document-back')
-                        .show()
-                        .on('click', _.bind(function () {
-                            window.parent.location.href = data.config.customization.goback.url;
-                        }, me));
                 }
             },
 
