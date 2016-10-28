@@ -34,6 +34,7 @@ define([
                 var me = this;
 
                 $('#table-wrap').single('click',        _.bind(me.showTableWrap, me));
+                $('#table-style').single('click',       _.bind(me.showTableStyle, me));
                 $('#table-options').single('click',     _.bind(me.showTableOptions, me));
 
                 me.initControls();
@@ -84,6 +85,10 @@ define([
 
             showTableWrap: function () {
                 this.showPage('#edit-table-wrap');
+            },
+
+            showTableStyle: function () {
+                this.showPage('#edit-table-style');
             },
 
             showTableOptions: function () {

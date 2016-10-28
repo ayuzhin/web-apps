@@ -60,8 +60,8 @@ define([
             onPageShow: function () {
                 var me = this;
 
-                $('#addother-sectionbreak-view li').single('click',  _.buffered(me.onInsertSectionBreak, 100, me));
-                $('#addother-pagenumber-view li').single('click',    _.buffered(me.onInsertPageNumber, 100, me));
+                $('#addother-sectionbreak-view a').single('click',   _.buffered(me.onInsertSectionBreak, 100, me));
+                $('#addother-pagenumber-view a').single('click',     _.buffered(me.onInsertPageNumber, 100, me));
                 $('#add-link-insert').single('click',                _.buffered(me.onInsertLink, 100, me));
 
                 $('#add-link-url input, #add-link-display input').single('input', _.bind(me.onFieldChange, me));

@@ -88,6 +88,45 @@ define([
                         $('#paragraph-page-orphan input:checkbox').prop('checked', paragraph.get_WidowControl());
                         $('#paragraph-page-keeptogether input:checkbox').prop('checked', paragraph.get_KeepLines());
                         $('#paragraph-page-keepnext input:checkbox').prop('checked', paragraph.get_KeepNext());
+
+
+                        // // Background color
+                        // var palette = me.getView('EditText').paletteBackgroundColor;
+                        //
+                        // if (palette) {
+                        //     var shade = paragraph.get_Shade(),
+                        //         backColor = 'transparent';
+                        //
+                        //     if (!_.isNull(shade) && !_.isUndefined(shade) && shade.get_Value()===Asc.c_oAscShdClear) {
+                        //         var color = shade.get_Color();
+                        //         if (color) {
+                        //             if (color.get_type() == Asc.c_oAscColor.COLOR_TYPE_SCHEME) {
+                        //                 backColor = {
+                        //                     color: Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b()),
+                        //                     effectValue: color.get_value()
+                        //                 };
+                        //             } else {
+                        //                 backColor = Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b());
+                        //             }
+                        //         }
+                        //     }
+                        //
+                        //     palette.select(backColor);
+                        // }
+                        //
+                        // this.paragraphShade = color;
+                        //
+                        // if (this._changedProps) {
+                        //     if (this._changedProps.get_Shade()===undefined || this._changedProps.get_Shade()===null) {
+                        //         this._changedProps.put_Shade(new Asc.asc_CParagraphShd());
+                        //     }
+                        //     if (this.paragraphShade=='transparent') {
+                        //         this._changedProps.get_Shade().put_Value(Asc.c_oAscShdNil);
+                        //     } else {
+                        //         this._changedProps.get_Shade().put_Value(Asc.c_oAscShdClear);
+                        //         this._changedProps.get_Shade().put_Color(Common.Utils.ThemeColor.getRgbColor(this.paragraphShade));
+                        //     }
+                        // }
                     }
                 });
             },

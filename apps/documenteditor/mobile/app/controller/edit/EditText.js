@@ -68,7 +68,7 @@ define([
                 // this.api.asc_registerCallback('asc_onCanRedo',              _.bind(this.onApiCanRevert, this, 'redo'));
                 me.api.asc_registerCallback('asc_onListType',           _.bind(me.onApiBullets, me));
                 me.api.asc_registerCallback('asc_onPrAlign',            _.bind(me.onApiParagraphAlign, me));
-                // this.api.asc_registerCallback('asc_onTextColor',            _.bind(this.onApiTextColor, this));
+                me.api.asc_registerCallback('asc_onTextColor',          _.bind(me.onApiTextColor, me));
                 me.api.asc_registerCallback('asc_onParaSpacingLine',    _.bind(me.onApiLineSpacing, me));
                 // this.api.asc_registerCallback('asc_onCanAddHyperlink',      _.bind(this.onApiCanAddHyperlink, this));
                 // this.api.asc_registerCallback('asc_onFocusObject',          _.bind(this.onApiFocusObject, this));
@@ -112,8 +112,11 @@ define([
                 me.initSettings();
             },
 
-            onPageShow: function () {
-                var me = this;
+            onPageShow: function (view, pageId) {
+                var me = this,
+                    paletteTextColor = me.getView('EditText').paletteTextColor,
+                    paletteBackgroundColor = me.getView('EditText').paletteBackgroundColor;
+
                 $('#text-additional li').single('click',        _.buffered(me.onAdditional, 100, me));
                 $('#page-text-linespacing li').single('click',  _.buffered(me.onLineSpacing, 100, me));
                 $('#font-size .button').single('click',         _.bind(me.onFontSize, me));
@@ -122,11 +125,17 @@ define([
                 $('.dataview.bullets li').single('click',       _.buffered(me.onBullet, 100, me));
                 $('.dataview.numbers li').single('click',       _.buffered(me.onNumber, 100, me));
 
-                me.initSettings();
+                $('#font-color-auto').single('click',           _.bind(me.onTextColorAuto, me));
+                paletteTextColor && paletteTextColor.on('select', _.bind(me.onTextColor, me));
+                paletteBackgroundColor && paletteBackgroundColor.on('select', _.bind(me.onBackgroundColor, me));
+
+                me.initSettings(pageId);
             },
 
-            initSettings: function () {
-                this.api && this.api.UpdateInterfaceState();
+            initSettings: function (pageId) {
+                var me = this;
+
+                me.api && me.api.UpdateInterfaceState();
 
                 _.each(_stack, function(object) {
                     if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Paragraph) {
@@ -143,6 +152,32 @@ define([
 
                         _fontInfo.letterSpacing = Common.Utils.Metric.fnRecalcFromMM(paragraph.get_TextSpacing());
                         $('#letter-spacing .item-after label').text(_fontInfo.letterSpacing + ' ' + Common.Utils.Metric.getCurrentMetricName());
+
+                        // Background color
+                        var shade = paragraph.get_Shade(),
+                            backColor = 'transparent';
+
+                        if (!_.isNull(shade) && !_.isUndefined(shade) && shade.get_Value()===Asc.c_oAscShdClear) {
+                            var color = shade.get_Color();
+                            if (color) {
+                                if (color.get_type() == Asc.c_oAscColor.COLOR_TYPE_SCHEME) {
+                                    backColor = {
+                                        color: Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b()),
+                                        effectValue: color.get_value()
+                                    };
+                                } else {
+                                    backColor = Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b());
+                                }
+                            }
+                        }
+
+                        if (pageId == '#edit-text-background') {
+                            var palette = me.getView('EditText').paletteBackgroundColor;
+
+                            if (palette) {
+                                palette.select(backColor);
+                            }
+                        }
                     }
                 });
             },
@@ -367,6 +402,37 @@ define([
                 this.api.put_ListType(1, parseInt(type));
             },
 
+            onTextColorAuto: function (e) {
+                var me = this,
+                    paletteTextColor = me.getView('EditText').paletteTextColor;
+
+                if (paletteTextColor) {
+                    paletteTextColor.clearSelection();
+                }
+
+                if (this.api) {
+                    this.api.put_TextColor(Common.Utils.ThemeColor.getRgbColor("000000"));
+                }
+            },
+
+            onTextColor: function (palette, color) {
+                // $('.btn-color-value-line', this.toolbar.btnFontColor.cmpEl).css('background-color', '#' + clr);
+
+                if (this.api) {
+                    this.api.put_TextColor(Common.Utils.ThemeColor.getRgbColor(color));
+                }
+            },
+
+            onBackgroundColor: function (palette, color) {
+                if (this.api) {
+                    if (color == 'transparent') {
+                        this.api.put_ParagraphShade(false);
+                    } else {
+                        this.api.put_ParagraphShade(true, Common.Utils.ThemeColor.getRgbColor(color));
+                    }
+                }
+            },
+
             // API handlers
 
             onApiFocusObject: function (objects) {
@@ -435,6 +501,28 @@ define([
 
                 if (!_.isUndefined(value)) {
                     $('#text-additional input[name=text-script]').val([value]).prop('prevValue', value);
+                }
+            },
+
+            onApiTextColor: function (color) {
+                var me = this;
+
+                if (color.get_auto()) {
+                    // on auto
+                } else {
+                    var palette = me.getView('EditText').paletteTextColor,
+                        clr;
+
+                    if (color && palette) {
+                        color.get_type() == Asc.c_oAscColor.COLOR_TYPE_SCHEME ?
+                            clr = {
+                                color: Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b()),
+                                effectValue: color.get_value()
+                            } :
+                            clr = Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b());
+
+                        palette.select(clr);
+                    }
                 }
             },
 

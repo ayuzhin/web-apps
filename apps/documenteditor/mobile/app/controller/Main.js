@@ -1417,7 +1417,7 @@ define([
             },
 
             onSendThemeColors: function(colors, standart_colors) {
-//                Common.Utils.ThemeColor.setColors(colors, standart_colors);
+               Common.Utils.ThemeColor.setColors(colors, standart_colors);
 //                if (window.styles_loaded) {
 //                    this.updateThemeColors();
 //                    this.fillTextArt(this.api.asc_getTextArtPreviews());

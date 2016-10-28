@@ -216,8 +216,7 @@ define([
                 var $target = $(e.currentTarget),
                     type = $target.data('type');
 
-                console.debug('NEED REPLACE!!!');
-                this.api.AddShapeOnCurrentPage(type);
+                this.api.ChangeShapeType(type);
             },
 
             onWrapType: function (e) {

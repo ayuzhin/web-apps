@@ -11,7 +11,8 @@ define([
     'text!documenteditor/mobile/app/template/EditText.template',
     'jquery',
     'underscore',
-    'backbone'
+    'backbone',
+    'common/mobile/lib/component/ThemeColorPalette'
 ], function (editTemplate, $, _, Backbone) {
     'use strict';
 
@@ -95,7 +96,7 @@ define([
                 //
             },
 
-            showPage: function (templateId) {
+            showPage: function (templateId, customFireEvent) {
                 var rootView = DE.getController('EditContainer').rootView;
 
                 if (rootView && this.layout) {
@@ -110,7 +111,9 @@ define([
                         content: $content.html()
                     });
 
-                    this.fireEvent('page:show', this);
+                    if (customFireEvent !== true) {
+                        this.fireEvent('page:show', [this, templateId]);
+                    }
                 }
             },
 
@@ -147,11 +150,24 @@ define([
             },
 
             showFontColor: function () {
-                this.showPage('#edit-text-color');
+                this.showPage('#edit-text-color', true);
+
+                this.paletteTextColor = new Common.UI.ThemeColorPalette({
+                    el: $('.page[data-page=edit-text-font-color] .page-content')
+                });
+
+                this.fireEvent('page:show', [this, '#edit-text-color']);
             },
 
             showBackgroundColor: function () {
-                this.showPage('#edit-text-background');
+                this.showPage('#edit-text-background', true);
+
+                this.paletteBackgroundColor = new Common.UI.ThemeColorPalette({
+                    el: $('.page[data-page=edit-text-font-background] .page-content'),
+                    transparent: true
+                });
+
+                this.fireEvent('page:show', [this, '#edit-text-background']);
             },
 
             showAdditional: function () {

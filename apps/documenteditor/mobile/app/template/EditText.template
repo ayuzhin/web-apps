@@ -144,12 +144,21 @@
     </div>
     <div class="page" data-page="edit-text-font-color">
         <div class="page-content">
-            <!--TODO: Color palette component -->
-            <div class="content-block-title">Font Colors</div>
-            <div class="content-block inset">
-                <div class="content-block-inner">
-                    <p>Under construction</p>
-                </div>
+            <div class="list-block" style="<% if (!android) { %>margin-bottom: -36px;<% } %>">
+                <ul>
+                    <li>
+                        <a id="font-color-auto" class="item-link no-indicator">
+                            <div class="item-content">
+                                <div class="item-media">
+                                    <div style="width:22px; height: 22px; background-color: #000;"></div>
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title">Automatic</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -166,13 +175,6 @@
     </div>
     <div class="page" data-page="edit-text-font-background">
         <div class="page-content">
-            <!--TODO: Color palette component -->
-            <div class="content-block-title">Highlight color</div>
-            <div class="content-block inset">
-                <div class="content-block-inner">
-                    <p>Under construction</p>
-                </div>
-            </div>
         </div>
     </div>
 </div>
