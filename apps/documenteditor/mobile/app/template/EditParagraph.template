@@ -44,12 +44,6 @@
     </div>
     <div class="page" data-page="edit-paragraph-color">
         <div class="page-content">
-            <div class="content-block-title">Colors</div>
-            <div class="list-block">
-                <ul>
-                    <!-- Colors here -->
-                </ul>
-            </div>
         </div>
     </div>
 </div>

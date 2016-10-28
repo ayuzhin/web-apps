@@ -6072,6 +6072,14 @@ html.pixel-ratio-3 .phone.ios .container-edit .navbar:before {
   align-items: center;
   justify-content: center;
 }
+.item-content .color-preview {
+  width: 75px;
+  height: 30px;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: -3px;
+  border: 0.5px solid gray;
+}
 .item-link.no-indicator .item-inner {
   background-image: none;
 }

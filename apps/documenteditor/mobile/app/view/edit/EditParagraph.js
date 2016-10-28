@@ -64,7 +64,7 @@ define([
                 return '';
             },
 
-            showPage: function (templateId) {
+            showPage: function (templateId, customFireEvent) {
                 var rootView = DE.getController('EditContainer').rootView;
 
                 if (rootView && this.layout) {
@@ -79,7 +79,9 @@ define([
                         content: $content.html()
                     });
 
-                    this.fireEvent('page:show', this);
+                    if (customFireEvent !== true) {
+                        this.fireEvent('page:show', [this, templateId]);
+                    }
                 }
             },
 
@@ -107,7 +109,14 @@ define([
             },
 
             showColors: function () {
-                this.showPage('#edit-paragraph-color');
+                this.showPage('#edit-paragraph-color', true);
+
+                this.paletteBackgroundColor = new Common.UI.ThemeColorPalette({
+                    el: $('.page[data-page=edit-paragraph-color] .page-content'),
+                    transparent: true
+                });
+
+                this.fireEvent('page:show', [this, '#edit-paragraph-color']);
             },
 
             showAdvanced: function () {
