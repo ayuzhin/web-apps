@@ -199,9 +199,14 @@ define([
 
                 Common.SharedSettings.set('mode', mode);
 
-                if (me.api ) {
+                if (me.api) {
                     me.api.asc_enableKeyEvents(mode == 'edit');
                     me.api.asc_setViewMode(mode != 'edit');
+
+                    // Force on autosave if edit
+                    if (mode == 'edit') {
+                        me.api.asc_setAutoSaveGap(1);
+                    }
                 }
             },
 
