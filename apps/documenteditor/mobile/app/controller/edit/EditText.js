@@ -171,6 +171,8 @@ define([
                             }
                         }
 
+                        $('#font-background .color-preview').css('background-color', '#' + (_.isObject(backColor) ? backColor.color : backColor));
+
                         if (pageId == '#edit-text-background') {
                             var palette = me.getView('EditText').paletteBackgroundColor;
 
@@ -513,14 +515,20 @@ define([
                     var palette = me.getView('EditText').paletteTextColor,
                         clr;
 
-                    if (color && palette) {
-                        color.get_type() == Asc.c_oAscColor.COLOR_TYPE_SCHEME ?
+                    if (color) {
+                        if (color.get_type() == Asc.c_oAscColor.COLOR_TYPE_SCHEME) {
                             clr = {
                                 color: Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b()),
                                 effectValue: color.get_value()
-                            } :
+                            }
+                        } else {
                             clr = Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b());
+                        }
 
+                        $('#font-color .color-preview').css('background-color', '#' + (_.isObject(clr) ? clr.color : clr));
+                    }
+
+                    if (palette) {
                         palette.select(clr);
                     }
                 }

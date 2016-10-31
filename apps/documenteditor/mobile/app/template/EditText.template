@@ -22,18 +22,20 @@
             <li>
                 <a id="font-color" class="item-link">
                     <div class="item-content">
-                        <% if (!android) { %><div class="item-media"><i class="icon icon-text-color"></i></div><% } %>
+                        <% if (!android) { %><div class="item-media"><i class="icon icon-text-color"><span class="color-preview"></span></i></div><% } %>
                         <div class="item-inner">
                             <div class="item-title">Font color</div>
+                            <% if (android) { %><div class="item-after"><div class="color-preview"></div></div><% } %>
                         </div>
                     </div>
                 </a>
             </li>
             <li><a id="font-background" class="item-link">
                 <div class="item-content">
-                    <% if (!android) { %><div class="item-media"><i class="icon icon-text-selection"></i></div><% } %>
+                    <% if (!android) { %><div class="item-media"><i class="icon icon-text-selection"><span class="color-preview"></span></i></div><% } %>
                     <div class="item-inner">
                         <div class="item-title">Highlight color</div>
+                        <% if (android) { %><div class="item-after"><div class="color-preview"></div></div><% } %>
                     </div>
                 </div>
             </a>

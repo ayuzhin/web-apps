@@ -130,50 +130,6 @@ define([
             }
 
             me.trigger('select', me, me.currentColor);
-
-
-            // if (target.length==0) return;
-            //
-            // if (target.hasClass('color-transparent') ) {
-            //     $(me.el).find('a.' + me.selectedCls).removeClass(me.selectedCls);
-            //     target.addClass(me.selectedCls);
-            //     me.value = 'transparent';
-            //     me.trigger('select', me, 'transparent');
-            // } else if ( !(target[0].className.search('color-dynamic')<0) ) {
-            //     if (!/dynamic-empty-color/.test(target[0].className)) {
-            //         $(me.el).find('a.' + me.selectedCls).removeClass(me.selectedCls);
-            //         target.addClass(me.selectedCls);
-            //         color = target.attr('color');
-            //         if (color)  me.trigger('select', me, color);
-            //
-            //         me.value = color.toUpperCase();
-            //     } else {
-            //         setTimeout(function(){
-            //             me.addNewColor();
-            //         }, 10);
-            //     }
-            // } else {
-            //     if (!/^[a-fA-F0-9]{6}$/.test(me.value) || _.indexOf(me.colors, me.value)<0 )
-            //         me.value = false;
-            //
-            //     $(me.el).find('a.' + me.selectedCls).removeClass(me.selectedCls);
-            //     target.addClass(me.selectedCls);
-            //
-            //     color = target[0].className.match(me.colorRe)[1];
-            //     if ( target.hasClass('palette-color-effect') ) {
-            //         var effectId = parseInt(target.attr('effectid'));
-            //         if (color)  {
-            //             me.value = color.toUpperCase();
-            //             me.trigger('select', me, {color: color, effectId: effectId});
-            //         }
-            //     } else {
-            //         if (/#?[a-fA-F0-9]{6}/.test(color)) {
-            //             color = /#?([a-fA-F0-9]{6})/.exec(color)[1].toUpperCase();
-            //             me.value = color;
-            //             me.trigger('select', me, color);
-            //         }
-            //     }
-            // }
         },
 
         select: function(color) {

@@ -6,10 +6,10 @@
                 <div class="item-content buttons">
                     <div class="item-inner">
                         <div class="row">
-                            <a id="insert-column-left" class="button">CL</a>
-                            <a id="insert-column-right" class="button">CR</a>
-                            <a id="insert-row-above" class="button">RA</a>
-                            <a id="insert-row-below" class="button">RB</a>
+                            <a id="insert-column-left" class="button no-ripple"><i class="icon icon-table-add-column-left"></i></a>
+                            <a id="insert-column-right" class="button no-ripple"><i class="icon icon-table-add-column-right"></i></a>
+                            <a id="insert-row-above" class="button no-ripple"><i class="icon icon-table-add-row-above"></i></a>
+                            <a id="insert-row-below" class="button no-ripple"><i class="icon icon-table-add-row-below"></i></a>
                         </div>
                     </div>
                 </div>
@@ -18,8 +18,8 @@
                 <div class="item-content buttons">
                     <div class="item-inner">
                         <div class="row">
-                            <a id="remove-column" class="button">C</a>
-                            <a id="remove-row" class="button">R</a>
+                            <a id="remove-column" class="button no-ripple"><i class="icon icon-table-remove-column"></i></a>
+                            <a id="remove-row" class="button no-ripple"><i class="icon icon-table-remove-row"></i></a>
                         </div>
                     </div>
                 </div>
