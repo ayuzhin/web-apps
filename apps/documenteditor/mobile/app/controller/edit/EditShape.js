@@ -122,6 +122,7 @@ define([
                 $('.edit-shape-style .border input').single('input',            _.bind(me.onBorderSizeChanging, me));
                 $('#edit-shape-effect input').single('change touchend',         _.buffered(me.onOpacity, 100, me));
                 $('#edit-shape-effect input').single('input',                   _.bind(me.onOpacityChanging, me));
+
                 me.initSettings();
             },
 

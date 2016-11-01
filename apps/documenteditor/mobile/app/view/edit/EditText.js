@@ -96,7 +96,7 @@ define([
                 //
             },
 
-            showPage: function (templateId, customFireEvent) {
+            showPage: function (templateId, suspendEvent) {
                 var rootView = DE.getController('EditContainer').rootView;
 
                 if (rootView && this.layout) {
@@ -111,7 +111,7 @@ define([
                         content: $content.html()
                     });
 
-                    if (customFireEvent !== true) {
+                    if (suspendEvent !== true) {
                         this.fireEvent('page:show', [this, templateId]);
                     }
                 }

@@ -267,7 +267,8 @@ define([
                 }
 
                 me.rootView = uiApp.addView('.edit-root-view', {
-                     dynamicNavbar: true
+                    dynamicNavbar: true,
+                    domCache: true
                 });
 
                 Common.NotificationCenter.trigger('editcontainer:show');

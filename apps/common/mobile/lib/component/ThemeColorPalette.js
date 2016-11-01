@@ -27,12 +27,14 @@ define([
             effects: 5,
             allowReselect: true,
             transparent: false,
-            value: '000000'
+            value: '000000',
+            cls: '',
+            style: ''
         },
 
         template: _.template([
             '<% var me = this; %>',
-            '<div class="list-block color-palette">',
+            '<div class="list-block color-palette <%= me.options.cls %>" style="<%= me.options.style %>">',
                 '<ul>',
                     '<li class="theme-colors">',
                         '<div style="padding: 15px 0 0 15px;"><%= me.textThemeColors %></div>',

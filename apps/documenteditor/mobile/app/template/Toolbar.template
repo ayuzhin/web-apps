@@ -38,7 +38,7 @@
                 <i class="icon icon-search"></i>
             </a>
             <a href="#" id="toolbar-settings" class="link icon-only">
-                <i class="icon icon-burger"></i>
+                <i class="icon icon-settings"></i>
             </a>
         </div>
     </div>

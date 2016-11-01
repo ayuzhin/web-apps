@@ -7,7 +7,6 @@
  *
  */
 
-
 define([
     'text!documenteditor/mobile/app/template/EditShape.template',
     'jquery',
@@ -92,7 +91,6 @@ define([
                     });
 
                     this.fireEvent('page:show', this);
-
                     this.initEvents();
                 }
             },
@@ -106,7 +104,6 @@ define([
 
                 $('.edit-shape-style .list-block').hide();
                 $('.edit-shape-style .list-block.' + category).show();
-
             },
 
             showStyle: function () {

@@ -222,7 +222,7 @@
 <!-- Styles view -->
 <div id="edit-table-style">
     <div class="navbar">
-        <div class="navbar-inner edit-shape-style">
+        <div class="navbar-inner edit-table-style" data-page="edit-table-style">
             <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></div>
             <div class="center sliding categories">
                 <% if (android) { %>
@@ -244,9 +244,18 @@
             <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
         </div>
     </div>
-    <div class="page">
+    <div class="page" data-page="edit-table-style">
         <div class="page-content edit-table-style">
-            <div class="list-block styles">
+            <div class="list-block style">
+                <ul>
+                    <li id="edit-table-styles">
+                        <div class="item-content">
+                            <div class="item-inner"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block style" style="margin-bottom: 40px;">
                 <ul>
                     <li>
                         <a id="edit-table-style-options" class="item-link">
@@ -257,29 +266,11 @@
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title">Styles</div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="list-block fill" style="display: none; margin-top: -1px;">
-                <ul>
-                    <li id="edit-table-fill">
-                        <div class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title">Color</div>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
             </div>
             <div class="list-block border" style="display: none; margin-top: -1px;">
                 <ul>
-                    <li id="edit-shape-bordersize">
+                    <li id="edit-table-bordersize">
                         <div style="padding: 15px 0 0 15px;">Size</div>
                         <div class="item-content">
                             <div class="item-inner">
@@ -293,23 +284,156 @@
                         </div>
                     </li>
                     <li>
-                        <a id="edit-shape-bordercolor" class="item-link">
+                        <a id="edit-table-bordercolor" class="item-link">
                             <div class="item-content">
                                 <div class="item-inner">
                                     <div class="item-title">Color</div>
+                                    <div class="item-after"><div class="color-preview"></div></div>
                                 </div>
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title">Border Types</div>
+                    <li id="edit-table-bordertypes">
+                        <div class="item-content buttons" style="-webkit-flex-flow: row wrap;justify-content: space-around;">
+                            <div class="item-inner" style="margin: 20px 0;">
+                                <div class="row">
+                                    <a class="button no-ripple" data-type="lrtbcm"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" data-type=""><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" data-type="cm"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" data-type="lrtb"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" data-type="l"><i class="icon icon-text-align-left"></i></a>
+                                </div>
+                            </div>
+                            <div class="item-inner" style="margin: 0 0 20px;">
+                                <div class="row">
+                                    <a class="button no-ripple" data-type="c"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" data-type="r"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" data-type="t"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" data-type="m"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" data-type="b"><i class="icon icon-text-align-left"></i></a>
+                                </div>
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Style options view -->
+<div id="edit-table-style-options-view">
+    <div class="navbar">
+        <div class="navbar-inner" data-page="edit-table-style-options">
+            <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></div>
+            <div class="center sliding">Options</div>
+            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+        </div>
+    </div>
+    <div class="page" data-page="edit-table-style-options">
+        <div class="page-content">
+            <div class="list-block">
+                <ul>
+                    <li id="table-options-header-row">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Header Row</div>
+                                <div class="item-after">
+                                    <label class="label-switch">
+                                        <input type="checkbox">
+                                        <div class="checkbox"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="table-options-total-row">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Total Row</div>
+                                <div class="item-after">
+                                    <label class="label-switch">
+                                        <input type="checkbox">
+                                        <div class="checkbox"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="table-options-banded-row">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Banded Row</div>
+                                <div class="item-after">
+                                    <label class="label-switch">
+                                        <input type="checkbox">
+                                        <div class="checkbox"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block">
+                <ul>
+                    <li id="table-options-first-column">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">First Column</div>
+                                <div class="item-after">
+                                    <label class="label-switch">
+                                        <input type="checkbox">
+                                        <div class="checkbox"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="table-options-last-column">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Last Column</div>
+                                <div class="item-after">
+                                    <label class="label-switch">
+                                        <input type="checkbox">
+                                        <div class="checkbox"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="table-options-banded-column">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Banded Column</div>
+                                <div class="item-after">
+                                    <label class="label-switch">
+                                        <input type="checkbox">
+                                        <div class="checkbox"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Style options view -->
+<div id="edit-table-border-color-view">
+    <div class="navbar">
+        <div class="navbar-inner" data-page="edit-table-border-color">
+            <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></div>
+            <div class="center sliding">Color</div>
+            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+        </div>
+    </div>
+    <div class="page" data-page="edit-table-border-color">
+        <div class="page-content">
+            <!--Color palette-->
         </div>
     </div>
 </div>
