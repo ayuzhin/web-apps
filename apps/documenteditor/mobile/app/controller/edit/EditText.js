@@ -16,6 +16,7 @@ define([
     DE.Controllers.EditText = Backbone.Controller.extend((function() {
         var _fontsArray = [],
             _stack = [],
+            _paragraphObject = undefined,
             _fontInfo = {};
 
         function onApiLoadFonts(fonts, select) {
@@ -135,53 +136,49 @@ define([
             initSettings: function (pageId) {
                 var me = this;
 
-                me.api && me.api.UpdateInterfaceState();
+                me.api && me.api.UpdateInterfaceState(); // TODO: refactor me
 
-                _.each(_stack, function(object) {
-                    if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Paragraph) {
-                        var paragraph = object.get_ObjectValue();
+                if (_paragraphObject) {
+                    var $inputStrikethrough = $('#text-additional input[name=text-strikethrough]');
+                    var $inputTextCaps = $('#text-additional input[name=text-caps]');
 
-                        var $inputStrikethrough = $('#text-additional input[name=text-strikethrough]');
-                        var $inputTextCaps = $('#text-additional input[name=text-caps]');
+                    _paragraphObject.get_Strikeout() && $inputStrikethrough.val(['strikethrough']).prop('prevValue', 'strikethrough');
+                    _paragraphObject.get_DStrikeout() && $inputStrikethrough.val(['double-strikethrough']).prop('prevValue', 'double-strikethrough');
 
-                        paragraph.get_Strikeout() && $inputStrikethrough.val(['strikethrough']).prop('prevValue', 'strikethrough');
-                        paragraph.get_DStrikeout() && $inputStrikethrough.val(['double-strikethrough']).prop('prevValue', 'double-strikethrough');
+                    _paragraphObject.get_SmallCaps() && $inputTextCaps.val(['small']).prop('prevValue', 'small');
+                    _paragraphObject.get_AllCaps() && $inputTextCaps.val(['all']).prop('prevValue', 'all');
 
-                        paragraph.get_SmallCaps() && $inputTextCaps.val(['small']).prop('prevValue', 'small');
-                        paragraph.get_AllCaps() && $inputTextCaps.val(['all']).prop('prevValue', 'all');
+                    _fontInfo.letterSpacing = Common.Utils.Metric.fnRecalcFromMM(_paragraphObject.get_TextSpacing());
+                    $('#letter-spacing .item-after label').text(_fontInfo.letterSpacing + ' ' + Common.Utils.Metric.getCurrentMetricName());
 
-                        _fontInfo.letterSpacing = Common.Utils.Metric.fnRecalcFromMM(paragraph.get_TextSpacing());
-                        $('#letter-spacing .item-after label').text(_fontInfo.letterSpacing + ' ' + Common.Utils.Metric.getCurrentMetricName());
+                    // Background color
+                    var shade = _paragraphObject.get_Shade(),
+                        backColor = 'transparent';
 
-                        // Background color
-                        var shade = paragraph.get_Shade(),
-                            backColor = 'transparent';
-
-                        if (!_.isNull(shade) && !_.isUndefined(shade) && shade.get_Value()===Asc.c_oAscShdClear) {
-                            var color = shade.get_Color();
-                            if (color) {
-                                if (color.get_type() == Asc.c_oAscColor.COLOR_TYPE_SCHEME) {
-                                    backColor = {
-                                        color: Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b()),
-                                        effectValue: color.get_value()
-                                    };
-                                } else {
-                                    backColor = Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b());
-                                }
-                            }
-                        }
-
-                        $('#font-background .color-preview').css('background-color', '#' + (_.isObject(backColor) ? backColor.color : backColor));
-
-                        if (pageId == '#edit-text-background') {
-                            var palette = me.getView('EditText').paletteBackgroundColor;
-
-                            if (palette) {
-                                palette.select(backColor);
+                    if (!_.isNull(shade) && !_.isUndefined(shade) && shade.get_Value()===Asc.c_oAscShdClear) {
+                        var color = shade.get_Color();
+                        if (color) {
+                            if (color.get_type() == Asc.c_oAscColor.COLOR_TYPE_SCHEME) {
+                                backColor = {
+                                    color: Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b()),
+                                    effectValue: color.get_value()
+                                };
+                            } else {
+                                backColor = Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b());
                             }
                         }
                     }
-                });
+
+                    $('#font-background .color-preview').css('background-color', '#' + (_.isObject(backColor) ? backColor.color : backColor));
+
+                    if (pageId == '#edit-text-background') {
+                        var palette = me.getView('EditText').paletteBackgroundColor;
+
+                        if (palette) {
+                            palette.select(backColor);
+                        }
+                    }
+                }
             },
 
             // Public
@@ -196,6 +193,10 @@ define([
 
             getFontInfo: function () {
                 return _fontInfo;
+            },
+
+            getParagraph: function () {
+                return _paragraphObject;
             },
 
             // Handlers
@@ -439,6 +440,21 @@ define([
 
             onApiFocusObject: function (objects) {
                 _stack = objects;
+
+                var paragraphs = [];
+
+                _.each(_stack, function(object) {
+                    if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Paragraph) {
+                        paragraphs.push(object);
+                    }
+                });
+
+                if (paragraphs.length > 0) {
+                    var object = paragraphs[paragraphs.length - 1]; // get top
+                    _paragraphObject = object.get_ObjectValue();
+                } else {
+                    _paragraphObject = undefined;
+                }
             },
 
             onApiChangeFont: function(font) {

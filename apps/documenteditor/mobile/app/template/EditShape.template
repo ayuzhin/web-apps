@@ -309,7 +309,7 @@
 <!-- Styles view -->
 <div id="edit-shape-style">
     <div class="navbar">
-        <div class="navbar-inner edit-shape-style">
+        <div class="navbar-inner edit-shape-style" data-page="edit-shape-style">
             <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></div>
             <div class="center sliding categories">
                 <% if (android) { %>
@@ -331,19 +331,8 @@
             <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
         </div>
     </div>
-    <div class="page">
-        <div class="page-content edit-shape-style">
-            <div class="list-block fill">
-                <ul>
-                    <li>
-                        <label class="label-radio item-content">
-                            <div class="item-inner">
-                                <div class="item-title">COLORS</div>
-                            </div>
-                        </label>
-                    </li>
-                </ul>
-            </div>
+    <div class="page edit-shape-style" data-page="edit-shape-style">
+        <div class="page-content">
             <div class="list-block border" style="display: none; margin-top: -1px;">
                 <ul>
                     <li id="edit-shape-bordersize">
@@ -364,6 +353,7 @@
                             <div class="item-content">
                                 <div class="item-inner">
                                     <div class="item-title">Color</div>
+                                    <div class="item-after"><div class="color-preview"></div></div>
                                 </div>
                             </div>
                         </a>
@@ -387,6 +377,22 @@
                     </li>
                 </ul>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Border color view -->
+<div id="edit-shape-border-color-view">
+    <div class="navbar">
+        <div class="navbar-inner" data-page="edit-shape-border-color">
+            <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></div>
+            <div class="center sliding">Color</div>
+            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+        </div>
+    </div>
+    <div class="page" data-page="edit-shape-border-color">
+        <div class="page-content">
+            <!--Color palette-->
         </div>
     </div>
 </div>

@@ -154,7 +154,7 @@ define([
                 }
             } else {
                 if (/#?[a-fA-F0-9]{6}/.test(color)) {
-                    color = /#?([a-fA-F0-9]{6})/.exec(color)[1].toUpperCase();
+                    color = /#?([a-fA-F0-9]{6})/.exec(color)[1];
                 }
 
                 if (/^[a-fA-F0-9]{6}|transparent$/.test(color) || _.indexOf(Common.Utils.ThemeColor.getStandartColors(), color) > -1) {

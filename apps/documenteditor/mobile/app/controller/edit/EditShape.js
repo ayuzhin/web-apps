@@ -17,7 +17,7 @@ define([
     DE.Controllers.EditShape = Backbone.Controller.extend((function() {
         // Private
         var _stack = [],
-            _shapeObject = {},
+            _shapeObject = undefined,
             _metricText = Common.Utils.Metric.getCurrentMetricName();
 
         var wrapTypesTransform = (function() {
@@ -82,7 +82,7 @@ define([
 
                 this.addListeners({
                     'EditShape': {
-                        'page:show'     : this.onPageShow
+                        'page:show': this.onPageShow
                     }
                 });
             },
@@ -91,7 +91,7 @@ define([
                 var me = this;
                 me.api = api;
 
-                me.api.asc_registerCallback('asc_onFocusObject',        _.bind(me.onApiFocusObject, me));
+                me.api.asc_registerCallback('asc_onFocusObject', _.bind(me.onApiFocusObject, me));
             },
 
             onLaunch: function () {
@@ -101,85 +101,138 @@ define([
             initEvents: function () {
                 var me = this;
 
-                $('#shape-remove').single('click',  _.bind(me.onRemoveShape, me));
+                $('#shape-remove').single('click', _.bind(me.onRemoveShape, me));
 
                 me.initSettings();
             },
 
-            onPageShow: function () {
+            onPageShow: function (view, pageId) {
                 var me = this;
 
-                $('.shape-reorder a').single('click',                           _.bind(me.onReorder, me));
-                $('.shape-replace li').single('click',                          _.buffered(me.onReplace, 100, me));
-                $('.shape-wrap .shape-wrap-types li').single('click',           _.buffered(me.onWrapType, 100, me));
-                $('.shape-wrap .align a').single('click',                       _.bind(me.onAlign, me));
-                $('#edit-shape-movetext input').single('click',                 _.bind(me.onMoveText, me));
-                $('#edit-shape-overlap input').single('click',                  _.bind(me.onOverlap, me));
-                $('.shape-wrap .distance input').single('change touchend',      _.buffered(me.onWrapDistance, 100, me));
-                $('.shape-wrap .distance input').single('input',                _.bind(me.onWrapDistanceChanging, me));
+                $('.shape-reorder a').single('click',                       _.bind(me.onReorder, me));
+                $('.shape-replace li').single('click',                      _.buffered(me.onReplace, 100, me));
+                $('.shape-wrap .shape-wrap-types li').single('click',       _.buffered(me.onWrapType, 100, me));
+                $('.shape-wrap .align a').single('click',                   _.bind(me.onAlign, me));
+                $('#edit-shape-movetext input').single('click',             _.bind(me.onMoveText, me));
+                $('#edit-shape-overlap input').single('click',              _.bind(me.onOverlap, me));
+                $('.shape-wrap .distance input').single('change touchend',  _.buffered(me.onWrapDistance, 100, me));
+                $('.shape-wrap .distance input').single('input',            _.bind(me.onWrapDistanceChanging, me));
 
-                $('.edit-shape-style .border input').single('change touchend',  _.buffered(me.onBorderSize, 100, me));
-                $('.edit-shape-style .border input').single('input',            _.bind(me.onBorderSizeChanging, me));
-                $('#edit-shape-effect input').single('change touchend',         _.buffered(me.onOpacity, 100, me));
-                $('#edit-shape-effect input').single('input',                   _.bind(me.onOpacityChanging, me));
+                $('#edit-shape-bordersize input').single('change touchend', _.buffered(me.onBorderSize, 100, me));
+                $('#edit-shape-bordersize input').single('input',        _.bind(me.onBorderSizeChanging, me));
+                $('#edit-shape-effect input').single('change touchend',     _.buffered(me.onOpacity, 100, me));
+                $('#edit-shape-effect input').single('input',               _.bind(me.onOpacityChanging, me));
 
-                me.initSettings();
+                me.initSettings(pageId);
             },
 
-            initSettings: function () {
+            initSettings: function (pageId) {
                 var me = this;
 
-                me.api && me.api.UpdateInterfaceState();
+                // me.api && me.api.UpdateInterfaceState();
 
-                _.each(_stack, function(object) {
-                    if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Image) {
-                        _shapeObject = object.get_ObjectValue();
+                if (_shapeObject) {
+                    if (pageId == '#edit-shape-wrap') {
+                        me._initWrapView();
+                    } else if (pageId == '#edit-shape-style' || pageId == '#edit-shape-border-color-view') {
+                        me._initStyleView();
+                    }
+                }
+            },
 
-                        var shapeProperties = _shapeObject.get_ShapeProperties();
+            _initWrapView: function() {
+                // Wrap type
+                var me = this,
+                    wrapping = _shapeObject.get_WrappingStyle(),
+                    $shapeWrapInput = $('.shape-wrap input'),
+                    shapeWrapType = wrapTypesTransform.sdkToUi(wrapping);
 
-                        //************ Style ************
+                $shapeWrapInput.val([shapeWrapType]);
+                me._uiTransformByWrap(shapeWrapType);
 
-                        // style border size
-                        var borderSize = borderSizeTransform.sizeByValue(shapeProperties.get_stroke().get_width());
-                        $('.edit-shape-style .border input').val([borderSizeTransform.sizeByIndex(shapeProperties.get_stroke().get_width())]);
-                        $('.edit-shape-style .border .item-after').text(borderSize + ' ' + _metricText);
+                // Wrap align
+                var shapeHAlign = _shapeObject.get_PositionH().get_Align();
 
-                        // style opacity
-                        $('#edit-shape-effect input').val([shapeProperties.get_fill().transparent ? shapeProperties.get_fill().transparent / 2.55 : 100]);
-                        $('#edit-shape-effect .item-after').text($('#edit-shape-effect input').val() + ' ' + "%");
-
-
-                        //************ Wrap ************
-
-                        // Wrap type
-                        var wrapping = _shapeObject.get_WrappingStyle(),
-                            $shapeWrapInput = $('.shape-wrap input'),
-                            shapeWrapType = wrapTypesTransform.sdkToUi(wrapping);
-
-                        $shapeWrapInput.val([shapeWrapType]);
-                        me._uiTransformByWrap(shapeWrapType);
-
-                        // Wrap align
-                        var shapeHAlign = _shapeObject.get_PositionH().get_Align();
-
-                        $('.shape-wrap .align a[data-type=left]').toggleClass('active', shapeHAlign == Asc.c_oAscAlignH.Left);
-                        $('.shape-wrap .align a[data-type=center]').toggleClass('active', shapeHAlign == Asc.c_oAscAlignH.Center);
-                        $('.shape-wrap .align a[data-type=right]').toggleClass('active', shapeHAlign == Asc.c_oAscAlignH.Right);
+                $('.shape-wrap .align a[data-type=left]').toggleClass('active', shapeHAlign == Asc.c_oAscAlignH.Left);
+                $('.shape-wrap .align a[data-type=center]').toggleClass('active', shapeHAlign == Asc.c_oAscAlignH.Center);
+                $('.shape-wrap .align a[data-type=right]').toggleClass('active', shapeHAlign == Asc.c_oAscAlignH.Right);
 
 
-                        // Wrap flags
-                        $('#edit-shape-movetext input').prop('checked', _shapeObject.get_PositionV().get_RelativeFrom() == Asc.c_oAscRelativeFromV.Paragraph);
-                        $('#edit-shape-overlap input').prop('checked', _shapeObject.get_AllowOverlap());
+                // Wrap flags
+                $('#edit-shape-movetext input').prop('checked', _shapeObject.get_PositionV().get_RelativeFrom() == Asc.c_oAscRelativeFromV.Paragraph);
+                $('#edit-shape-overlap input').prop('checked', _shapeObject.get_AllowOverlap());
 
-                        // Wrap distance
-                        var paddings = _shapeObject.get_Paddings();
-                        if (paddings) {
-                            var distance = Common.Utils.Metric.fnRecalcFromMM(paddings.get_Top());
-                            $('.shape-wrap .distance input').val(distance);
-                            $('.shape-wrap .distance .item-after').text(distance + ' ' + _metricText);
+                // Wrap distance
+                var paddings = _shapeObject.get_Paddings();
+                if (paddings) {
+                    var distance = Common.Utils.Metric.fnRecalcFromMM(paddings.get_Top());
+                    $('.shape-wrap .distance input').val(distance);
+                    $('.shape-wrap .distance .item-after').text(distance + ' ' + _metricText);
+                }
+            },
+
+            _initStyleView: function () {
+                var me = this,
+                    shapeProperties = _shapeObject.get_ShapeProperties(),
+                    paletteFillColor = me.getView('EditShape').paletteFillColor,
+                    paletteBorderColor = me.getView('EditShape').paletteBorderColor;
+
+                // Init style border size
+                var borderSize = borderSizeTransform.sizeByValue(shapeProperties.get_stroke().get_width());
+                $('#edit-shape-bordersize input').val([borderSizeTransform.sizeByIndex(shapeProperties.get_stroke().get_width())]);
+                $('#edit-shape-bordersize .item-after').text(borderSize + ' ' + _metricText);
+
+                // Init style opacity
+                $('#edit-shape-effect input').val([shapeProperties.get_fill().transparent ? shapeProperties.get_fill().transparent / 2.55 : 100]);
+                $('#edit-shape-effect .item-after').text($('#edit-shape-effect input').val() + ' ' + "%");
+
+                paletteFillColor && paletteFillColor.on('select',       _.bind(me.onFillColor, me));
+                paletteBorderColor && paletteBorderColor.on('select',   _.bind(me.onBorderColor, me));
+
+                var sdkColor, color;
+
+                // Init fill color
+                var fill = shapeProperties.get_fill(),
+                    fillType = fill.get_type();
+
+                color = 'transparent';
+
+                if (fillType == Asc.c_oAscFill.FILL_TYPE_SOLID) {
+                    fill = fill.get_fill();
+                    sdkColor = fill.get_color();
+
+                    if (sdkColor) {
+                        if (sdkColor.get_type() == Asc.c_oAscColor.COLOR_TYPE_SCHEME) {
+                            color = {color: Common.Utils.ThemeColor.getHexColor(sdkColor.get_r(), sdkColor.get_g(), sdkColor.get_b()), effectValue: sdkColor.get_value()};
+                        } else {
+                            color = Common.Utils.ThemeColor.getHexColor(sdkColor.get_r(), sdkColor.get_g(), sdkColor.get_b());
                         }
                     }
-                });
+                }
+
+                paletteFillColor && paletteFillColor.select(color);
+
+                // Init border color
+                var stroke = shapeProperties.get_stroke(),
+                    strokeType = stroke.get_type();
+
+                color = 'transparent';
+
+                if (stroke && strokeType == Asc.c_oAscStrokeType.STROKE_COLOR) {
+                    sdkColor = stroke.get_color();
+
+                    if (sdkColor) {
+                        if (sdkColor.get_type() == Asc.c_oAscColor.COLOR_TYPE_SCHEME) {
+                            color = {color: Common.Utils.ThemeColor.getHexColor(sdkColor.get_r(), sdkColor.get_g(), sdkColor.get_b()), effectValue: sdkColor.get_value()};
+                        }
+                        else {
+                            color = Common.Utils.ThemeColor.getHexColor(sdkColor.get_r(), sdkColor.get_g(), sdkColor.get_b());
+                        }
+                    }
+                }
+
+                paletteBorderColor && paletteBorderColor.select(color);
+                $('#edit-shape-bordercolor .color-preview').css('background-color', ('transparent' == color) ? color : ('#' + (_.isObject(color) ? color.color : color)))
             },
 
             // Public
@@ -312,29 +365,41 @@ define([
                 var me = this,
                     $target = $(e.currentTarget),
                     value = $target.val(),
-                    properties = new Asc.asc_CImgProperty(),
+                    currentShape = _shapeObject.get_ShapeProperties(),
+                    image = new Asc.asc_CImgProperty(),
                     shape = new Asc.asc_CShapeProperty(),
-                    stroke = new Asc.asc_CStroke();
+                    stroke = new Asc.asc_CStroke(),
+                    currentColor = Common.Utils.ThemeColor.getRgbColor('000000');
 
                 value = borderSizeTransform.sizeByIndex(parseInt(value));
+
+                var currentStroke = currentShape.get_stroke();
+
+                if (currentStroke) {
+                    var currentStrokeType = currentStroke.get_type();
+
+                    if (currentStrokeType == Asc.c_oAscStrokeType.STROKE_COLOR) {
+                        currentColor = currentStroke.get_color();
+                    }
+                }
 
                 if (value < 0.01) {
                     stroke.put_type(Asc.c_oAscStrokeType.STROKE_NONE);
                 } else {
                     stroke.put_type(Asc.c_oAscStrokeType.STROKE_COLOR);
-                    stroke.put_color(Common.Utils.ThemeColor.getRgbColor('000000')); // DEBUG\
+                    stroke.put_color(currentColor);
                     stroke.put_width(value * 25.4 / 72.0);
                 }
 
                 shape.put_stroke(stroke);
-                properties.put_ShapeProperties(shape);
+                image.put_ShapeProperties(shape);
 
-                me.api.ImgApply(properties);
+                me.api.ImgApply(image);
             },
 
             onBorderSizeChanging: function (e) {
                 var $target = $(e.currentTarget);
-                $('.edit-shape-style .border .item-after').text(borderSizeTransform.sizeByIndex($target.val()) + ' ' + _metricText);
+                $('#edit-shape-bordersize .item-after').text(borderSizeTransform.sizeByIndex($target.val()) + ' ' + _metricText);
             },
 
             onOpacity: function (e) {
@@ -357,10 +422,79 @@ define([
                 $('#edit-shape-effect .item-after').text($target.val() + ' %');
             },
 
+            onFillColor: function(palette, color) {
+                var me = this,
+                    currentShape = _shapeObject.get_ShapeProperties();
+
+                if (me.api) {
+                    var image = new Asc.asc_CImgProperty(),
+                        shape = new Asc.asc_CShapeProperty(),
+                        fill = new Asc.asc_CShapeFill();
+
+                    if (color == 'transparent') {
+                        fill.put_type(Asc.c_oAscFill.FILL_TYPE_NOFILL);
+                        fill.put_fill(null);
+                    } else {
+                        fill.put_type(Asc.c_oAscFill.FILL_TYPE_SOLID);
+                        fill.put_fill(new Asc.asc_CFillSolid());
+                        fill.get_fill().put_color(Common.Utils.ThemeColor.getRgbColor(color));
+                    }
+
+                    shape.put_fill(fill);
+                    image.put_ShapeProperties(shape);
+
+                    me.api.ImgApply(image);
+                }
+            },
+
+            onBorderColor: function (palette, color) {
+                var me = this,
+                    currentShape = _shapeObject.get_ShapeProperties();
+
+                $('#edit-shape-bordercolor .color-preview').css('background-color', ('transparent' == color) ? color : ('#' + (_.isObject(color) ? color.color : color)));
+
+                if (me.api && currentShape) {
+                    var image = new Asc.asc_CImgProperty(),
+                        shape = new Asc.asc_CShapeProperty(),
+                        stroke = new Asc.asc_CStroke();
+
+                    if (currentShape.get_stroke().get_width() < 0.01) {
+                        stroke.put_type(Asc.c_oAscStrokeType.STROKE_NONE);
+                    } else {
+                        stroke.put_type(Asc.c_oAscStrokeType.STROKE_COLOR);
+                        stroke.put_color(Common.Utils.ThemeColor.getRgbColor(color));
+                        stroke.put_width(currentShape.get_stroke().get_width());
+                        stroke.asc_putPrstDash(currentShape.get_stroke().asc_getPrstDash());
+                    }
+
+                    shape.put_stroke(stroke);
+                    image.put_ShapeProperties(shape);
+
+                    me.api.ImgApply(image);
+                }
+            },
+
             // API handlers
 
             onApiFocusObject: function (objects) {
                 _stack = objects;
+
+                var shapes = [];
+
+                _.each(_stack, function (object) {
+                    if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Image) {
+                        if (object.get_ObjectValue() && object.get_ObjectValue().get_ShapeProperties()) {
+                            shapes.push(object);
+                        }
+                    }
+                });
+
+                if (shapes.length > 0) {
+                    var object = shapes[shapes.length - 1]; // get top shape
+                    _shapeObject = object.get_ObjectValue();
+                } else {
+                    _shapeObject = undefined;
+                }
             },
 
             // Helpers
@@ -380,9 +514,12 @@ define([
             _isShapeInStack: function () {
                 var shapeExist = false;
 
-                _.each(_stack, function(object) {
-                    if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Shape) {
-                        shapeExist = true;
+                _.some(_stack, function(object) {
+                    if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Image) {
+                        if (object.get_ObjectValue() && object.get_ObjectValue().get_ShapeProperties()) {
+                            shapeExist = true;
+                            return true;
+                        }
                     }
                 });
 

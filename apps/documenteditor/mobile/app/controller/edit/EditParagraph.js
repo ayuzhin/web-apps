@@ -17,6 +17,7 @@ define([
         // Private
         var _stack = [],
             _paragraphInfo = {},
+            _paragraphObject = undefined,
             _styles = [],
             _styleTumbSize,
             metricText = Common.Utils.Metric.getCurrentMetricName();
@@ -87,51 +88,45 @@ define([
             initSettings: function () {
                 var me = this;
 
-                me.api && me.api.UpdateInterfaceState();
+                if (_paragraphObject) {
+                    _paragraphInfo.spaceBefore = _paragraphObject.get_Spacing().get_Before() < 0 ? _paragraphObject.get_Spacing().get_Before() : Common.Utils.Metric.fnRecalcFromMM(_paragraphObject.get_Spacing().get_Before());
+                    _paragraphInfo.spaceAfter  = _paragraphObject.get_Spacing().get_After() < 0 ? _paragraphObject.get_Spacing().get_After() : Common.Utils.Metric.fnRecalcFromMM(_paragraphObject.get_Spacing().get_After());
+                    $('#paragraph-distance-before .item-after label').text(_paragraphInfo.spaceBefore < 0 ? 'Auto' : _paragraphInfo.spaceBefore + ' ' + metricText);
+                    $('#paragraph-distance-after .item-after label').text(_paragraphInfo.spaceAfter < 0 ? 'Auto' : _paragraphInfo.spaceAfter + ' ' + metricText);
 
-                _.each(_stack, function(object) {
-                    if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Paragraph) {
-                        var paragraph = object.get_ObjectValue();
-
-                        _paragraphInfo.spaceBefore = paragraph.get_Spacing().get_Before() < 0 ? paragraph.get_Spacing().get_Before() : Common.Utils.Metric.fnRecalcFromMM(paragraph.get_Spacing().get_Before());
-                        _paragraphInfo.spaceAfter  = paragraph.get_Spacing().get_After() < 0 ? paragraph.get_Spacing().get_After() : Common.Utils.Metric.fnRecalcFromMM(paragraph.get_Spacing().get_After());
-                        $('#paragraph-distance-before .item-after label').text(_paragraphInfo.spaceBefore < 0 ? 'Auto' : _paragraphInfo.spaceBefore + ' ' + metricText);
-                        $('#paragraph-distance-after .item-after label').text(_paragraphInfo.spaceAfter < 0 ? 'Auto' : _paragraphInfo.spaceAfter + ' ' + metricText);
-
-                        $('#paragraph-space input:checkbox').prop('checked', paragraph.get_ContextualSpacing());
-                        $('#paragraph-page-break input:checkbox').prop('checked', paragraph.get_PageBreakBefore());
-                        $('#paragraph-page-orphan input:checkbox').prop('checked', paragraph.get_WidowControl());
-                        $('#paragraph-page-keeptogether input:checkbox').prop('checked', paragraph.get_KeepLines());
-                        $('#paragraph-page-keepnext input:checkbox').prop('checked', paragraph.get_KeepNext());
+                    $('#paragraph-space input:checkbox').prop('checked', _paragraphObject.get_ContextualSpacing());
+                    $('#paragraph-page-break input:checkbox').prop('checked', _paragraphObject.get_PageBreakBefore());
+                    $('#paragraph-page-orphan input:checkbox').prop('checked', _paragraphObject.get_WidowControl());
+                    $('#paragraph-page-keeptogether input:checkbox').prop('checked', _paragraphObject.get_KeepLines());
+                    $('#paragraph-page-keepnext input:checkbox').prop('checked', _paragraphObject.get_KeepNext());
 
 
-                        // Background color
-                        var shade = paragraph.get_Shade(),
-                            backColor = 'transparent';
+                    // Background color
+                    var shade = _paragraphObject.get_Shade(),
+                        backColor = 'transparent';
 
-                        if (!_.isNull(shade) && !_.isUndefined(shade) && shade.get_Value()===Asc.c_oAscShdClear) {
-                            var color = shade.get_Color();
-                            if (color) {
-                                if (color.get_type() == Asc.c_oAscColor.COLOR_TYPE_SCHEME) {
-                                    backColor = {
-                                        color: Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b()),
-                                        effectValue: color.get_value()
-                                    };
-                                } else {
-                                    backColor = Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b());
-                                }
+                    if (!_.isNull(shade) && !_.isUndefined(shade) && shade.get_Value()===Asc.c_oAscShdClear) {
+                        var color = shade.get_Color();
+                        if (color) {
+                            if (color.get_type() == Asc.c_oAscColor.COLOR_TYPE_SCHEME) {
+                                backColor = {
+                                    color: Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b()),
+                                    effectValue: color.get_value()
+                                };
+                            } else {
+                                backColor = Common.Utils.ThemeColor.getHexColor(color.get_r(), color.get_g(), color.get_b());
                             }
                         }
-
-                        $('#paragraph-background .color-preview').css('background-color', (backColor === 'transparent') ? backColor : ('#' + (_.isObject(backColor) ? backColor.color : backColor)));
-
-                        var palette = me.getView('EditParagraph').paletteBackgroundColor;
-
-                        if (palette) {
-                            palette.select(backColor);
-                        }
                     }
-                });
+
+                    $('#paragraph-background .color-preview').css('background-color', (backColor === 'transparent') ? backColor : ('#' + (_.isObject(backColor) ? backColor.color : backColor)));
+
+                    var palette = me.getView('EditParagraph').paletteBackgroundColor;
+
+                    if (palette) {
+                        palette.select(backColor);
+                    }
+                }
             },
 
             onStyleClick: function (view, e) {
@@ -250,6 +245,21 @@ define([
 
             onApiFocusObject: function (objects) {
                 _stack = objects;
+
+                var paragraphs = [];
+
+                _.each(_stack, function(object) {
+                    if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Paragraph) {
+                        paragraphs.push(object);
+                    }
+                });
+
+                if (paragraphs.length > 0) {
+                    var object = paragraphs[paragraphs.length - 1]; // get top
+                    _paragraphObject = object.get_ObjectValue();
+                } else {
+                    _paragraphObject = undefined;
+                }
             },
 
             onApiInitEditorStyles: function (styles) {

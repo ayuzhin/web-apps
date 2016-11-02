@@ -34,10 +34,11 @@ define([
             initEvents: function () {
                 var me = this;
 
-                $('#shape-style').single('click',   _.bind(me.showStyle, me));
-                $('#shape-wrap').single('click',    _.bind(me.showWrap, me));
-                $('#shape-replace').single('click', _.bind(me.showReplace, me));
-                $('#shape-reorder').single('click', _.bind(me.showReorder, me));
+                $('#shape-style').single('click',                   _.bind(me.showStyle, me));
+                $('#shape-wrap').single('click',                    _.bind(me.showWrap, me));
+                $('#shape-replace').single('click',                 _.bind(me.showReplace, me));
+                $('#shape-reorder').single('click',                 _.bind(me.showReorder, me));
+                $('#edit-shape-bordercolor').single('click',        _.bind(me.showBorderColor, me));
 
                 $('.edit-shape-style .categories a').single('click', _.bind(me.showStyleCategory, me));
 
@@ -75,7 +76,7 @@ define([
                 //
             },
 
-            showPage: function (templateId) {
+            showPage: function (templateId, suspendEvent) {
                 var rootView = DE.getController('EditContainer').rootView;
 
                 if (rootView && this.layout) {
@@ -90,7 +91,10 @@ define([
                         content: $content.html()
                     });
 
-                    this.fireEvent('page:show', this);
+                    if (suspendEvent !== true) {
+                        this.fireEvent('page:show', [this, templateId]);
+                    }
+
                     this.initEvents();
                 }
             },
@@ -107,7 +111,17 @@ define([
             },
 
             showStyle: function () {
-                this.showPage('#edit-shape-style');
+                var selector = '#edit-shape-style';
+                this.showPage(selector, true);
+
+                this.paletteFillColor = new Common.UI.ThemeColorPalette({
+                    el: $('.page[data-page=edit-shape-style] .page-content'),
+                    transparent: true,
+                    cls: 'fill',
+                    style: 'margin-top: -1px;'
+                });
+
+                this.fireEvent('page:show', [this, selector]);
             },
 
             showWrap: function () {
@@ -120,6 +134,17 @@ define([
 
             showReorder: function () {
                 this.showPage('#edit-shape-reorder');
+            },
+
+            showBorderColor: function () {
+                var selector = '#edit-shape-border-color-view';
+                this.showPage(selector, true);
+
+                this.paletteBorderColor = new Common.UI.ThemeColorPalette({
+                    el: $('.page[data-page=edit-shape-border-color] .page-content')
+                });
+
+                this.fireEvent('page:show', [this, selector]);
             }
         }
     })());

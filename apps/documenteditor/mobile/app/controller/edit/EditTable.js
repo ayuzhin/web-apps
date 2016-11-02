@@ -17,7 +17,7 @@ define([
         // Private
         var _stack = [],
             _metricText = Common.Utils.Metric.getCurrentMetricName(),
-            _tableObject = {},
+            _tableObject = undefined,
             _tableLook = {},
             _cellBorders = new Asc.CBorders(),
             _cellBorderColor = '000000',
@@ -125,23 +125,12 @@ define([
 
                 $('#edit-table-bordertypes a').single('click',          _.bind(me.onBorderTypeClick, me));
 
-                // ['l', 'btn-borders-small btn-position-left', 'table-button-border-left',            this.tipLeft],
-                // ['c','btn-borders-small btn-position-inner-vert', 'table-button-border-inner-vert', this.tipInnerVert],
-                // ['r','btn-border-small btn-position-right', 'table-button-border-right',           this.tipRight],
-                // ['t','btn-borders-small btn-position-top', 'table-button-border-top',               this.tipTop],
-                // ['m','btn-borders-small btn-position-inner-hor', 'table-button-border-inner-hor',   this.tipInnerHor],
-                // ['b', 'btn-borders-small btn-position-bottom', 'table-button-border-bottom',        this.tipBottom],
-                // ['cm', 'btn-borders-small btn-position-inner', 'table-button-border-inner',         this.tipInner],
-                // ['lrtb', 'btn-borders-small btn-position-outer', 'table-button-border-outer',       this.tipOuter],
-                // ['lrtbcm', 'btn-borders-small btn-position-all', 'table-button-border-all',         this.tipAll],
-                // ['', 'btn-borders-small btn-position-none', 'table-button-border-none',             this.tipNone]
-
-                paletteFillColor && paletteFillColor.on('select',       _.bind(me.onFillColor, me));
-                paletteBorderColor && paletteBorderColor.on('select',   _.bind(me.onBorderColor, me));
-
                 $('.dataview.table-styles .row div').single('click',    _.bind(me.onStyleClick, me));
                 $('#edit-table-bordersize input').single('change touchend',  _.buffered(me.onBorderSize, 100, me));
                 $('#edit-table-bordersize input').single('input',            _.bind(me.onBorderSizeChanging, me));
+
+                paletteFillColor && paletteFillColor.on('select',       _.bind(me.onFillColor, me));
+                paletteBorderColor && paletteBorderColor.on('select',   _.bind(me.onBorderColor, me));
 
                 me.initSettings(pageId);
             },
@@ -149,19 +138,7 @@ define([
             initSettings: function (pageId) {
                 var me = this;
 
-                me.api && me.api.UpdateInterfaceState();
-
-                var tables = [];
-
-                _.each(_stack, function(object) {
-                    if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Table) {
-                        tables.push(object);
-                    }
-                });
-
-                if (tables.length > 0) {
-                    var object = tables[tables.length - 1]; // get top table
-
+                if (_tableObject) {
                     _tableObject = object.get_ObjectValue();
                     _tableLook = _tableObject.get_TableLook();
 
@@ -587,6 +564,23 @@ define([
 
             onApiFocusObject: function (objects) {
                 _stack = objects;
+
+                var tables = [];
+
+                _.each(_stack, function(object) {
+                    if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Table) {
+                        tables.push(object);
+                    }
+                });
+
+                if (tables.length > 0) {
+                    var object = tables[tables.length - 1]; // get top table
+
+                    _tableObject = object.get_ObjectValue();
+                    _tableLook = _tableObject.get_TableLook();
+                } else {
+                    _tableObject = undefined;
+                }
             },
 
             // Helpers
@@ -600,9 +594,10 @@ define([
             _isTableInStack: function () {
                 var tableExist = false;
 
-                _.each(_stack, function(object) {
+                _.some(_stack, function(object) {
                     if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Table) {
                         tableExist = true;
+                        return true;
                     }
                 });
 
