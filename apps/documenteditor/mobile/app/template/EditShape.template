@@ -296,7 +296,7 @@
                                         <input type="range" min="0" max="200" value="0" step="1">
                                     </div>
                                 </div>
-                                <div class="item-after" style="margin-left: 10px; color: #000;">0 pt</div>
+                                <div class="item-after value">0 pt</div>
                             </div>
                         </div>
                     </li>
@@ -315,9 +315,14 @@
                 <% if (android) { %>
                 <div class="toolbar tabbar">
                     <div data-page="index" class="toolbar-inner">
-                        <a data-type="fill" class="tab-link active">Fill</a>
-                        <a data-type="border" class="tab-link">Border</a>
-                        <a data-type="effects" class="tab-link">Effects</a>
+                        <a href="#page-shape-fill" data-type="fill" class="tab-link active">Fill</a>
+                        <a href="#page-shape-border" data-type="border" class="tab-link">Border</a>
+                        <a href="#page-shape-effects" data-type="effects" class="tab-link">Effects</a>
+                    </div>
+                    <div class="tabs" style="display: none">
+                        <div class="tab" id="page-shape-fill"></div>
+                        <div class="tab" id="page-shape-border"></div>
+                        <div class="tab" id="page-shape-effects"></div>
                     </div>
                 </div>
                 <% } else { %>
@@ -344,7 +349,7 @@
                                         <input type="range" min="0" max="7" value="0" step="1">
                                     </div>
                                 </div>
-                                <div class="item-after" style="margin-left: 10px; color: #000;">0 pt</div>
+                                <div class="item-after value">0 pt</div>
                             </div>
                         </div>
                     </li>
@@ -371,7 +376,7 @@
                                         <input type="range" min="0" max="100" value="0" step="1">
                                     </div>
                                 </div>
-                                <div class="item-after" style="margin-left: 10px; color: #000;">0 %</div>
+                                <div class="item-after value">0 %</div>
                             </div>
                         </div>
                     </li>

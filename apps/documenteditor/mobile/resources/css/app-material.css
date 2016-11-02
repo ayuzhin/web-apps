@@ -5762,6 +5762,13 @@ a.item-link,
   min-width: 40px;
   margin-left: 0;
 }
+.item-content .item-after.value {
+  display: block;
+  min-width: 50px;
+  color: #000000;
+  margin-left: 10px;
+  text-align: right;
+}
 .item-content.buttons .item-inner {
   padding-top: 0;
   padding-bottom: 0;

@@ -130,6 +130,9 @@ define([
 
                 $('.edit-table-style .list-block').hide();
                 $('.edit-table-style .list-block.' + category).show();
+
+                // remove android specific style
+                $('.edit-table-style .list-block.inputs-list').removeClass('inputs-list');
             },
 
             showPage: function (templateId, suspendEvent) {

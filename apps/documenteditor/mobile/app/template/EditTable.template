@@ -131,7 +131,7 @@
                                         <input type="range" min="0" max="200" value="0" step="1">
                                     </div>
                                 </div>
-                                <div class="item-after" style="margin-left: 10px; color: #000;">0 pt</div>
+                                <div class="item-after value">0 pt</div>
                             </div>
                         </div>
                     </li>
@@ -209,7 +209,7 @@
                                         <input type="range" min="0" max="150" value="0" step="1">
                                     </div>
                                 </div>
-                                <div class="item-after" style="margin-left: 10px; color: #000;">0 pt</div>
+                                <div class="item-after value">0 pt</div>
                             </div>
                         </div>
                     </li>
@@ -228,9 +228,14 @@
                 <% if (android) { %>
                 <div class="toolbar tabbar">
                     <div data-page="index" class="toolbar-inner">
-                        <a data-type="style" class="tab-link active">Style</a>
-                        <a data-type="fill" class="tab-link">Fill</a>
-                        <a data-type="border" class="tab-link">Border</a>
+                        <a href="#page-table-style" data-type="style" class="tab-link active">Style</a>
+                        <a href="#page-table-fill" data-type="fill" class="tab-link">Fill</a>
+                        <a href="#page-table-border" data-type="border" class="tab-link">Border</a>
+                    </div>
+                    <div class="tabs" style="display: none">
+                        <div class="tab" id="page-table-style"></div>
+                        <div class="tab" id="page-table-fill"></div>
+                        <div class="tab" id="page-table-border"></div>
                     </div>
                 </div>
                 <% } else { %>
@@ -279,7 +284,7 @@
                                         <input type="range" min="0" max="7" value="0" step="1">
                                     </div>
                                 </div>
-                                <div class="item-after" style="margin-left: 10px; color: #000;">0 pt</div>
+                                <div class="item-after value">0 pt</div>
                             </div>
                         </div>
                     </li>
@@ -297,20 +302,20 @@
                         <div class="item-content buttons" style="-webkit-flex-flow: row wrap;justify-content: space-around;">
                             <div class="item-inner" style="margin: 20px 0;">
                                 <div class="row">
-                                    <a class="button no-ripple" data-type="lrtbcm"><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" data-type=""><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" data-type="cm"><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" data-type="lrtb"><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" data-type="l"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" style="min-width:0;" data-type="lrtbcm"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" style="min-width:0;" data-type=""><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" style="min-width:0;" data-type="cm"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" style="min-width:0;" data-type="lrtb"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" style="min-width:0;" data-type="l"><i class="icon icon-text-align-left"></i></a>
                                 </div>
                             </div>
                             <div class="item-inner" style="margin: 0 0 20px;">
                                 <div class="row">
-                                    <a class="button no-ripple" data-type="c"><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" data-type="r"><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" data-type="t"><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" data-type="m"><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" data-type="b"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" style="min-width:0;" data-type="c"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" style="min-width:0;" data-type="r"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" style="min-width:0;" data-type="t"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" style="min-width:0;" data-type="m"><i class="icon icon-text-align-left"></i></a>
+                                    <a class="button no-ripple" style="min-width:0;" data-type="b"><i class="icon icon-text-align-left"></i></a>
                                 </div>
                             </div>
                         </div>

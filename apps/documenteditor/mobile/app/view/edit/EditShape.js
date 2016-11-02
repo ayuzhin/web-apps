@@ -108,6 +108,9 @@ define([
 
                 $('.edit-shape-style .list-block').hide();
                 $('.edit-shape-style .list-block.' + category).show();
+
+                // remove android specific style
+                $('.edit-shape-style .list-block.inputs-list').removeClass('inputs-list');
             },
 
             showStyle: function () {

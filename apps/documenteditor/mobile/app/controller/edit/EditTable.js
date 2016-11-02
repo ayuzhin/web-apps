@@ -139,9 +139,6 @@ define([
                 var me = this;
 
                 if (_tableObject) {
-                    _tableObject = object.get_ObjectValue();
-                    _tableLook = _tableObject.get_TableLook();
-
                     if (pageId == '#edit-table-wrap') {
                         me._initWrappView();
                     } else if (pageId == "#edit-table-style" || pageId == '#edit-table-border-color-view') {

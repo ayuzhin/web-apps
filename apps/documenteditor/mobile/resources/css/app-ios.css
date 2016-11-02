@@ -6053,6 +6053,13 @@ html.pixel-ratio-3 .phone.ios .container-edit .navbar:before {
   min-width: 90px;
   margin-left: 10px;
 }
+.item-content .item-after.value {
+  display: block;
+  min-width: 60px;
+  color: #000000;
+  margin-left: 10px;
+  text-align: right;
+}
 .item-content.buttons .item-inner {
   padding-top: 0;
   padding-bottom: 0;
