@@ -145,7 +145,7 @@ define([
                     '<div class="navbar">' +
                         '<div data-page="index" class="navbar-inner">' +
                             '<div class="center sliding categories"></div>' +
-                            (isPhone ? '<div class="right sliding"><a href="#" class="link close-picker">Done</a></div>' : '') +
+                            (isPhone ? '<div class="right sliding"><a href="#" class="link icon-only close-picker"><i class="icon icon-expand-down"></i></a></div>' : '') +
                         '</div>' +
                     '</div>'
                 );

@@ -103,7 +103,7 @@
         <div class="navbar-inner">
             <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></div>
             <div class="center sliding">Fonts</div>
-            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+            <div class="right"><% if (phone) { %><a href="#" class="link icon-only close-picker"><i class="icon icon-expand-down"></i></a><% } %></div>
         </div>
     </div>
     <div class="page" data-page="edit-text-font-page">
@@ -141,7 +141,7 @@
         <div class="navbar-inner">
             <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></a></div>
             <div class="center sliding">Font Colors</div>
-            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+            <div class="right"><% if (phone) { %><a href="#" class="link icon-only close-picker"><i class="icon icon-expand-down"></i></a><% } %></div>
         </div>
     </div>
     <div class="page" data-page="edit-text-font-color">
@@ -172,7 +172,7 @@
         <div class="navbar-inner">
             <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></a></div>
             <div class="center sliding">Highlight Colors</div>
-            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+            <div class="right"><% if (phone) { %><a href="#" class="link icon-only close-picker"><i class="icon icon-expand-down"></i></a><% } %></div>
         </div>
     </div>
     <div class="page" data-page="edit-text-font-background">
@@ -188,7 +188,7 @@
         <div class="navbar-inner">
             <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></a></div>
             <div class="center sliding">Additional</div>
-            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+            <div class="right"><% if (phone) { %><a href="#" class="link icon-only close-picker"><i class="icon icon-expand-down"></i></a><% } %></div>
         </div>
     </div>
     <div class="page" id="page-text-additional" data-page="edit-text-additional">
@@ -280,7 +280,7 @@
         <div class="navbar-inner">
             <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></a></div>
             <div class="center sliding">Line Spacing</div>
-            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+            <div class="right"><% if (phone) { %><a href="#" class="link icon-only close-picker"><i class="icon icon-expand-down"></i></a><% } %></div>
         </div>
     </div>
     <div class="page" id="page-text-linespacing" data-page="edit-text-additional">
@@ -353,7 +353,7 @@
         <div class="navbar-inner">
             <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></a></div>
             <div class="center sliding">Bullets</div>
-            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+            <div class="right"><% if (phone) { %><a href="#" class="link icon-only close-picker"><i class="icon icon-expand-down"></i></a><% } %></div>
         </div>
     </div>
     <div class="page" id="page-text-bullets">
@@ -381,7 +381,7 @@
         <div class="navbar-inner">
             <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></a></div>
             <div class="center sliding">Numbers</div>
-            <div class="right"><% if (phone) { %><a href="#" class="link close-picker">Done</a><% } %></div>
+            <div class="right"><% if (phone) { %><a href="#" class="link icon-only close-picker"><i class="icon icon-expand-down"></i></a><% } %></div>
         </div>
     </div>
     <div class="page" id="page-text-numbers">
