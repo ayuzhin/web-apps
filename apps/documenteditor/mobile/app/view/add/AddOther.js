@@ -80,7 +80,7 @@ define([
                         content: $content.html()
                     });
 
-                    this.fireEvent('page:show', this);
+                    this.fireEvent('page:show', [this, templateId]);
                 }
             },
 
@@ -90,6 +90,14 @@ define([
 
             showLink: function () {
                 this.showPage('#addother-link');
+
+                $('.page[data-page=addother-link] input[type=url]').single('input', _.bind(function(e) {
+                    $('#add-link-insert').toggleClass('disabled', _.isEmpty($('#add-link-url input').val()));
+                }, this));
+
+                _.delay(function () {
+                    $('.page[data-page=addother-link] input[type=url]').focus();
+                }, 1000);
             },
 
             showPagePosition: function () {

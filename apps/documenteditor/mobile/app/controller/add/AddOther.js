@@ -57,32 +57,25 @@ define([
                 $('#add-other-linebreak').single('click',   _.bind(me.onLineBreak, me));
             },
 
-            onPageShow: function () {
+            onPageShow: function (view, pageId) {
                 var me = this;
 
-                $('#addother-sectionbreak-view a').single('click',   _.buffered(me.onInsertSectionBreak, 100, me));
-                $('#addother-pagenumber-view a').single('click',     _.buffered(me.onInsertPageNumber, 100, me));
-                $('#add-link-insert').single('click',                _.buffered(me.onInsertLink, 100, me));
+                $('.page[data-page=addother-sectionbreak] li a').single('click',    _.buffered(me.onInsertSectionBreak, 100, me));
+                $('.page[data-page=addother-pagenumber] li a').single('click',      _.buffered(me.onInsertPageNumber, 100, me));
+                $('#add-link-insert').single('click',                               _.buffered(me.onInsertLink, 100, me));
 
-                $('#add-link-url input, #add-link-display input').single('input', _.bind(me.onFieldChange, me));
 
-                _.delay(function () {
-                    $('#addother-link-view input[type="url"]').focus();
-                }, 1000);
-
-                // Init Link
-                if ($('#addother-link-view')) {
-                    _.defer(function () {
-                        $('#add-link-display input').val(me.api.can_AddHyperlink());
-                    });
+                if (pageId == '#addother-link') {
+                    if ($('#addother-link-view')) {
+                        _.defer(function () {
+                            var text = me.api.can_AddHyperlink();
+                            $('#add-link-display input').val(_.isString(text) ? text : '');
+                        });
+                    }
                 }
             },
 
             // Handlers
-
-            onFieldChange: function () {
-                $('#add-link-insert')[_.isEmpty($('#add-link-url input').val()) ? 'addClass' : 'removeClass']('disabled');
-            },
 
             onInsertLink: function (e) {
                 var me      = this,
