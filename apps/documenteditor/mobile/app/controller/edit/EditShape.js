@@ -7,7 +7,6 @@
  *
  */
 
-
 define([
     'core',
     'documenteditor/mobile/app/view/edit/EditShape'

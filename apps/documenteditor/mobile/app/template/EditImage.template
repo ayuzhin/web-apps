@@ -1,18 +1,9 @@
 <!-- Root view -->
-<div id="edit-shape-root">
+<div id="edit-image-root">
     <div class="list-block">
         <ul>
             <li>
-                <a id="shape-style" class="item-link">
-                    <div class="item-content">
-                        <div class="item-inner">
-                            <div class="item-title">Style</div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a id="shape-wrap" class="item-link">
+                <a id="image-wrap" class="item-link">
                     <div class="item-content">
                         <div class="item-inner">
                             <div class="item-title">Wrap</div>
@@ -21,7 +12,7 @@
                 </a>
             </li>
             <li>
-                <a id="shape-replace" class="item-link">
+                <a id="image-replace" class="item-link">
                     <div class="item-content">
                         <div class="item-inner">
                             <div class="item-title">Replace</div>
@@ -30,7 +21,7 @@
                 </a>
             </li>
             <li>
-                <a id="shape-reorder" class="item-link">
+                <a id="image-reorder" class="item-link">
                     <div class="item-content">
                         <div class="item-inner">
                             <div class="item-title">Reorder</div>
@@ -43,14 +34,17 @@
     <div class="list-block">
         <ul>
             <li>
-                <a id="shape-remove" class="item-link list-button" style="text-align: center; color: #f00">Remove Shape</a>
+                <a id="image-default" class="item-link list-button" style="text-align: center;">Default Size</a>
+            </li>
+            <li>
+                <a id="image-remove" class="item-link list-button" style="text-align: center; color: #f00">Remove Image</a>
             </li>
         </ul>
     </div>
 </div>
 
 <!-- Reorder view -->
-<div id="edit-shape-reorder">
+<div id="edit-image-reorder-view">
     <div class="navbar">
         <div class="navbar-inner">
             <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></div>
@@ -58,7 +52,7 @@
             <div class="right"><% if (phone) { %><a href="#" class="link icon-only close-picker"><i class="icon icon-expand-down"></i></a><% } %></div>
         </div>
     </div>
-    <div class="page shape-reorder">
+    <div class="page image-reorder">
         <div class="page-content">
             <div class="list-block">
                 <ul>
@@ -108,30 +102,8 @@
     </div>
 </div>
 
-<!-- Replace view -->
-<div id="edit-shape-replace">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></div>
-            <div class="center sliding">Replace</div>
-            <div class="right"><% if (phone) { %><a href="#" class="link icon-only close-picker"><i class="icon icon-expand-down"></i></a><% } %></div>
-        </div>
-    </div>
-    <div class="page shape-replace">
-        <div class="page-content dataview shapes">
-            <ul>
-                <% _.each(shapes, function(shape) { %>
-                <li data-type="<%= shape.type %>">
-                    <div class="thumb" style="-webkit-mask-image:url('../mobile/resources/img/shapes/<%= shape.thumb %>')"></div>
-                </li>
-                <% }); %>
-            </ul>
-        </div>
-    </div>
-</div>
-
 <!-- Wrap view -->
-<div id="edit-shape-wrap">
+<div id="edit-image-wrap-view">
     <div class="navbar">
         <div class="navbar-inner">
             <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></div>
@@ -139,13 +111,13 @@
             <div class="right"><% if (phone) { %><a href="#" class="link icon-only close-picker"><i class="icon icon-expand-down"></i></a><% } %></div>
         </div>
     </div>
-    <div class="page shape-wrap">
+    <div class="page image-wrap">
         <div class="page-content">
-            <div class="list-block shape-wrap-types">
+            <div class="list-block image-wrap-types">
                 <ul>
                     <li>
                         <label class="label-radio item-content">
-                            <input type="radio" name="shape-wrap" value="inline">
+                            <input type="radio" name="image-wrap" value="inline">
                             <% if (android) { %>
                             <div class="item-media"><i class="icon icon-form-radio"></i></div>
                             <% } else { %>
@@ -158,7 +130,7 @@
                     </li>
                     <li>
                         <label class="label-radio item-content">
-                            <input type="radio" name="shape-wrap" value="square">
+                            <input type="radio" name="image-wrap" value="square">
                             <% if (android) { %>
                             <div class="item-media"><i class="icon icon-form-radio"></i></div>
                             <% } else { %>
@@ -171,7 +143,7 @@
                     </li>
                     <li>
                         <label class="label-radio item-content">
-                            <input type="radio" name="shape-wrap" value="tight">
+                            <input type="radio" name="image-wrap" value="tight">
                             <% if (android) { %>
                             <div class="item-media"><i class="icon icon-form-radio"></i></div>
                             <% } else { %>
@@ -184,7 +156,7 @@
                     </li>
                     <li>
                         <label class="label-radio item-content">
-                            <input type="radio" name="shape-wrap" value="through">
+                            <input type="radio" name="image-wrap" value="through">
                             <% if (android) { %>
                             <div class="item-media"><i class="icon icon-form-radio"></i></div>
                             <% } else { %>
@@ -197,7 +169,7 @@
                     </li>
                     <li>
                         <label class="label-radio item-content">
-                            <input type="radio" name="shape-wrap" value="top-bottom">
+                            <input type="radio" name="image-wrap" value="top-bottom">
                             <% if (android) { %>
                             <div class="item-media"><i class="icon icon-form-radio"></i></div>
                             <% } else { %>
@@ -210,7 +182,7 @@
                     </li>
                     <li>
                         <label class="label-radio item-content">
-                            <input type="radio" name="shape-wrap" value="infront">
+                            <input type="radio" name="image-wrap" value="infront">
                             <% if (android) { %>
                             <div class="item-media"><i class="icon icon-form-radio"></i></div>
                             <% } else { %>
@@ -223,7 +195,7 @@
                     </li>
                     <li>
                         <label class="label-radio item-content">
-                            <input type="radio" name="shape-wrap" value="behind">
+                            <input type="radio" name="image-wrap" value="behind">
                             <% if (android) { %>
                             <div class="item-media"><i class="icon icon-form-radio"></i></div>
                             <% } else { %>
@@ -239,7 +211,7 @@
             <div class="content-block-title align">Align</div>
             <div class="list-block align">
                 <ul>
-                    <li id="edit-shape-align">
+                    <li id="edit-image-align">
                         <div class="item-content buttons">
                             <div class="item-inner">
                                 <div class="row">
@@ -254,7 +226,7 @@
             </div>
             <div class="list-block inline">
                 <ul>
-                    <li id="edit-shape-movetext">
+                    <li id="edit-image-movetext">
                         <div class="item-content">
                             <div class="item-inner">
                                 <div class="item-title">Move with Text</div>
@@ -267,7 +239,7 @@
                             </div>
                         </div>
                     </li>
-                    <li id="edit-shape-overlap">
+                    <li id="edit-image-overlap">
                         <div class="item-content">
                             <div class="item-inner">
                                 <div class="item-title">Allow Overlap</div>
@@ -303,102 +275,84 @@
     </div>
 </div>
 
-<!-- Styles view -->
-<div id="edit-shape-style">
+<!-- Replace view -->
+<div id="edit-image-replace-view">
     <div class="navbar">
-        <div class="navbar-inner edit-shape-style" data-page="edit-shape-style">
+        <div class="navbar-inner">
             <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></div>
-            <div class="center sliding categories">
-                <% if (android) { %>
-                <div class="toolbar tabbar">
-                    <div data-page="index" class="toolbar-inner">
-                        <a href="#tab-shape-fill" data-type="fill" class="tab-link active">Fill</a>
-                        <a href="#tab-shape-border" data-type="border" class="tab-link">Border</a>
-                        <a href="#tab-shape-effects" data-type="effects" class="tab-link">Effects</a>
-                    </div>
-                </div>
-                <% } else { %>
-                <div class="buttons-row">
-                    <a href="#tab-shape-fill" data-type="fill" class="tab-link button active">Fill</a>
-                    <a href="#tab-shape-border" data-type="border" class="tab-link button">Border</a>
-                    <a href="#tab-shape-effects" data-type="effects" class="tab-link button">Effects</a>
-                </div>
-                <% } %>
-            </div>
+            <div class="center sliding">Replace</div>
             <div class="right"><% if (phone) { %><a href="#" class="link icon-only close-picker"><i class="icon icon-expand-down"></i></a><% } %></div>
         </div>
     </div>
-    <div class="page" data-page="edit-shape-style">
-        <div class="tabs-animated-wrap">
-            <div class="tabs">
-                <div id="tab-shape-fill" class="page-content tab active">
-                    <!--Fill colors-->
-                </div>
-                <div id="tab-shape-border" class="page-content tab">
-                    <div class="list-block">
-                        <ul>
-                            <li id="edit-shape-bordersize">
-                                <div style="padding: 15px 0 0 15px;">Size</div>
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        <div class="item-input">
-                                            <div class="range-slider">
-                                                <input type="range" min="0" max="7" value="0" step="1">
-                                            </div>
-                                        </div>
-                                        <div class="item-after value">0 pt</div>
-                                    </div>
+    <div class="page">
+        <div class="page-content">
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <a id="edit-image-file" class="item-link no-indicator">
+                            <div class="item-content">
+                                <div class="item-media">
+                                    <i class="icon icon-search"></i>
                                 </div>
-                            </li>
-                            <li>
-                                <a id="edit-shape-bordercolor" class="item-link">
-                                    <div class="item-content">
-                                        <div class="item-inner">
-                                            <div class="item-title">Color</div>
-                                            <div class="item-after"><div class="color-preview"></div></div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="tab-shape-effects" class="page-content tab">
-                    <div class="list-block">
-                        <ul>
-                            <li id="edit-shape-effect">
-                                <div style="padding: 15px 0 0 15px;">Opacity</div>
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        <div class="item-input">
-                                            <div class="range-slider">
-                                                <input type="range" min="0" max="100" value="0" step="1">
-                                            </div>
-                                        </div>
-                                        <div class="item-after value">0 %</div>
-                                    </div>
+                                <div class="item-inner">
+                                    <div class="item-title">Picture from Library</div>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="edit-image-url" class="item-link">
+                            <div class="item-content">
+                                <div class="item-media">
+                                    <i class="icon icon-search"></i>
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title">Picture from URL</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Border color view -->
-<div id="edit-shape-border-color-view">
+<!-- Url view -->
+<div id="edit-image-url-view">
     <div class="navbar">
-        <div class="navbar-inner" data-page="edit-shape-border-color">
+        <div class="navbar-inner">
             <div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><% if (!android) { %><span>Back</span><% } %></a></div>
-            <div class="center sliding">Color</div>
-            <div class="right"><% if (phone) { %><a href="#" class="link icon-only close-picker"><i class="icon icon-expand-down"></i></a><% } %></div>
+            <div class="center sliding">Link Settings</div>
         </div>
     </div>
-    <div class="page" data-page="edit-shape-border-color">
+    <div class="page edit-image-url-link">
         <div class="page-content">
-            <!--Color palette-->
+            <div class="content-block-title">Address</div>
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input type="url" placeholder="Image URL">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-block disabled buttons">
+                <% if (android) { %>
+                <a href="#" class="button button-fill button-raised" style="margin: 20px 16px;">Replace Image</a>
+                <% } else { %>
+                <ul>
+                    <li>
+                        <a href="#" class="list-button item-link">Replace Image</a>
+                    </li>
+                </ul>
+                <% } %>
+            </div>
         </div>
     </div>
 </div>

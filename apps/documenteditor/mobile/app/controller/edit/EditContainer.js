@@ -125,6 +125,15 @@ define([
                                 .rootLayout()
                         })
                     }
+                    if (_.contains(_settings, 'image')) {
+                        editors.push({
+                            caption: 'Image',
+                            id: 'edit-image',
+                            layout: DE.getController('EditImage')
+                                .getView('EditImage')
+                                .rootLayout()
+                        })
+                    }
                 }
 
                 return editors;
@@ -304,6 +313,8 @@ define([
                         }
                     }
                 });
+
+                _settings = _.uniq(_settings);
             }
         }
     })());
