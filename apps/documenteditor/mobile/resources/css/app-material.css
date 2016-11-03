@@ -5885,6 +5885,14 @@ a.item-link,
   margin-right: 1px;
   border: 1px solid #c4c4c4;
 }
+html.pixel-ratio-2 .bullets li,
+html.pixel-ratio-2 .numbers li {
+  border: 0.5px solid #c4c4c4;
+}
+html.pixel-ratio-3 .bullets li,
+html.pixel-ratio-3 .numbers li {
+  border: 0.33px solid #c4c4c4;
+}
 .bullets li.active,
 .numbers li.active {
   border: none;
@@ -5914,7 +5922,13 @@ a.item-link,
   min-width: 10px;
   min-height: 26px;
   margin: 1px 1px 0 0;
+  border: 1px solid #c4c4c4;
+}
+html.pixel-ratio-2 .color-palette a {
   border: 0.5px solid #c4c4c4;
+}
+html.pixel-ratio-3 .color-palette a {
+  border: 0.33px solid #c4c4c4;
 }
 .color-palette a.active:after {
   content: ' ';

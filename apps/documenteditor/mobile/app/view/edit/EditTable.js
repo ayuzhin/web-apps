@@ -122,17 +122,8 @@ define([
             },
 
             showStyleCategory: function (e) {
-                var $target = $(e.currentTarget),
-                    category = $target.data('type');
-
-                $('.edit-table-style .categories a').removeClass('active');
-                $target.addClass('active');
-
-                $('.edit-table-style .list-block').hide();
-                $('.edit-table-style .list-block.' + category).show();
-
                 // remove android specific style
-                $('.edit-table-style .list-block.inputs-list').removeClass('inputs-list');
+                $('.page[data-page=edit-table-style] .list-block.inputs-list').removeClass('inputs-list');
             },
 
             showPage: function (templateId, suspendEvent) {
@@ -166,10 +157,8 @@ define([
                 this.showPage('#edit-table-style', true);
 
                 this.paletteFillColor = new Common.UI.ThemeColorPalette({
-                    el: $('.page[data-page=edit-table-style] .page-content'),
-                    transparent: true,
-                    cls: 'fill',
-                    style: 'display: none; margin-top: -1px;'
+                    el: $('#tab-table-fill'),
+                    transparent: true
                 });
 
                 this.fireEvent('page:show', [this, '#edit-table-style']);

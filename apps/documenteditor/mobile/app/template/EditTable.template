@@ -25,7 +25,7 @@
                 </div>
             </li>
             <li>
-                <a id="table-remove-all" class="item-link list-button" style="color: #f00">Remove Table</a>
+                <a id="table-remove-all" class="item-link list-button" style="text-align: center;color: #f00;">Remove Table</a>
             </li>
         </ul>
     </div>
@@ -228,21 +228,16 @@
                 <% if (android) { %>
                 <div class="toolbar tabbar">
                     <div data-page="index" class="toolbar-inner">
-                        <a href="#page-table-style" data-type="style" class="tab-link active">Style</a>
-                        <a href="#page-table-fill" data-type="fill" class="tab-link">Fill</a>
-                        <a href="#page-table-border" data-type="border" class="tab-link">Border</a>
-                    </div>
-                    <div class="tabs" style="display: none">
-                        <div class="tab" id="page-table-style"></div>
-                        <div class="tab" id="page-table-fill"></div>
-                        <div class="tab" id="page-table-border"></div>
+                        <a href="#tab-table-style" data-type="style" class="tab-link active">Style</a>
+                        <a href="#tab-table-fill" data-type="fill" class="tab-link">Fill</a>
+                        <a href="#tab-table-border" data-type="border" class="tab-link">Border</a>
                     </div>
                 </div>
                 <% } else { %>
                 <div class="buttons-row">
-                    <a data-type="style" class="tab-link button active">Style</a>
-                    <a data-type="fill" class="tab-link button">Fill</a>
-                    <a data-type="border" class="tab-link button">Border</a>
+                    <a href="#tab-table-style" data-type="style" class="tab-link button active">Style</a>
+                    <a href="#tab-table-fill"  data-type="fill" class="tab-link button">Fill</a>
+                    <a href="#tab-table-border" data-type="border" class="tab-link button">Border</a>
                 </div>
                 <% } %>
             </div>
@@ -250,77 +245,86 @@
         </div>
     </div>
     <div class="page" data-page="edit-table-style">
-        <div class="page-content edit-table-style">
-            <div class="list-block style">
-                <ul>
-                    <li id="edit-table-styles">
-                        <div class="item-content">
-                            <div class="item-inner"></div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="list-block style" style="margin-bottom: 40px;">
-                <ul>
-                    <li>
-                        <a id="edit-table-style-options" class="item-link">
-                            <div class="item-content">
-                                <div class="item-inner">
-                                    <div class="item-title">Style Options</div>
+        <div class="tabs-animated-wrap">
+            <div class="tabs">
+                <div id="tab-table-style" class="page-content tab active">
+                    <div class="list-block">
+                        <ul>
+                            <li id="edit-table-styles">
+                                <div class="item-content">
+                                    <div class="item-inner"></div>
                                 </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="list-block border" style="display: none; margin-top: -1px;">
-                <ul>
-                    <li id="edit-table-bordersize">
-                        <div style="padding: 15px 0 0 15px;">Size</div>
-                        <div class="item-content">
-                            <div class="item-inner">
-                                <div class="item-input">
-                                    <div class="range-slider">
-                                        <input type="range" min="0" max="7" value="0" step="1">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list-block" style="margin-bottom: 40px;">
+                        <ul>
+                            <li>
+                                <a id="edit-table-style-options" class="item-link">
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title">Style Options</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="tab-table-fill" class="page-content tab">
+                    <!--Fill colors-->
+                </div>
+                <div id="tab-table-border" class="page-content tab">
+                    <div class="list-block">
+                        <ul>
+                            <li id="edit-table-bordersize">
+                                <div style="padding: 15px 0 0 15px;">Size</div>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input">
+                                            <div class="range-slider">
+                                                <input type="range" min="0" max="7" value="0" step="1">
+                                            </div>
+                                        </div>
+                                        <div class="item-after value">0 pt</div>
                                     </div>
                                 </div>
-                                <div class="item-after value">0 pt</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a id="edit-table-bordercolor" class="item-link">
-                            <div class="item-content">
-                                <div class="item-inner">
-                                    <div class="item-title">Color</div>
-                                    <div class="item-after"><div class="color-preview"></div></div>
+                            </li>
+                            <li>
+                                <a id="edit-table-bordercolor" class="item-link">
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title">Color</div>
+                                            <div class="item-after"><div class="color-preview"></div></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li id="edit-table-bordertypes">
+                                <div class="item-content buttons" style="-webkit-flex-flow: row wrap;justify-content: space-around;">
+                                    <div class="item-inner" style="margin: 20px 0;">
+                                        <div class="row">
+                                            <a class="button no-ripple" style="min-width:0;" data-type="lrtbcm"><i class="icon icon-text-align-left"></i></a>
+                                            <a class="button no-ripple" style="min-width:0;" data-type=""><i class="icon icon-text-align-left"></i></a>
+                                            <a class="button no-ripple" style="min-width:0;" data-type="cm"><i class="icon icon-text-align-left"></i></a>
+                                            <a class="button no-ripple" style="min-width:0;" data-type="lrtb"><i class="icon icon-text-align-left"></i></a>
+                                            <a class="button no-ripple" style="min-width:0;" data-type="l"><i class="icon icon-text-align-left"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="item-inner" style="margin: 0 0 20px;">
+                                        <div class="row">
+                                            <a class="button no-ripple" style="min-width:0;" data-type="c"><i class="icon icon-text-align-left"></i></a>
+                                            <a class="button no-ripple" style="min-width:0;" data-type="r"><i class="icon icon-text-align-left"></i></a>
+                                            <a class="button no-ripple" style="min-width:0;" data-type="t"><i class="icon icon-text-align-left"></i></a>
+                                            <a class="button no-ripple" style="min-width:0;" data-type="m"><i class="icon icon-text-align-left"></i></a>
+                                            <a class="button no-ripple" style="min-width:0;" data-type="b"><i class="icon icon-text-align-left"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li id="edit-table-bordertypes">
-                        <div class="item-content buttons" style="-webkit-flex-flow: row wrap;justify-content: space-around;">
-                            <div class="item-inner" style="margin: 20px 0;">
-                                <div class="row">
-                                    <a class="button no-ripple" style="min-width:0;" data-type="lrtbcm"><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" style="min-width:0;" data-type=""><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" style="min-width:0;" data-type="cm"><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" style="min-width:0;" data-type="lrtb"><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" style="min-width:0;" data-type="l"><i class="icon icon-text-align-left"></i></a>
-                                </div>
-                            </div>
-                            <div class="item-inner" style="margin: 0 0 20px;">
-                                <div class="row">
-                                    <a class="button no-ripple" style="min-width:0;" data-type="c"><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" style="min-width:0;" data-type="r"><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" style="min-width:0;" data-type="t"><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" style="min-width:0;" data-type="m"><i class="icon icon-text-align-left"></i></a>
-                                    <a class="button no-ripple" style="min-width:0;" data-type="b"><i class="icon icon-text-align-left"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

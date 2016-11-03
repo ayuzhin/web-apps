@@ -100,17 +100,8 @@ define([
             },
 
             showStyleCategory: function (e) {
-                var $target = $(e.currentTarget),
-                    category = $target.data('type');
-
-                $('.edit-shape-style .categories a').removeClass('active');
-                $target.addClass('active');
-
-                $('.edit-shape-style .list-block').hide();
-                $('.edit-shape-style .list-block.' + category).show();
-
                 // remove android specific style
-                $('.edit-shape-style .list-block.inputs-list').removeClass('inputs-list');
+                $('.page[data-page=edit-shape-style] .list-block.inputs-list').removeClass('inputs-list');
             },
 
             showStyle: function () {
@@ -118,10 +109,8 @@ define([
                 this.showPage(selector, true);
 
                 this.paletteFillColor = new Common.UI.ThemeColorPalette({
-                    el: $('.page[data-page=edit-shape-style] .page-content'),
-                    transparent: true,
-                    cls: 'fill',
-                    style: 'margin-top: -1px;'
+                    el: $('#tab-shape-fill'),
+                    transparent: true
                 });
 
                 this.fireEvent('page:show', [this, selector]);
