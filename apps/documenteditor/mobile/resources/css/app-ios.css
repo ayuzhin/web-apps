@@ -6185,6 +6185,16 @@ html.pixel-ratio-3 .item-content i .color-preview {
   height: 100%;
   background-color: #4066D7;
 }
+.chart-types li {
+  width: 60px;
+  height: 60px;
+  margin: 6px;
+}
+.chart-types li .thumb {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+}
 .bullets ul,
 .numbers ul {
   margin-top: 10px;

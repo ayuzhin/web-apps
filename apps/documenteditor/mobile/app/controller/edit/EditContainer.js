@@ -134,6 +134,15 @@ define([
                                 .rootLayout()
                         })
                     }
+                    if (_.contains(_settings, 'chart')) {
+                        editors.push({
+                            caption: 'Chart',
+                            id: 'edit-chart',
+                            layout: DE.getController('EditChart')
+                                .getView('EditChart')
+                                .rootLayout()
+                        })
+                    }
                 }
 
                 return editors;
@@ -313,6 +322,11 @@ define([
                         }
                     }
                 });
+
+                // Exclude shapes if chart exist
+                if (_settings.indexOf('chart') > -1) {
+                    _settings = _.without(_settings, 'shape');
+                }
 
                 _settings = _.uniq(_settings);
             }
