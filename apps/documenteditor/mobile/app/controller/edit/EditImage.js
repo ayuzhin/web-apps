@@ -98,6 +98,8 @@ define([
                 $('#edit-image-file').single('click',                       _.bind(me.onReplaceByFile, me));
                 $('.edit-image-url-link .button, .edit-image-url-link .list-button').single('click', _.bind(me.onReplaceByUrl, me));
 
+                $('.image-reorder a').single('click',                       _.bind(me.onReorder, me));
+
                 me.initSettings(pageId);
             },
 
@@ -151,7 +153,17 @@ define([
             // Handlers
 
             onDefaulSize: function () {
-                console.debug('Default size image!!!');
+                var me = this;
+
+                if (me.api) {
+                    var imgsize = me.api.get_OriginalSizeImage(),
+                        properties = new Asc.asc_CImgProperty();
+
+                    properties.put_Width(imgsize.get_ImageWidth());
+                    properties.put_Height(imgsize.get_ImageHeight());
+
+                    me.api.ImgApply(properties);
+                }
             },
 
             onRemoveImage: function () {
@@ -248,6 +260,7 @@ define([
 
             onReplaceByFile: function () {
                 this.api.ChangeImageFromFile();
+                DE.getController('EditContainer').hideModal();
             },
 
             onReplaceByUrl: function () {
@@ -272,6 +285,25 @@ define([
                         }
                     }, 300);
                 }
+            },
+
+            onReorder: function (e) {
+                var $target = $(e.currentTarget),
+                    type = $target.data('type');
+
+                var properties = new Asc.asc_CImgProperty();
+
+                if ('all-up' == type) {
+                    properties.put_ChangeLevel(Asc.c_oAscChangeLevel.BringToFront);
+                } else if ('all-down' == type) {
+                    properties.put_ChangeLevel(Asc.c_oAscChangeLevel.SendToBack);
+                } else if ('move-up' == type) {
+                    properties.put_ChangeLevel(Asc.c_oAscChangeLevel.BringForward);
+                } else if ('move-down' == type) {
+                    properties.put_ChangeLevel(Asc.c_oAscChangeLevel.BringBackward);
+                }
+
+                this.api.ImgApply(properties);
             },
 
             // API handlers
