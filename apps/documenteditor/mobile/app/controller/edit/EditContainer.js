@@ -93,54 +93,49 @@ define([
                         editors.push({
                             caption: 'Text',
                             id: 'edit-text',
-                            layout: DE.getController('EditText')
-                                .getView('EditText')
-                                .rootLayout()
+                            layout: DE.getController('EditText').getView('EditText').rootLayout()
                         })
                     }
                     if (_.contains(_settings, 'paragraph')) {
                         editors.push({
                             caption: 'Paragraph',
                             id: 'edit-paragraph',
-                            layout: DE.getController('EditParagraph')
-                                .getView('EditParagraph')
-                                .rootLayout()
+                            layout: DE.getController('EditParagraph').getView('EditParagraph').rootLayout()
                         })
                     }
                     if (_.contains(_settings, 'table')) {
                         editors.push({
                             caption: 'Table',
                             id: 'edit-table',
-                            layout: DE.getController('EditTable')
-                                .getView('EditTable')
-                                .rootLayout()
+                            layout: DE.getController('EditTable').getView('EditTable').rootLayout()
                         })
                     }
                     if (_.contains(_settings, 'shape')) {
                         editors.push({
                             caption: 'Shape',
                             id: 'edit-shape',
-                            layout: DE.getController('EditShape')
-                                .getView('EditShape')
-                                .rootLayout()
+                            layout: DE.getController('EditShape').getView('EditShape').rootLayout()
                         })
                     }
                     if (_.contains(_settings, 'image')) {
                         editors.push({
                             caption: 'Image',
                             id: 'edit-image',
-                            layout: DE.getController('EditImage')
-                                .getView('EditImage')
-                                .rootLayout()
+                            layout: DE.getController('EditImage').getView('EditImage').rootLayout()
                         })
                     }
                     if (_.contains(_settings, 'chart')) {
                         editors.push({
                             caption: 'Chart',
                             id: 'edit-chart',
-                            layout: DE.getController('EditChart')
-                                .getView('EditChart')
-                                .rootLayout()
+                            layout: DE.getController('EditChart').getView('EditChart').rootLayout()
+                        })
+                    }
+                    if (_.contains(_settings, 'hyperlink')) {
+                        editors.push({
+                            caption: 'Hyperlink',
+                            id: 'edit-link',
+                            layout: DE.getController('EditHyperlink').getView('EditHyperlink').rootLayout()
                         })
                     }
                 }
@@ -308,11 +303,13 @@ define([
                 // TextArt    : 8
 
                 _.each(objects, function(object) {
-                    if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Paragraph) {
+                    var type = object.get_ObjectType();
+
+                    if (Asc.c_oAscTypeSelectElement.Paragraph == type) {
                         _settings.push('text', 'paragraph');
-                    } else if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Table) {
+                    } else if (Asc.c_oAscTypeSelectElement.Table == type) {
                         _settings.push('table');
-                    } else if (object.get_ObjectType() == Asc.c_oAscTypeSelectElement.Image) {
+                    } else if (Asc.c_oAscTypeSelectElement.Image == type) {
                         if (object.get_ObjectValue().get_ChartProperties()) {
                             _settings.push('chart');
                         } else if (object.get_ObjectValue().get_ShapeProperties()) {
@@ -320,6 +317,8 @@ define([
                         } else {
                             _settings.push('image');
                         }
+                    } else if (Asc.c_oAscTypeSelectElement.Hyperlink == type) {
+                        _settings.push('hyperlink');
                     }
                 });
 

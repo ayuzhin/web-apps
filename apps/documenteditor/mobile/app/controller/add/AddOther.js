@@ -104,6 +104,8 @@ define([
                 props.asc_setTooltip(tip);
 
                 me.api.add_Hyperlink(props);
+
+                DE.getController('AddContainer').hideModal();
             },
 
             onPageBreak: function (e) {
