@@ -60,16 +60,6 @@ i.icon-bars.theme-gray,
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2042%2026'%3E%3Cpath%20fill%3D'%238e8e93'%20d%3D'M0%2C0h4v4H0V0z%20M8%2C1h34v2H8V1z%20M0%2C11h4v4H0V11z%20M8%2C12h34v2H8V12z%20M0%2C22h4v4H0V22z%20M8%2C23h34v2H8V23z'%2F%3E%3C%2Fsvg%3E");
   }
 }
-i.icon-arrow-up.color-gray,
-i.icon-arrow-up.theme-gray,
-.theme-gray i.icon-arrow-up {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%238e8e93'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
-i.icon-arrow-down.color-gray,
-i.icon-arrow-down.theme-gray,
-.theme-gray i.icon-arrow-down {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%238e8e93'%20transform%3D'translate(18.386268%2C%2022.064340)%20rotate(-180.000000)%20translate(-18.386268%2C%20-22.064340)%20'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
 .theme-gray a,
 .theme-gray .item-link.list-button {
   color: #8e8e93;
@@ -122,6 +112,29 @@ i.icon-arrow-down.theme-gray,
 .theme-gray .swiper-button-prev,
 .theme-gray .swiper-container-rtl .swiper-button-next {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%238e8e93'%2F%3E%3C%2Fsvg%3E");
+}
+.theme-gray .floating-button,
+.theme-gray .speed-dial-buttons a,
+.floating-button.theme-gray,
+.speed-dial-buttons a.theme-gray {
+  color: #fff;
+  background: #8e8e93;
+}
+html:not(.watch-active-state) .theme-gray .floating-button:active,
+html:not(.watch-active-state) .theme-gray .speed-dial-buttons a:active,
+html:not(.watch-active-state) .floating-button.theme-gray:active,
+html:not(.watch-active-state) .speed-dial-buttons a.theme-gray:active,
+.theme-gray .floating-button.active-state,
+.theme-gray .speed-dial-buttons a.active-state,
+.floating-button.theme-gray.active-state,
+.speed-dial-buttons a.theme-gray.active-state {
+  background: #79797f;
+}
+.theme-gray .floating-button i,
+.theme-gray .speed-dial-buttons a i,
+.floating-button.theme-gray i,
+.speed-dial-buttons a.theme-gray i {
+  color: inherit;
 }
 .theme-gray .range-slider input[type="range"]::-webkit-slider-thumb:before,
 .range-slider.theme-gray input[type="range"]::-webkit-slider-thumb:before {
@@ -194,16 +207,6 @@ i.icon-bars.theme-white,
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2042%2026'%3E%3Cpath%20fill%3D'%23ffffff'%20d%3D'M0%2C0h4v4H0V0z%20M8%2C1h34v2H8V1z%20M0%2C11h4v4H0V11z%20M8%2C12h34v2H8V12z%20M0%2C22h4v4H0V22z%20M8%2C23h34v2H8V23z'%2F%3E%3C%2Fsvg%3E");
   }
 }
-i.icon-arrow-up.color-white,
-i.icon-arrow-up.theme-white,
-.theme-white i.icon-arrow-up {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%23ffffff'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
-i.icon-arrow-down.color-white,
-i.icon-arrow-down.theme-white,
-.theme-white i.icon-arrow-down {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%23ffffff'%20transform%3D'translate(18.386268%2C%2022.064340)%20rotate(-180.000000)%20translate(-18.386268%2C%20-22.064340)%20'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
 .theme-white a,
 .theme-white .item-link.list-button {
   color: #ffffff;
@@ -256,6 +259,29 @@ i.icon-arrow-down.theme-white,
 .theme-white .swiper-button-prev,
 .theme-white .swiper-container-rtl .swiper-button-next {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
+}
+.theme-white .floating-button,
+.theme-white .speed-dial-buttons a,
+.floating-button.theme-white,
+.speed-dial-buttons a.theme-white {
+  color: #fff;
+  background: #ffffff;
+}
+html:not(.watch-active-state) .theme-white .floating-button:active,
+html:not(.watch-active-state) .theme-white .speed-dial-buttons a:active,
+html:not(.watch-active-state) .floating-button.theme-white:active,
+html:not(.watch-active-state) .speed-dial-buttons a.theme-white:active,
+.theme-white .floating-button.active-state,
+.theme-white .speed-dial-buttons a.active-state,
+.floating-button.theme-white.active-state,
+.speed-dial-buttons a.theme-white.active-state {
+  background: #ebebeb;
+}
+.theme-white .floating-button i,
+.theme-white .speed-dial-buttons a i,
+.floating-button.theme-white i,
+.speed-dial-buttons a.theme-white i {
+  color: inherit;
 }
 .theme-white .range-slider input[type="range"]::-webkit-slider-thumb:before,
 .range-slider.theme-white input[type="range"]::-webkit-slider-thumb:before {
@@ -328,16 +354,6 @@ i.icon-bars.theme-black,
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2042%2026'%3E%3Cpath%20fill%3D'%23000000'%20d%3D'M0%2C0h4v4H0V0z%20M8%2C1h34v2H8V1z%20M0%2C11h4v4H0V11z%20M8%2C12h34v2H8V12z%20M0%2C22h4v4H0V22z%20M8%2C23h34v2H8V23z'%2F%3E%3C%2Fsvg%3E");
   }
 }
-i.icon-arrow-up.color-black,
-i.icon-arrow-up.theme-black,
-.theme-black i.icon-arrow-up {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%23000000'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
-i.icon-arrow-down.color-black,
-i.icon-arrow-down.theme-black,
-.theme-black i.icon-arrow-down {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%23000000'%20transform%3D'translate(18.386268%2C%2022.064340)%20rotate(-180.000000)%20translate(-18.386268%2C%20-22.064340)%20'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
 .theme-black a,
 .theme-black .item-link.list-button {
   color: #000000;
@@ -390,6 +406,29 @@ i.icon-arrow-down.theme-black,
 .theme-black .swiper-button-prev,
 .theme-black .swiper-container-rtl .swiper-button-next {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E");
+}
+.theme-black .floating-button,
+.theme-black .speed-dial-buttons a,
+.floating-button.theme-black,
+.speed-dial-buttons a.theme-black {
+  color: #fff;
+  background: #000000;
+}
+html:not(.watch-active-state) .theme-black .floating-button:active,
+html:not(.watch-active-state) .theme-black .speed-dial-buttons a:active,
+html:not(.watch-active-state) .floating-button.theme-black:active,
+html:not(.watch-active-state) .speed-dial-buttons a.theme-black:active,
+.theme-black .floating-button.active-state,
+.theme-black .speed-dial-buttons a.active-state,
+.floating-button.theme-black.active-state,
+.speed-dial-buttons a.theme-black.active-state {
+  background: #000000;
+}
+.theme-black .floating-button i,
+.theme-black .speed-dial-buttons a i,
+.floating-button.theme-black i,
+.speed-dial-buttons a.theme-black i {
+  color: inherit;
 }
 .theme-black .range-slider input[type="range"]::-webkit-slider-thumb:before,
 .range-slider.theme-black input[type="range"]::-webkit-slider-thumb:before {
@@ -462,16 +501,6 @@ i.icon-bars.theme-lightblue,
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2042%2026'%3E%3Cpath%20fill%3D'%235ac8fa'%20d%3D'M0%2C0h4v4H0V0z%20M8%2C1h34v2H8V1z%20M0%2C11h4v4H0V11z%20M8%2C12h34v2H8V12z%20M0%2C22h4v4H0V22z%20M8%2C23h34v2H8V23z'%2F%3E%3C%2Fsvg%3E");
   }
 }
-i.icon-arrow-up.color-lightblue,
-i.icon-arrow-up.theme-lightblue,
-.theme-lightblue i.icon-arrow-up {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%235ac8fa'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
-i.icon-arrow-down.color-lightblue,
-i.icon-arrow-down.theme-lightblue,
-.theme-lightblue i.icon-arrow-down {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%235ac8fa'%20transform%3D'translate(18.386268%2C%2022.064340)%20rotate(-180.000000)%20translate(-18.386268%2C%20-22.064340)%20'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
 .theme-lightblue a,
 .theme-lightblue .item-link.list-button {
   color: #5ac8fa;
@@ -524,6 +553,29 @@ i.icon-arrow-down.theme-lightblue,
 .theme-lightblue .swiper-button-prev,
 .theme-lightblue .swiper-container-rtl .swiper-button-next {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%235ac8fa'%2F%3E%3C%2Fsvg%3E");
+}
+.theme-lightblue .floating-button,
+.theme-lightblue .speed-dial-buttons a,
+.floating-button.theme-lightblue,
+.speed-dial-buttons a.theme-lightblue {
+  color: #fff;
+  background: #5ac8fa;
+}
+html:not(.watch-active-state) .theme-lightblue .floating-button:active,
+html:not(.watch-active-state) .theme-lightblue .speed-dial-buttons a:active,
+html:not(.watch-active-state) .floating-button.theme-lightblue:active,
+html:not(.watch-active-state) .speed-dial-buttons a.theme-lightblue:active,
+.theme-lightblue .floating-button.active-state,
+.theme-lightblue .speed-dial-buttons a.active-state,
+.floating-button.theme-lightblue.active-state,
+.speed-dial-buttons a.theme-lightblue.active-state {
+  background: #32bbf9;
+}
+.theme-lightblue .floating-button i,
+.theme-lightblue .speed-dial-buttons a i,
+.floating-button.theme-lightblue i,
+.speed-dial-buttons a.theme-lightblue i {
+  color: inherit;
 }
 .theme-lightblue .range-slider input[type="range"]::-webkit-slider-thumb:before,
 .range-slider.theme-lightblue input[type="range"]::-webkit-slider-thumb:before {
@@ -596,16 +648,6 @@ i.icon-bars.theme-yellow,
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2042%2026'%3E%3Cpath%20fill%3D'%23ffcc00'%20d%3D'M0%2C0h4v4H0V0z%20M8%2C1h34v2H8V1z%20M0%2C11h4v4H0V11z%20M8%2C12h34v2H8V12z%20M0%2C22h4v4H0V22z%20M8%2C23h34v2H8V23z'%2F%3E%3C%2Fsvg%3E");
   }
 }
-i.icon-arrow-up.color-yellow,
-i.icon-arrow-up.theme-yellow,
-.theme-yellow i.icon-arrow-up {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%23ffcc00'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
-i.icon-arrow-down.color-yellow,
-i.icon-arrow-down.theme-yellow,
-.theme-yellow i.icon-arrow-down {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%23ffcc00'%20transform%3D'translate(18.386268%2C%2022.064340)%20rotate(-180.000000)%20translate(-18.386268%2C%20-22.064340)%20'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
 .theme-yellow a,
 .theme-yellow .item-link.list-button {
   color: #ffcc00;
@@ -658,6 +700,29 @@ i.icon-arrow-down.theme-yellow,
 .theme-yellow .swiper-button-prev,
 .theme-yellow .swiper-container-rtl .swiper-button-next {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffcc00'%2F%3E%3C%2Fsvg%3E");
+}
+.theme-yellow .floating-button,
+.theme-yellow .speed-dial-buttons a,
+.floating-button.theme-yellow,
+.speed-dial-buttons a.theme-yellow {
+  color: #fff;
+  background: #ffcc00;
+}
+html:not(.watch-active-state) .theme-yellow .floating-button:active,
+html:not(.watch-active-state) .theme-yellow .speed-dial-buttons a:active,
+html:not(.watch-active-state) .floating-button.theme-yellow:active,
+html:not(.watch-active-state) .speed-dial-buttons a.theme-yellow:active,
+.theme-yellow .floating-button.active-state,
+.theme-yellow .speed-dial-buttons a.active-state,
+.floating-button.theme-yellow.active-state,
+.speed-dial-buttons a.theme-yellow.active-state {
+  background: #d6ab00;
+}
+.theme-yellow .floating-button i,
+.theme-yellow .speed-dial-buttons a i,
+.floating-button.theme-yellow i,
+.speed-dial-buttons a.theme-yellow i {
+  color: inherit;
 }
 .theme-yellow .range-slider input[type="range"]::-webkit-slider-thumb:before,
 .range-slider.theme-yellow input[type="range"]::-webkit-slider-thumb:before {
@@ -730,16 +795,6 @@ i.icon-bars.theme-orange,
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2042%2026'%3E%3Cpath%20fill%3D'%23ff9500'%20d%3D'M0%2C0h4v4H0V0z%20M8%2C1h34v2H8V1z%20M0%2C11h4v4H0V11z%20M8%2C12h34v2H8V12z%20M0%2C22h4v4H0V22z%20M8%2C23h34v2H8V23z'%2F%3E%3C%2Fsvg%3E");
   }
 }
-i.icon-arrow-up.color-orange,
-i.icon-arrow-up.theme-orange,
-.theme-orange i.icon-arrow-up {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%23ff9500'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
-i.icon-arrow-down.color-orange,
-i.icon-arrow-down.theme-orange,
-.theme-orange i.icon-arrow-down {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%23ff9500'%20transform%3D'translate(18.386268%2C%2022.064340)%20rotate(-180.000000)%20translate(-18.386268%2C%20-22.064340)%20'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
 .theme-orange a,
 .theme-orange .item-link.list-button {
   color: #ff9500;
@@ -792,6 +847,29 @@ i.icon-arrow-down.theme-orange,
 .theme-orange .swiper-button-prev,
 .theme-orange .swiper-container-rtl .swiper-button-next {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ff9500'%2F%3E%3C%2Fsvg%3E");
+}
+.theme-orange .floating-button,
+.theme-orange .speed-dial-buttons a,
+.floating-button.theme-orange,
+.speed-dial-buttons a.theme-orange {
+  color: #fff;
+  background: #ff9500;
+}
+html:not(.watch-active-state) .theme-orange .floating-button:active,
+html:not(.watch-active-state) .theme-orange .speed-dial-buttons a:active,
+html:not(.watch-active-state) .floating-button.theme-orange:active,
+html:not(.watch-active-state) .speed-dial-buttons a.theme-orange:active,
+.theme-orange .floating-button.active-state,
+.theme-orange .speed-dial-buttons a.active-state,
+.floating-button.theme-orange.active-state,
+.speed-dial-buttons a.theme-orange.active-state {
+  background: #d67d00;
+}
+.theme-orange .floating-button i,
+.theme-orange .speed-dial-buttons a i,
+.floating-button.theme-orange i,
+.speed-dial-buttons a.theme-orange i {
+  color: inherit;
 }
 .theme-orange .range-slider input[type="range"]::-webkit-slider-thumb:before,
 .range-slider.theme-orange input[type="range"]::-webkit-slider-thumb:before {
@@ -864,16 +942,6 @@ i.icon-bars.theme-pink,
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2042%2026'%3E%3Cpath%20fill%3D'%23ff2d55'%20d%3D'M0%2C0h4v4H0V0z%20M8%2C1h34v2H8V1z%20M0%2C11h4v4H0V11z%20M8%2C12h34v2H8V12z%20M0%2C22h4v4H0V22z%20M8%2C23h34v2H8V23z'%2F%3E%3C%2Fsvg%3E");
   }
 }
-i.icon-arrow-up.color-pink,
-i.icon-arrow-up.theme-pink,
-.theme-pink i.icon-arrow-up {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%23ff2d55'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
-i.icon-arrow-down.color-pink,
-i.icon-arrow-down.theme-pink,
-.theme-pink i.icon-arrow-down {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%23ff2d55'%20transform%3D'translate(18.386268%2C%2022.064340)%20rotate(-180.000000)%20translate(-18.386268%2C%20-22.064340)%20'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
 .theme-pink a,
 .theme-pink .item-link.list-button {
   color: #ff2d55;
@@ -926,6 +994,29 @@ i.icon-arrow-down.theme-pink,
 .theme-pink .swiper-button-prev,
 .theme-pink .swiper-container-rtl .swiper-button-next {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ff2d55'%2F%3E%3C%2Fsvg%3E");
+}
+.theme-pink .floating-button,
+.theme-pink .speed-dial-buttons a,
+.floating-button.theme-pink,
+.speed-dial-buttons a.theme-pink {
+  color: #fff;
+  background: #ff2d55;
+}
+html:not(.watch-active-state) .theme-pink .floating-button:active,
+html:not(.watch-active-state) .theme-pink .speed-dial-buttons a:active,
+html:not(.watch-active-state) .floating-button.theme-pink:active,
+html:not(.watch-active-state) .speed-dial-buttons a.theme-pink:active,
+.theme-pink .floating-button.active-state,
+.theme-pink .speed-dial-buttons a.active-state,
+.floating-button.theme-pink.active-state,
+.speed-dial-buttons a.theme-pink.active-state {
+  background: #ff0434;
+}
+.theme-pink .floating-button i,
+.theme-pink .speed-dial-buttons a i,
+.floating-button.theme-pink i,
+.speed-dial-buttons a.theme-pink i {
+  color: inherit;
 }
 .theme-pink .range-slider input[type="range"]::-webkit-slider-thumb:before,
 .range-slider.theme-pink input[type="range"]::-webkit-slider-thumb:before {
@@ -998,16 +1089,6 @@ i.icon-bars.theme-blue,
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2042%2026'%3E%3Cpath%20fill%3D'%23007aff'%20d%3D'M0%2C0h4v4H0V0z%20M8%2C1h34v2H8V1z%20M0%2C11h4v4H0V11z%20M8%2C12h34v2H8V12z%20M0%2C22h4v4H0V22z%20M8%2C23h34v2H8V23z'%2F%3E%3C%2Fsvg%3E");
   }
 }
-i.icon-arrow-up.color-blue,
-i.icon-arrow-up.theme-blue,
-.theme-blue i.icon-arrow-up {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%23007aff'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
-i.icon-arrow-down.color-blue,
-i.icon-arrow-down.theme-blue,
-.theme-blue i.icon-arrow-down {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%23007aff'%20transform%3D'translate(18.386268%2C%2022.064340)%20rotate(-180.000000)%20translate(-18.386268%2C%20-22.064340)%20'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
 .theme-blue a,
 .theme-blue .item-link.list-button {
   color: #007aff;
@@ -1060,6 +1141,29 @@ i.icon-arrow-down.theme-blue,
 .theme-blue .swiper-button-prev,
 .theme-blue .swiper-container-rtl .swiper-button-next {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+}
+.theme-blue .floating-button,
+.theme-blue .speed-dial-buttons a,
+.floating-button.theme-blue,
+.speed-dial-buttons a.theme-blue {
+  color: #fff;
+  background: #007aff;
+}
+html:not(.watch-active-state) .theme-blue .floating-button:active,
+html:not(.watch-active-state) .theme-blue .speed-dial-buttons a:active,
+html:not(.watch-active-state) .floating-button.theme-blue:active,
+html:not(.watch-active-state) .speed-dial-buttons a.theme-blue:active,
+.theme-blue .floating-button.active-state,
+.theme-blue .speed-dial-buttons a.active-state,
+.floating-button.theme-blue.active-state,
+.speed-dial-buttons a.theme-blue.active-state {
+  background: #0066d6;
+}
+.theme-blue .floating-button i,
+.theme-blue .speed-dial-buttons a i,
+.floating-button.theme-blue i,
+.speed-dial-buttons a.theme-blue i {
+  color: inherit;
 }
 .theme-blue .range-slider input[type="range"]::-webkit-slider-thumb:before,
 .range-slider.theme-blue input[type="range"]::-webkit-slider-thumb:before {
@@ -1132,16 +1236,6 @@ i.icon-bars.theme-green,
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2042%2026'%3E%3Cpath%20fill%3D'%234cd964'%20d%3D'M0%2C0h4v4H0V0z%20M8%2C1h34v2H8V1z%20M0%2C11h4v4H0V11z%20M8%2C12h34v2H8V12z%20M0%2C22h4v4H0V22z%20M8%2C23h34v2H8V23z'%2F%3E%3C%2Fsvg%3E");
   }
 }
-i.icon-arrow-up.color-green,
-i.icon-arrow-up.theme-green,
-.theme-green i.icon-arrow-up {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%234cd964'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
-i.icon-arrow-down.color-green,
-i.icon-arrow-down.theme-green,
-.theme-green i.icon-arrow-down {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%234cd964'%20transform%3D'translate(18.386268%2C%2022.064340)%20rotate(-180.000000)%20translate(-18.386268%2C%20-22.064340)%20'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
 .theme-green a,
 .theme-green .item-link.list-button {
   color: #4cd964;
@@ -1194,6 +1288,29 @@ i.icon-arrow-down.theme-green,
 .theme-green .swiper-button-prev,
 .theme-green .swiper-container-rtl .swiper-button-next {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%234cd964'%2F%3E%3C%2Fsvg%3E");
+}
+.theme-green .floating-button,
+.theme-green .speed-dial-buttons a,
+.floating-button.theme-green,
+.speed-dial-buttons a.theme-green {
+  color: #fff;
+  background: #4cd964;
+}
+html:not(.watch-active-state) .theme-green .floating-button:active,
+html:not(.watch-active-state) .theme-green .speed-dial-buttons a:active,
+html:not(.watch-active-state) .floating-button.theme-green:active,
+html:not(.watch-active-state) .speed-dial-buttons a.theme-green:active,
+.theme-green .floating-button.active-state,
+.theme-green .speed-dial-buttons a.active-state,
+.floating-button.theme-green.active-state,
+.speed-dial-buttons a.theme-green.active-state {
+  background: #2cd048;
+}
+.theme-green .floating-button i,
+.theme-green .speed-dial-buttons a i,
+.floating-button.theme-green i,
+.speed-dial-buttons a.theme-green i {
+  color: inherit;
 }
 .theme-green .range-slider input[type="range"]::-webkit-slider-thumb:before,
 .range-slider.theme-green input[type="range"]::-webkit-slider-thumb:before {
@@ -1266,16 +1383,6 @@ i.icon-bars.theme-red,
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2042%2026'%3E%3Cpath%20fill%3D'%23ff3b30'%20d%3D'M0%2C0h4v4H0V0z%20M8%2C1h34v2H8V1z%20M0%2C11h4v4H0V11z%20M8%2C12h34v2H8V12z%20M0%2C22h4v4H0V22z%20M8%2C23h34v2H8V23z'%2F%3E%3C%2Fsvg%3E");
   }
 }
-i.icon-arrow-up.color-red,
-i.icon-arrow-up.theme-red,
-.theme-red i.icon-arrow-up {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%23ff3b30'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
-i.icon-arrow-down.color-red,
-i.icon-arrow-down.theme-red,
-.theme-red i.icon-arrow-down {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2036%2044'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cg%20stroke%3D'none'%20stroke-width%3D'1'%20fill%3D'none'%20fill-rule%3D'evenodd'%3E%3Cpath%20d%3D'M22.2999878%2C12.4271301%20L22.2999878%2C40.4993613%20C22.2999878%2C42.4327107%2020.7290512%2C44%2018.7999878%2C44%20C16.8669912%2C44%2015.2999878%2C42.4314309%2015.2999878%2C40.4993613%20L15.2999878%2C11.601935%20L6.9310438%2C19.9708789%20C5.56133209%2C21.3405906%203.34014142%2C21.3401414%201.97608764%2C19.9760876%20C0.609252617%2C18.6092526%200.608381903%2C16.3940459%201.98129633%2C15.0211315%20L15.8437366%2C1.15869121%20C16.5286358%2C0.473792046%2017.4264316%2C0.131476442%2018.3235066%2C0.130924702%20C19.2618035%2C0.0973903921%2020.2119572%2C0.439604649%2020.9310438%2C1.15869121%20L34.7934841%2C15.0211315%20C36.1631958%2C16.3908432%2036.1627465%2C18.6120339%2034.7986928%2C19.9760876%20C33.4318577%2C21.3429227%2031.216651%2C21.3437934%2029.8437366%2C19.9708789%20L22.2999878%2C12.4271301%20Z'%20fill%3D'%23ff3b30'%20transform%3D'translate(18.386268%2C%2022.064340)%20rotate(-180.000000)%20translate(-18.386268%2C%20-22.064340)%20'%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
 .theme-red a,
 .theme-red .item-link.list-button {
   color: #ff3b30;
@@ -1328,6 +1435,29 @@ i.icon-arrow-down.theme-red,
 .theme-red .swiper-button-prev,
 .theme-red .swiper-container-rtl .swiper-button-next {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ff3b30'%2F%3E%3C%2Fsvg%3E");
+}
+.theme-red .floating-button,
+.theme-red .speed-dial-buttons a,
+.floating-button.theme-red,
+.speed-dial-buttons a.theme-red {
+  color: #fff;
+  background: #ff3b30;
+}
+html:not(.watch-active-state) .theme-red .floating-button:active,
+html:not(.watch-active-state) .theme-red .speed-dial-buttons a:active,
+html:not(.watch-active-state) .floating-button.theme-red:active,
+html:not(.watch-active-state) .speed-dial-buttons a.theme-red:active,
+.theme-red .floating-button.active-state,
+.theme-red .speed-dial-buttons a.active-state,
+.floating-button.theme-red.active-state,
+.speed-dial-buttons a.theme-red.active-state {
+  background: #ff1407;
+}
+.theme-red .floating-button i,
+.theme-red .speed-dial-buttons a i,
+.floating-button.theme-red i,
+.speed-dial-buttons a.theme-red i {
+  color: inherit;
 }
 .theme-red .range-slider input[type="range"]::-webkit-slider-thumb:before,
 .range-slider.theme-red input[type="range"]::-webkit-slider-thumb:before {
@@ -1409,6 +1539,29 @@ a.bg-gray,
 .border-gray:before {
   background-color: #8e8e93;
 }
+.floating-button.color-gray,
+.speed-dial-buttons a.color-gray,
+.floating-button.bg-gray,
+.speed-dial-buttons a.bg-gray {
+  color: #fff;
+  background: #8e8e93;
+}
+html:not(.watch-active-state) .floating-button.color-gray:active,
+html:not(.watch-active-state) .speed-dial-buttons a.color-gray:active,
+html:not(.watch-active-state) .floating-button.bg-gray:active,
+html:not(.watch-active-state) .speed-dial-buttons a.bg-gray:active,
+.floating-button.color-gray.active-state,
+.speed-dial-buttons a.color-gray.active-state,
+.floating-button.bg-gray.active-state,
+.speed-dial-buttons a.bg-gray.active-state {
+  background: #79797f;
+}
+.floating-button.color-gray i,
+.speed-dial-buttons a.color-gray i,
+.floating-button.bg-gray i,
+.speed-dial-buttons a.bg-gray i {
+  color: inherit;
+}
 .range-slider.color-gray input[type="range"]::-webkit-slider-thumb:before {
   background-color: #8e8e93;
 }
@@ -1483,6 +1636,29 @@ a.bg-white,
 .list-block ul.border-white:before,
 .border-white:before {
   background-color: #ffffff;
+}
+.floating-button.color-white,
+.speed-dial-buttons a.color-white,
+.floating-button.bg-white,
+.speed-dial-buttons a.bg-white {
+  color: #fff;
+  background: #ffffff;
+}
+html:not(.watch-active-state) .floating-button.color-white:active,
+html:not(.watch-active-state) .speed-dial-buttons a.color-white:active,
+html:not(.watch-active-state) .floating-button.bg-white:active,
+html:not(.watch-active-state) .speed-dial-buttons a.bg-white:active,
+.floating-button.color-white.active-state,
+.speed-dial-buttons a.color-white.active-state,
+.floating-button.bg-white.active-state,
+.speed-dial-buttons a.bg-white.active-state {
+  background: #ebebeb;
+}
+.floating-button.color-white i,
+.speed-dial-buttons a.color-white i,
+.floating-button.bg-white i,
+.speed-dial-buttons a.bg-white i {
+  color: inherit;
 }
 .range-slider.color-white input[type="range"]::-webkit-slider-thumb:before {
   background-color: #ffffff;
@@ -1559,6 +1735,29 @@ a.bg-black,
 .border-black:before {
   background-color: #000000;
 }
+.floating-button.color-black,
+.speed-dial-buttons a.color-black,
+.floating-button.bg-black,
+.speed-dial-buttons a.bg-black {
+  color: #fff;
+  background: #000000;
+}
+html:not(.watch-active-state) .floating-button.color-black:active,
+html:not(.watch-active-state) .speed-dial-buttons a.color-black:active,
+html:not(.watch-active-state) .floating-button.bg-black:active,
+html:not(.watch-active-state) .speed-dial-buttons a.bg-black:active,
+.floating-button.color-black.active-state,
+.speed-dial-buttons a.color-black.active-state,
+.floating-button.bg-black.active-state,
+.speed-dial-buttons a.bg-black.active-state {
+  background: #000000;
+}
+.floating-button.color-black i,
+.speed-dial-buttons a.color-black i,
+.floating-button.bg-black i,
+.speed-dial-buttons a.bg-black i {
+  color: inherit;
+}
 .range-slider.color-black input[type="range"]::-webkit-slider-thumb:before {
   background-color: #000000;
 }
@@ -1633,6 +1832,29 @@ a.bg-lightblue,
 .list-block ul.border-lightblue:before,
 .border-lightblue:before {
   background-color: #5ac8fa;
+}
+.floating-button.color-lightblue,
+.speed-dial-buttons a.color-lightblue,
+.floating-button.bg-lightblue,
+.speed-dial-buttons a.bg-lightblue {
+  color: #fff;
+  background: #5ac8fa;
+}
+html:not(.watch-active-state) .floating-button.color-lightblue:active,
+html:not(.watch-active-state) .speed-dial-buttons a.color-lightblue:active,
+html:not(.watch-active-state) .floating-button.bg-lightblue:active,
+html:not(.watch-active-state) .speed-dial-buttons a.bg-lightblue:active,
+.floating-button.color-lightblue.active-state,
+.speed-dial-buttons a.color-lightblue.active-state,
+.floating-button.bg-lightblue.active-state,
+.speed-dial-buttons a.bg-lightblue.active-state {
+  background: #32bbf9;
+}
+.floating-button.color-lightblue i,
+.speed-dial-buttons a.color-lightblue i,
+.floating-button.bg-lightblue i,
+.speed-dial-buttons a.bg-lightblue i {
+  color: inherit;
 }
 .range-slider.color-lightblue input[type="range"]::-webkit-slider-thumb:before {
   background-color: #5ac8fa;
@@ -1709,6 +1931,29 @@ a.bg-yellow,
 .border-yellow:before {
   background-color: #ffcc00;
 }
+.floating-button.color-yellow,
+.speed-dial-buttons a.color-yellow,
+.floating-button.bg-yellow,
+.speed-dial-buttons a.bg-yellow {
+  color: #fff;
+  background: #ffcc00;
+}
+html:not(.watch-active-state) .floating-button.color-yellow:active,
+html:not(.watch-active-state) .speed-dial-buttons a.color-yellow:active,
+html:not(.watch-active-state) .floating-button.bg-yellow:active,
+html:not(.watch-active-state) .speed-dial-buttons a.bg-yellow:active,
+.floating-button.color-yellow.active-state,
+.speed-dial-buttons a.color-yellow.active-state,
+.floating-button.bg-yellow.active-state,
+.speed-dial-buttons a.bg-yellow.active-state {
+  background: #d6ab00;
+}
+.floating-button.color-yellow i,
+.speed-dial-buttons a.color-yellow i,
+.floating-button.bg-yellow i,
+.speed-dial-buttons a.bg-yellow i {
+  color: inherit;
+}
 .range-slider.color-yellow input[type="range"]::-webkit-slider-thumb:before {
   background-color: #ffcc00;
 }
@@ -1783,6 +2028,29 @@ a.bg-orange,
 .list-block ul.border-orange:before,
 .border-orange:before {
   background-color: #ff9500;
+}
+.floating-button.color-orange,
+.speed-dial-buttons a.color-orange,
+.floating-button.bg-orange,
+.speed-dial-buttons a.bg-orange {
+  color: #fff;
+  background: #ff9500;
+}
+html:not(.watch-active-state) .floating-button.color-orange:active,
+html:not(.watch-active-state) .speed-dial-buttons a.color-orange:active,
+html:not(.watch-active-state) .floating-button.bg-orange:active,
+html:not(.watch-active-state) .speed-dial-buttons a.bg-orange:active,
+.floating-button.color-orange.active-state,
+.speed-dial-buttons a.color-orange.active-state,
+.floating-button.bg-orange.active-state,
+.speed-dial-buttons a.bg-orange.active-state {
+  background: #d67d00;
+}
+.floating-button.color-orange i,
+.speed-dial-buttons a.color-orange i,
+.floating-button.bg-orange i,
+.speed-dial-buttons a.bg-orange i {
+  color: inherit;
 }
 .range-slider.color-orange input[type="range"]::-webkit-slider-thumb:before {
   background-color: #ff9500;
@@ -1859,6 +2127,29 @@ a.bg-pink,
 .border-pink:before {
   background-color: #ff2d55;
 }
+.floating-button.color-pink,
+.speed-dial-buttons a.color-pink,
+.floating-button.bg-pink,
+.speed-dial-buttons a.bg-pink {
+  color: #fff;
+  background: #ff2d55;
+}
+html:not(.watch-active-state) .floating-button.color-pink:active,
+html:not(.watch-active-state) .speed-dial-buttons a.color-pink:active,
+html:not(.watch-active-state) .floating-button.bg-pink:active,
+html:not(.watch-active-state) .speed-dial-buttons a.bg-pink:active,
+.floating-button.color-pink.active-state,
+.speed-dial-buttons a.color-pink.active-state,
+.floating-button.bg-pink.active-state,
+.speed-dial-buttons a.bg-pink.active-state {
+  background: #ff0434;
+}
+.floating-button.color-pink i,
+.speed-dial-buttons a.color-pink i,
+.floating-button.bg-pink i,
+.speed-dial-buttons a.bg-pink i {
+  color: inherit;
+}
 .range-slider.color-pink input[type="range"]::-webkit-slider-thumb:before {
   background-color: #ff2d55;
 }
@@ -1933,6 +2224,29 @@ a.bg-blue,
 .list-block ul.border-blue:before,
 .border-blue:before {
   background-color: #007aff;
+}
+.floating-button.color-blue,
+.speed-dial-buttons a.color-blue,
+.floating-button.bg-blue,
+.speed-dial-buttons a.bg-blue {
+  color: #fff;
+  background: #007aff;
+}
+html:not(.watch-active-state) .floating-button.color-blue:active,
+html:not(.watch-active-state) .speed-dial-buttons a.color-blue:active,
+html:not(.watch-active-state) .floating-button.bg-blue:active,
+html:not(.watch-active-state) .speed-dial-buttons a.bg-blue:active,
+.floating-button.color-blue.active-state,
+.speed-dial-buttons a.color-blue.active-state,
+.floating-button.bg-blue.active-state,
+.speed-dial-buttons a.bg-blue.active-state {
+  background: #0066d6;
+}
+.floating-button.color-blue i,
+.speed-dial-buttons a.color-blue i,
+.floating-button.bg-blue i,
+.speed-dial-buttons a.bg-blue i {
+  color: inherit;
 }
 .range-slider.color-blue input[type="range"]::-webkit-slider-thumb:before {
   background-color: #007aff;
@@ -2009,6 +2323,29 @@ a.bg-green,
 .border-green:before {
   background-color: #4cd964;
 }
+.floating-button.color-green,
+.speed-dial-buttons a.color-green,
+.floating-button.bg-green,
+.speed-dial-buttons a.bg-green {
+  color: #fff;
+  background: #4cd964;
+}
+html:not(.watch-active-state) .floating-button.color-green:active,
+html:not(.watch-active-state) .speed-dial-buttons a.color-green:active,
+html:not(.watch-active-state) .floating-button.bg-green:active,
+html:not(.watch-active-state) .speed-dial-buttons a.bg-green:active,
+.floating-button.color-green.active-state,
+.speed-dial-buttons a.color-green.active-state,
+.floating-button.bg-green.active-state,
+.speed-dial-buttons a.bg-green.active-state {
+  background: #2cd048;
+}
+.floating-button.color-green i,
+.speed-dial-buttons a.color-green i,
+.floating-button.bg-green i,
+.speed-dial-buttons a.bg-green i {
+  color: inherit;
+}
 .range-slider.color-green input[type="range"]::-webkit-slider-thumb:before {
   background-color: #4cd964;
 }
@@ -2083,6 +2420,29 @@ a.bg-red,
 .list-block ul.border-red:before,
 .border-red:before {
   background-color: #ff3b30;
+}
+.floating-button.color-red,
+.speed-dial-buttons a.color-red,
+.floating-button.bg-red,
+.speed-dial-buttons a.bg-red {
+  color: #fff;
+  background: #ff3b30;
+}
+html:not(.watch-active-state) .floating-button.color-red:active,
+html:not(.watch-active-state) .speed-dial-buttons a.color-red:active,
+html:not(.watch-active-state) .floating-button.bg-red:active,
+html:not(.watch-active-state) .speed-dial-buttons a.bg-red:active,
+.floating-button.color-red.active-state,
+.speed-dial-buttons a.color-red.active-state,
+.floating-button.bg-red.active-state,
+.speed-dial-buttons a.bg-red.active-state {
+  background: #ff1407;
+}
+.floating-button.color-red i,
+.speed-dial-buttons a.color-red i,
+.floating-button.bg-red i,
+.speed-dial-buttons a.bg-red i {
+  color: inherit;
 }
 .range-slider.color-red input[type="range"]::-webkit-slider-thumb:before {
   background-color: #ff3b30;

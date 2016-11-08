@@ -7,10 +7,13 @@ window.Framework7 = function (params) {
     var app = this;
 
     // Version
-    app.version = '1.4.2';
+    app.version = '1.5.0';
 
     // Default Parameters
     app.params = {
+        //
+        root: 'body',
+        //
         cache: true,
         cacheIgnore: [],
         cacheIgnoreGetParameters: false,
@@ -21,6 +24,8 @@ window.Framework7 = function (params) {
         dynamicPageUrl: 'content-{{index}}',
         allowDuplicateUrls: false,
         router: true,
+        routerRemoveTimeout: false,
+        routerRemoveWithTimeout: false,
         // Push State
         pushState: false,
         pushStateRoot: undefined,
@@ -63,6 +68,7 @@ window.Framework7 = function (params) {
         swipeout: true,
         swipeoutActionsNoFold: false,
         swipeoutNoFollow: false,
+        swipeoutRemoveWithTimeout: false,
         // Smart Select Back link template
         smartSelectOpenIn: 'page', // or 'popup' or 'picker'
         smartSelectBackText: 'Back',
@@ -142,6 +148,10 @@ window.Framework7 = function (params) {
     var t7 = Template7;
     app._compiledTemplates = {};
 
+    // App Root
+    app.root = $(app.params.root);
+    app.root.eq(0).addClass('framework7-root');
+
     // Touch events
     app.touchEvents = {
         start: app.support.touch ? 'touchstart' : 'mousedown',
@@ -161,5 +171,3 @@ window.Framework7 = function (params) {
         if (app.params.statusbarOverlay) $('html').addClass('with-statusbar-overlay');
         else $('html').removeClass('with-statusbar-overlay');
     }
-
-    

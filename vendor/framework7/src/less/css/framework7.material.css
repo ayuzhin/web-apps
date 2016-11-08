@@ -1916,56 +1916,6 @@ i.icon.icon-f7 {
   background-image: url("../img/i-f7-material.png");
   border-radius: 3px;
 }
-i.icon.icon-form-name {
-  width: 24px;
-  height: 24px;
-  background-image: url("../img/i-form-name-material.svg");
-}
-i.icon.icon-form-password {
-  width: 24px;
-  height: 24px;
-  background-image: url("../img/i-form-password-material.svg");
-}
-i.icon.icon-form-email {
-  width: 24px;
-  height: 24px;
-  background-image: url("../img/i-form-email-material.svg");
-}
-i.icon.icon-form-calendar {
-  width: 24px;
-  height: 24px;
-  background-image: url("../img/i-form-calendar-material.svg");
-}
-i.icon.icon-form-tel {
-  width: 24px;
-  height: 24px;
-  background-image: url("../img/i-form-tel-material.svg");
-}
-i.icon.icon-form-gender {
-  width: 24px;
-  height: 24px;
-  background-image: url("../img/i-form-gender-material.svg");
-}
-i.icon.icon-form-toggle {
-  width: 24px;
-  height: 24px;
-  background-image: url("../img/i-form-toggle-material.svg");
-}
-i.icon.icon-form-comment {
-  width: 24px;
-  height: 24px;
-  background-image: url("../img/i-form-comment-material.svg");
-}
-i.icon.icon-form-settings {
-  width: 24px;
-  height: 24px;
-  background-image: url("../img/i-form-settings-material.svg");
-}
-i.icon.icon-form-url {
-  width: 24px;
-  height: 24px;
-  background-image: url("../img/i-form-url-material.svg");
-}
 i.icon.icon-next,
 i.icon.icon-prev {
   width: 24px;
@@ -5005,8 +4955,6 @@ body.panel-closing .views {
 }
 .message.message-pic img {
   display: block;
-  height: auto;
-  max-width: 100%;
 }
 .message-name,
 .message-label,
@@ -5059,6 +5007,10 @@ body.panel-closing .views {
   position: relative;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
+}
+.message-text img {
+  max-width: 100%;
+  height: auto;
 }
 .message-pic .message-text {
   padding: 8px;

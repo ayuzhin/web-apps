@@ -75,6 +75,7 @@ app.initFastClicks = function () {
     function targetNeedsFastClick(el) {
         var $el = $(el);
         if (el.nodeName.toLowerCase() === 'input' && el.type === 'file') return false;
+        if (el.nodeName.toLowerCase() === 'select' && app.device.android) return false;
         if ($el.hasClass('no-fastclick') || $el.parents('.no-fastclick').length > 0) return false;
         if (app.params.fastClicksExclude && $el.is(app.params.fastClicksExclude)) return false;
         return true;
@@ -279,7 +280,7 @@ app.initFastClicks = function () {
             trackClick = false;
             return true;
         }
-        if (app.device.ios) {
+        if (app.device.ios || (app.device.android && 'getSelection' in window)) {
             var selection = window.getSelection();
             if (selection.rangeCount && selection.focusNode !== document.body && (!selection.isCollapsed || document.activeElement === selection.focusNode)) {
                 activeSelection = true;

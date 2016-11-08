@@ -40,9 +40,17 @@ app.initSmartSelects = function (pageContainer) {
                 itemAfter.text(valueText.join(', '));
             }
         }
-        
+
+        $select.on('change', function () {
+            var valueText = [];
+            for (var i = 0; i < select.length; i++) {
+                if (select[i].selected) valueText.push(select[i].textContent.trim());
+            }
+            smartSelect.find('.item-after').text(valueText.join(', '));
+        });
+
     });
-    
+
 };
 app.smartSelectAddOption = function (select, option, index) {
     select = $(select);
@@ -391,6 +399,13 @@ app.smartSelectOpen = function (smartSelect, reLayout) {
         if (maxLength) {
             checkMaxLength(container);
         }
+        if (backOnSelect) {
+            container.find('input[type="radio"][name="' + inputName + '"]:checked').parents('label').once('click', function () {
+                if (openIn === 'popup') app.closeModal(popup);
+                else if (openIn === 'picker') app.closeModal(picker);
+                else view.router.back();
+            });
+        }
         container.on('change', 'input[name="' + inputName + '"]', function () {
             var input = this;
             var value = input.value;
@@ -414,7 +429,7 @@ app.smartSelectOpen = function (smartSelect, reLayout) {
                 optionText = [smartSelect.find('option[value="' + value + '"]').text()];
                 select.value = value;
             }
-                
+
             $select.trigger('change');
             smartSelect.find('.item-after').text(optionText.join(', '));
             if (backOnSelect && inputType === 'radio') {

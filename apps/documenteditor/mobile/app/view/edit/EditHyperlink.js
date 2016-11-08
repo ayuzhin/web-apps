@@ -36,10 +36,6 @@ define([
                 $('#edit-link-url input[type=url]').single('input', _.bind(function(e) {
                     $('#edit-link-edit').toggleClass('disabled', _.isEmpty($(e.currentTarget).val()));
                 }, this));
-
-                // _.delay(function () {
-                //     $('.edit-image-url-link input[type="url"]').focus();
-                // }, 1000);
             },
 
             categoryShow: function(e) {
