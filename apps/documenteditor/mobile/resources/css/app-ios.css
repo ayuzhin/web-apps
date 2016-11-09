@@ -6181,6 +6181,130 @@ html.pixel-ratio-3 .color-palette a {
 .color-palette .theme-colors .item-inner {
   display: inline-block;
 }
+.document-menu {
+  background-color: rgba(0, 0, 0, 0.9);
+  width: auto;
+  border-radius: 8px;
+}
+.document-menu .popover-angle:after {
+  background: rgba(0, 0, 0, 0.9);
+}
+.document-menu .list-block {
+  font-size: 14px;
+}
+.document-menu .list-block:first-child ul {
+  border-radius: 7px 0 0 7px;
+}
+.document-menu .list-block:first-child ul:before {
+  display: none;
+}
+.document-menu .list-block:first-child li:first-child a {
+  border-radius: 7px 0 0 7px;
+}
+.document-menu .list-block:last-child ul {
+  border-radius: 0 7px 7px 0;
+}
+.document-menu .list-block:last-child ul:after {
+  display: none;
+}
+.document-menu .list-block:last-child li:last-child a {
+  border-radius: 0 7px 7px 0;
+}
+.document-menu .list-block:first-child:last-child li:first-child:last-child a,
+.document-menu .list-block:first-child:last-child ul:first-child:last-child {
+  border-radius: 7px;
+}
+.document-menu .list-block .item-link {
+  display: inline-block;
+}
+html:not(.watch-active-state) .document-menu .list-block .item-link:active,
+.document-menu .list-block .item-link.active-state {
+  background-color: #d9d9d9;
+}
+html:not(.watch-active-state) .document-menu .list-block .item-link:active .item-inner:after,
+.document-menu .list-block .item-link.active-state .item-inner:after {
+  background-color: transparent;
+}
+.document-menu .list-block .item-link.list-button {
+  color: #ffffff;
+  line-height: 36px;
+}
+.document-menu .list-block .item-link.list-button:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: auto;
+  bottom: auto;
+  width: 1px;
+  height: 100%;
+  background-color: rgba(230, 230, 230, 0.9);
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+html.pixel-ratio-2 .document-menu .list-block .item-link.list-button:after {
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+}
+html.pixel-ratio-3 .document-menu .list-block .item-link.list-button:after {
+  -webkit-transform: scaleX(0.33);
+  transform: scaleX(0.33);
+}
+.document-menu .list-block li {
+  display: inline-block;
+}
+.document-menu .list-block li:last-child .list-button:after {
+  display: none;
+}
+.document-menu .list-block li:last-child .item-inner:after,
+.document-menu .list-block li:last-child li:last-child .item-inner:after {
+  display: none;
+}
+.document-menu .list-block li li:last-child .item-inner:after,
+.document-menu .list-block li:last-child li .item-inner:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: auto;
+  bottom: auto;
+  width: 1px;
+  height: 100%;
+  background-color: rgba(230, 230, 230, 0.9);
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+html.pixel-ratio-2 .document-menu .list-block li li:last-child .item-inner:after,
+html.pixel-ratio-2 .document-menu .list-block li:last-child li .item-inner:after {
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+}
+html.pixel-ratio-3 .document-menu .list-block li li:last-child .item-inner:after,
+html.pixel-ratio-3 .document-menu .list-block li:last-child li .item-inner:after {
+  -webkit-transform: scaleX(0.33);
+  transform: scaleX(0.33);
+}
+.document-menu .list-block.no-hairlines:before,
+.document-menu .list-block.no-hairlines ul:before,
+.document-menu .list-block.no-hairlines .content-block-inner:before {
+  display: none;
+}
+.document-menu .list-block.no-hairlines:after,
+.document-menu .list-block.no-hairlines ul:after,
+.document-menu .list-block.no-hairlines .content-block-inner:after {
+  display: none;
+}
+.document-menu .list-block.no-hairlines-between .item-inner:after,
+.document-menu .list-block.no-hairlines-between .list-button:after,
+.document-menu .list-block.no-hairlines-between .item-divider:after,
+.document-menu .list-block.no-hairlines-between .list-group-title:after,
+.document-menu .list-block.no-hairlines-between .list-group-title:after {
+  display: none;
+}
 i.icon.icon-search {
   width: 22px;
   height: 22px;

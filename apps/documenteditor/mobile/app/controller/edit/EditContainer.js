@@ -44,6 +44,8 @@ define([
                     return;
                 }
 
+                uiApp.closeModal();
+
                 me._showByStack(Common.SharedSettings.get('phone'));
 
                 DE.getController('Toolbar').getView('Toolbar').hideSearch();

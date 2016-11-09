@@ -5915,6 +5915,19 @@ html.pixel-ratio-3 .color-palette a {
 .color-palette .theme-colors .item-inner {
   display: inline-block;
 }
+.document-menu {
+  width: auto;
+  line-height: 1 !important;
+}
+.document-menu .popover-inner {
+  overflow: hidden;
+}
+.document-menu .list-block ul {
+  height: 48px;
+}
+.document-menu .list-block li {
+  display: inline-block;
+}
 .button.active i.icon {
   background-color: #fff;
 }
