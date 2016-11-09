@@ -32,11 +32,15 @@
         </ul>
     </div>
     <div class="list-block">
+        <% if (!android) { %>
         <ul>
             <li>
                 <a id="chart-remove" class="item-link list-button" style="text-align: center; color: #f00">Remove Chart</a>
             </li>
         </ul>
+        <% } else { %>
+        <a id="chart-remove" class="button button-raised button-fill" style="margin: 20px 16px; background-color: #f44336;">Remove Chart</a>
+        <% } %>
     </div>
 </div>
 

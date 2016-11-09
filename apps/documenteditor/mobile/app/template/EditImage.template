@@ -34,10 +34,18 @@
     <div class="list-block">
         <ul>
             <li>
+                <% if (android) { %>
+                <a id="image-default" class="button button-raised button-fill" style="margin: 20px 16px;">Default Size</a>
+                <% } else { %>
                 <a id="image-default" class="item-link list-button" style="text-align: center;">Default Size</a>
+                <% } %>
             </li>
             <li>
+                <% if (android) { %>
+                <a id="image-default" class="button button-raised button-fill" style="margin: 20px 16px; background-color: #f44336;">Remove Image</a>
+                <% } else { %>
                 <a id="image-remove" class="item-link list-button" style="text-align: center; color: #f00">Remove Image</a>
+                <% } %>
             </li>
         </ul>
     </div>

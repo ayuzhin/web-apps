@@ -36,8 +36,8 @@
     </div>
     <div class="list-block">
         <% if (android) { %>
-        <a href="#" id="edit-link-edit" class="button button-fill button-raised disabled" style="margin: 20px 16px; text-align: center;">Edit Link</a>
-        <a href="#" id="edit-link-remove" class="button button-fill button-raised" style="margin: 20px 16px; text-align: center; color: #f00">Remove Link</a>
+        <a href="#" id="edit-link-edit" class="button button-raised button-fill disabled" style="margin: 20px 16px;">Edit Link</a>
+        <a href="#" id="edit-link-remove" class="button button-raised button-fill" style="margin: 20px 16px; background-color: #f44336;">Remove Link</a>
         <% } else { %>
         <ul>
             <li>

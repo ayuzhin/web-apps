@@ -25,9 +25,14 @@
                 </div>
             </li>
             <li>
-                <a id="table-remove-all" class="item-link list-button" style="text-align: center;color: #f00;">Remove Table</a>
+                <% if (!android) { %>
+                <a id="table-remove-all" class="item-link list-button" style="text-align: center; color: #f00">Remove Table</a>
+                <% } %>
             </li>
         </ul>
+        <% if (android) { %>
+        <a id="table-remove-all" class="button button-raised button-fill" style="margin: 20px 16px; background-color: #f44336;">Remove Table</a>
+        <% } %>
     </div>
     <div class="list-block">
         <ul>

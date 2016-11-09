@@ -43,7 +43,11 @@
     <div class="list-block">
         <ul>
             <li>
+                <% if (android) { %>
+                <a id="shape-remove" class="button button-raised button-fill" style="margin: 20px 16px; background-color: #f44336;">Remove Shape</a>
+                <% } else { %>
                 <a id="shape-remove" class="item-link list-button" style="text-align: center; color: #f00">Remove Shape</a>
+                <% } %>
             </li>
         </ul>
     </div>
