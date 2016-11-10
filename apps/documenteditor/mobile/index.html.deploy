@@ -7,10 +7,9 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="mobile-web-app-capable" content="yes">
 
-        <title>ONLYOFFICE Documents</title>
+        <title>ONLYOFFICE Document Editor</title>
 
         <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
-        <!-- App styles -->
 
         <!-- splash -->
 
@@ -238,18 +237,6 @@
         </script>
 
         <div id="viewport"></div>
-
-        <script type="text/javascript" src="../../../vendor/jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="../../../vendor/xregexp/xregexp-all-min.js"></script>
-
-        <script type="text/javascript" src="../sdk_dev_scripts.js"></script>
-        <script>
-            window.sdk_dev_scrpipts.forEach(function(item){
-                document.write('<script type="text/javascript" src="' + item + '"><\/script>');
-            });
-        </script>
-        <!-- application -->
-        <script data-main="app-dev" src="../../../vendor/requirejs/require.js"></script>
-
+        <script data-main="app" src="../../../vendor/requirejs/require.js"></script>
     </body>
 </html>

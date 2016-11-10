@@ -54,8 +54,6 @@ require.config({
         jszip           : '../vendor/jszip/jszip.min',
         jsziputils      : '../vendor/jszip-utils/jszip-utils.min',
         jsrsasign       : '../vendor/jsrsasign/jsrsasign-latest-all-min',
-        allfonts        : '../../sdkjs/common/AllFonts',
-        sdk             : '../../sdkjs/word/sdk-all-min',
         api             : 'api/documents/api',
         core            : 'common/main/lib/core/application',
         extendes        : 'common/main/lib/core/extendes',
@@ -102,18 +100,6 @@ require.config({
                 'framework7'
             ]
         },
-        sdk: {
-            deps: [
-                'jquery',
-                'underscore',
-                'allfonts',
-                'xregexp',
-                'sockjs',
-                'jszip',
-                'jsziputils',
-                'jsrsasign'
-            ]
-        },
         gateway: {
             deps: [
                 'jquery'
@@ -133,11 +119,14 @@ require([
     'core',
     'underscore',
     'extendes',
-    'sdk',
     'api',
     'analytics',
     'gateway',
-    'locale'
+    'locale',
+    'jszip',
+    'jsziputils',
+    'jsrsasign',
+    'sockjs'
 ], function (Backbone, Framework7, Core) {
     Backbone.history.start();
 
@@ -230,6 +219,7 @@ require([
         'documenteditor/mobile/app/controller/add/AddShape',
         'documenteditor/mobile/app/controller/add/AddImage',
         'documenteditor/mobile/app/controller/add/AddOther'
+
     ], function() {
         app.start();
     });
